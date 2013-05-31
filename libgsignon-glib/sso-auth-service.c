@@ -1,7 +1,7 @@
 /* vi: set et sw=4 ts=4 cino=t0,(0: */
 /* -*- Mode: C; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 /*
- * This file is part of libsignon-glib
+ * This file is part of libgsignon-glib
  *
  * Copyright (C) 2012 Canonical Ltd.
  *

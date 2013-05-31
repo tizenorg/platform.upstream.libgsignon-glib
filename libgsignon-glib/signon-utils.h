@@ -1,8 +1,9 @@
 /* vi: set et sw=4 ts=4 cino=t0,(0: */
 /* -*- Mode: C; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 /*
- * This file is part of libsignon-glib
+ * This file is part of libgsignon-glib
  *
+ * Copyright (C) 2009-2010 Nokia Corporation.
  * Copyright (C) 2012 Canonical Ltd.
  *
  * Contact: Alberto Mardegan <alberto.mardegan@canonical.com>
@@ -21,22 +22,24 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA
  */
+#ifndef _SIGNON_UTILS_H_
+#define _SIGNON_UTILS_H_
 
-#ifndef SIGNON_TYPES_H
-#define SIGNON_TYPES_H
+#include <glib-object.h>
 
-#include <glib.h>
+#define SIGNON_IS_NOT_CANCELLED(error) \
+        (error == NULL || \
+        error->domain != G_IO_ERROR || \
+        error->code != G_IO_ERROR_CANCELLED)
 
-G_BEGIN_DECLS
+G_GNUC_INTERNAL
+GValue *signon_gvalue_new (GType type);
+G_GNUC_INTERNAL
+void signon_gvalue_free (gpointer val);
 
-#ifdef SIGNON_DISABLE_DEPRECATION_WARNINGS
-#define SIGNON_DEPRECATED
-#define SIGNON_DEPRECATED_FOR(x)
-#else
-#define SIGNON_DEPRECATED           G_DEPRECATED
-#define SIGNON_DEPRECATED_FOR(x)    G_DEPRECATED_FOR(x)
-#endif
+G_GNUC_INTERNAL
+GHashTable *signon_hash_table_from_variant (GVariant *variant);
+G_GNUC_INTERNAL
+GVariant *signon_hash_table_to_variant (const GHashTable *hash_table);
 
-G_END_DECLS
-
-#endif /* SIGNON_TYPES_H */
+#endif //_SIGNON_UTILS_H_

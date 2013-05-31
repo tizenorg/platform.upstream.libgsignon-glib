@@ -1,6 +1,6 @@
 /* -*- Mode: C; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 /*
- * This file is part of libsignon-glib
+ * This file is part of libgsignon-glib
  *
  * Copyright (C) 2009-2011 Nokia Corporation.
  * Copyright (C) 2011-2012 Canonical Ltd.
@@ -31,11 +31,11 @@
 
 #define SIGNON_DISABLE_DEPRECATION_WARNINGS
 
-#include "libsignon-glib/signon-internals.h"
-#include "libsignon-glib/signon-auth-service.h"
-#include "libsignon-glib/signon-auth-session.h"
-#include "libsignon-glib/signon-identity.h"
-#include "libsignon-glib/signon-errors.h"
+#include "libgsignon-glib/signon-internals.h"
+#include "libgsignon-glib/signon-auth-service.h"
+#include "libgsignon-glib/signon-auth-session.h"
+#include "libgsignon-glib/signon-identity.h"
+#include "libgsignon-glib/signon-errors.h"
 
 #include <glib.h>
 #include <check.h>

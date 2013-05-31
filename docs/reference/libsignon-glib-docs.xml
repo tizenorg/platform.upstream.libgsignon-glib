@@ -6,27 +6,27 @@
 
 <book id="index" xmlns:xi="http://www.w3.org/2003/XInclude">
   <bookinfo>
-    <title>libsignon-glib Reference Manual</title>
+    <title>libgsignon-glib Reference Manual</title>
     <releaseinfo>
-      This document is for libsignon-glib, version &version;. The latest
+      This document is for libgsignon-glib, version &version;. The latest
       version of this documentation can be built from the source code at
-      <ulink role="online-location" url="https://code.google.com/p/accounts-sso/source/checkout?repo=libsignon-glib">https://code.google.com/p/accounts-sso/source/checkout?repo=libsignon-glib</ulink>.
+      <ulink role="online-location" url="https://code.google.com/p/accounts-sso/source/checkout?repo=libgsignon-glib">https://code.google.com/p/accounts-sso/source/checkout?repo=libgsignon-glib</ulink>.
     </releaseinfo>
   </bookinfo>
 
-  <part id="libsignon-glib-overview">
-    <title>libsignon-glib Overview</title>
+  <part id="libgsignon-glib-overview">
+    <title>libgsignon-glib Overview</title>
 
     <partintro>
       <para>
-      libsignon-glib provides authorization and authentication management for
+      libgsignon-glib provides authorization and authentication management for
       GLib applications.
       </para>
     </partintro>
   </part>
 
-  <part id="libsignon-glib-objects">
-    <title>libsignon-glib Objects</title>
+  <part id="libgsignon-glib-objects">
+    <title>libgsignon-glib Objects</title>
 
     <chapter id="object-tree">
       <title>Object Hierarchy</title>
@@ -48,14 +48,14 @@
     <partintro>
       <para>
       The signond D-Bus APIs are unstable, subject to change and should not be
-      used by client applications, which should use libsignon-glib or
-      libsignon-qt instead.
+      used by client applications, which should use libgsignon-glib or
+      libgsignon-qt instead.
       </para>
     </partintro>
 
-    <xi:include href="../../libsignon-glib/sso-auth-service-gen-doc-com.google.code.AccountsSSO.SingleSignOn.AuthService.xml"/>
-    <xi:include href="../../libsignon-glib/sso-auth-session-gen-doc-com.google.code.AccountsSSO.SingleSignOn.AuthSession.xml"/>
-    <xi:include href="../../libsignon-glib/sso-identity-gen-doc-com.google.code.AccountsSSO.SingleSignOn.Identity.xml"/>
+    <xi:include href="../../libgsignon-glib/sso-auth-service-gen-doc-com.google.code.AccountsSSO.gSingleSignOn.AuthService.xml"/>
+    <xi:include href="../../libgsignon-glib/sso-auth-session-gen-doc-com.google.code.AccountsSSO.gSingleSignOn.AuthSession.xml"/>
+    <xi:include href="../../libgsignon-glib/sso-identity-gen-doc-com.google.code.AccountsSSO.gSingleSignOn.Identity.xml"/>
   </part>
 
   <part id="appendices">

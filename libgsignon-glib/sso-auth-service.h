@@ -1,9 +1,9 @@
 /* vi: set et sw=4 ts=4 cino=t0,(0: */
 /* -*- Mode: C; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 /*
- * This file is part of libsignon-glib
+ * This file is part of libgsignon-glib
  *
- * Copyright (C) 2011 Canonical Ltd.
+ * Copyright (C) 2012 Canonical Ltd.
  *
  * Contact: Alberto Mardegan <alberto.mardegan@canonical.com>
  *
@@ -22,14 +22,16 @@
  * 02110-1301 USA
  */
 
-#ifndef SIGNON_GLIB_H
-#define SIGNON_GLIB_H
+#ifndef _SSO_AUTH_SERVICE_H_
+#define _SSO_AUTH_SERVICE_H_
 
-#include <libsignon-glib/signon-auth-service.h>
-#include <libsignon-glib/signon-auth-session.h>
-#include <libsignon-glib/signon-enum-types.h>
-#include <libsignon-glib/signon-errors.h>
-#include <libsignon-glib/signon-identity-info.h>
-#include <libsignon-glib/signon-identity.h>
+#include "sso-auth-service-gen.h"
 
-#endif /* SIGNON_GLIB_H */
+G_BEGIN_DECLS
+
+G_GNUC_INTERNAL
+SsoAuthService *sso_auth_service_get_instance ();
+
+G_END_DECLS
+
+#endif /* _SSO_AUTH_SERVICE_H_ */

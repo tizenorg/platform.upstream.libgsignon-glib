@@ -1,14 +1,14 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ([2.64])
-AC_INIT([libsignon-glib],
-        [1.9],
+AC_INIT([libgsignon-glib],
+        [2.0],
         [http://code.google.com/p/accounts-sso/issues/entry],
-        [libsignon-glib],
+        [libgsignon-glib],
         [http://code.google.com/p/accounts-sso/])
 
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_HEADERS([config.h])
-AC_CONFIG_SRCDIR([libsignon-glib.pc.in])
+AC_CONFIG_SRCDIR([libgsignon-glib.pc.in])
 AC_CONFIG_MACRO_DIR([m4])
 
 AM_INIT_AUTOMAKE([1.11 check-news nostdinc silent-rules subdir-objects -Wno-portability])
@@ -128,8 +128,8 @@ AM_CONDITIONAL([ENABLE_PYTHON], [test "x$have_python" = "xyes"])
 
 AC_CONFIG_FILES([
 	Makefile
-	libsignon-glib/Makefile
-	libsignon-glib.pc
+	libgsignon-glib/Makefile
+	libgsignon-glib.pc
 	docs/Makefile
 	docs/reference/Makefile
 	docs/reference/version.xml

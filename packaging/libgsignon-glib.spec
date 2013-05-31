@@ -1,7 +1,7 @@
-Name:       libsignon-glib
+Name:       libgsignon-glib
 Summary:    GLib API for the SSO framework
-Version:    1.9.0
-Release:    4
+Version:    2.0.0
+Release:    1
 Group:      System/Libraries
 License:    LGPL
 Source:	    %{name}-%{version}.tar.bz2
@@ -65,14 +65,6 @@ rm -rf %{buildroot}
 
 
 %changelog
-* Mon Feb 11 2013 Jussi Laako <jussi.laako@linux.intel.com> - 1.9
-- Update to latest intel branch version
+* Fri May 31 2013 Jussi Laako <jussi.laako@linux.intel.com> - 2.0
+- Initial version of the renamed fork
 
-* Thu Feb 07 2013 Jussi Laako <jussi.laako@linux.intel.com> - 1.7
-- Update to latest intel branch version
-
-* Tue Mar 27 2012 Jussi Laako <jussi.laako@linux.intel.com> - 1.1
-- Update to latest upstream version
-
-* Wed Aug 03 2011 Jussi Laako <jussi.laako@linux.intel.com> - 1.0
-- Update to latest upstream version

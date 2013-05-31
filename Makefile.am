@@ -2,7 +2,7 @@ ACLOCAL_AMFLAGS = -I m4
 DISTCHECK_CONFIGURE_FLAGS = \
 	--enable-gtk-doc \
 	--enable-introspection=yes
-SUBDIRS = libsignon-glib docs
+SUBDIRS = libgsignon-glib docs
 
 if ENABLE_PYTHON
 SUBDIRS += pygobject
@@ -13,11 +13,11 @@ SUBDIRS += tests
 endif
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_in_files = libsignon-glib.pc.in
+pkgconfig_in_files = libgsignon-glib.pc.in
 pkgconfig_DATA = $(pkgconfig_in_files:.pc.in=.pc)
 
 dist_noinst_DATA = \
-	$(libsignondoc_DATA) \
+	$(libgsignondoc_DATA) \
 	m4/introspection.m4
 
 dist-hook: git-changelog-hook

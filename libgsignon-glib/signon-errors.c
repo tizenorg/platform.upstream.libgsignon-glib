@@ -1,12 +1,14 @@
 /* vi: set et sw=4 ts=4 cino=t0,(0: */
 /* -*- Mode: C; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 /*
- * This file is part of libsignon-glib
+ * This file is part of libgsignon-glib
  *
  * Copyright (C) 2009-2010 Nokia Corporation.
  * Copyright (C) 2012 Canonical Ltd.
+ * Copyright (C) 2012 Intel Corporation.
  *
  * Contact: Alberto Mardegan <alberto.mardegan@canonical.com>
+ * Contact: Jussi Laako <jussi.laako@linux.intel.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License
@@ -22,24 +24,30 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA
  */
-#ifndef _SIGNON_UTILS_H_
-#define _SIGNON_UTILS_H_
 
-#include <glib-object.h>
+#include "signon-errors.h"
+#include "signon-enum-types.h"
+#include "signon-internals.h"
+#include <gio/gio.h>
 
-#define SIGNON_IS_NOT_CANCELLED(error) \
-        (error == NULL || \
-        error->domain != G_IO_ERROR || \
-        error->code != G_IO_ERROR_CANCELLED)
+/**
+ * SECTION:signon-errors
+ * @title: SignonError
+ * @short_description: Possible errors from Signon.
+ *
+ * An enumeration of errors that are possible from Signon.
+ */
+#define SIGNON_ERROR_PREFIX SIGNOND_SERVICE_PREFIX ".Error"
 
-G_GNUC_INTERNAL
-GValue *signon_gvalue_new (GType type);
-G_GNUC_INTERNAL
-void signon_gvalue_free (gpointer val);
+#include "signon-errors-map.c"
 
-G_GNUC_INTERNAL
-GHashTable *signon_hash_table_from_variant (GVariant *variant);
-G_GNUC_INTERNAL
-GVariant *signon_hash_table_to_variant (const GHashTable *hash_table);
+GQuark signon_error_quark (void)
+{
+    static volatile gsize quark = 0;
 
-#endif //_SIGNON_UTILS_H_
+    g_dbus_error_register_error_domain ("gsignond",
+                                        &quark,
+                                        signon_error_entries,
+                                        G_N_ELEMENTS (signon_error_entries));
+    return (GQuark) quark;
+}

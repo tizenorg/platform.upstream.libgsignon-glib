@@ -1,7 +1,7 @@
 /* vi: set et sw=4 ts=4 cino=t0,(0: */
 /* -*- Mode: C; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 /*
- * This file is part of libsignon-glib
+ * This file is part of libgsignon-glib
  *
  * Copyright (C) 2009-2010 Nokia Corporation.
  * Copyright (C) 2012-2013 Intel Corporation.
@@ -27,8 +27,8 @@
 #ifndef _SIGNON_IDENTITY_H_
 #define _SIGNON_IDENTITY_H_
 
-#include <libsignon-glib/signon-auth-session.h>
-#include <libsignon-glib/signon-identity-info.h>
+#include <libgsignon-glib/signon-auth-session.h>
+#include <libgsignon-glib/signon-identity-info.h>
 #include <glib-object.h>
 
 G_BEGIN_DECLS

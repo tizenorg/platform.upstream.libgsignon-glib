@@ -25,4 +25,4 @@ signon_glib_testsuite_CPPFLAGS = \
 signon_glib_testsuite_LDADD = \
 	$(CHECK_LIBS) \
 	$(DEPS_LIBS) \
-	$(top_builddir)/libsignon-glib/libsignon-glib.la
+	$(top_builddir)/libgsignon-glib/libgsignon-glib.la
