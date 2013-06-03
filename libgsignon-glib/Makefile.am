@@ -171,6 +171,8 @@ INTROSPECTION_COMPILER_ARGS = --includedir=$(srcdir)
 
 if HAVE_INTROSPECTION
 introspection_sources = \
+	signon-security-context.c \
+	signon-security-context.h \
 	signon-auth-service.c \
 	signon-auth-service.h \
 	signon-auth-session.c \
@@ -184,19 +186,19 @@ introspection_sources = \
 	signon-identity.c \
 	signon-identity.h
 
-Signon-1.0.gir: libgsignon-glib.la
-Signon_1_0_gir_INCLUDES = GObject-2.0 Gio-2.0
-Signon_1_0_gir_SCANNERFLAGS = \
+gSignon-1.0.gir: libgsignon-glib.la
+gSignon_1_0_gir_INCLUDES = GObject-2.0 Gio-2.0
+gSignon_1_0_gir_SCANNERFLAGS = \
 	--identifier-prefix=Signon \
 	--symbol-prefix=signon \
 	--c-include="libgsignon-glib/signon-glib.h" \
 	--warn-all
-Signon_1_0_gir_CFLAGS = \
+gSignon_1_0_gir_CFLAGS = \
 	-I$(top_srcdir) \
 	$(DEPS_CFLAGS)
-Signon_1_0_gir_LIBS = libgsignon-glib.la
-Signon_1_0_gir_FILES = $(introspection_sources)
-INTROSPECTION_GIRS += Signon-1.0.gir
+gSignon_1_0_gir_LIBS = libgsignon-glib.la
+gSignon_1_0_gir_FILES = $(introspection_sources)
+INTROSPECTION_GIRS += gSignon-1.0.gir
 
 girdir = $(datadir)/gir-1.0
 gir_DATA = $(INTROSPECTION_GIRS)

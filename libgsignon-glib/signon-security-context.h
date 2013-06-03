@@ -26,6 +26,7 @@
 #define _SIGNON_SECURITY_CONTEXT_H_
 
 #include <glib.h>
+#include <glib-object.h>
 
 G_BEGIN_DECLS
 
@@ -48,6 +49,8 @@ typedef struct _SignonSecurityContext
  * GList of #SignonSecurityContext items.
  */
 typedef GList SignonSecurityContextList;
+
+GType signon_security_context_get_type (void) G_GNUC_CONST;
 
 SignonSecurityContext * signon_security_context_new ();
 SignonSecurityContext * signon_security_context_new_from_values (
