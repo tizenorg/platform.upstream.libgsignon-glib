@@ -15,6 +15,7 @@ BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  gobject-introspection
 
 %description
 %{summary}.
