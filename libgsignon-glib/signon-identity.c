@@ -1615,6 +1615,15 @@ identity_session_object_destroyed_cb(gpointer data,
     g_object_unref (self);
 }
 
+/**
+ * signon_identity_get_auth_session:
+ * @self: the #SignonIdentity.
+ * @session: the #SignonAuthSession object to get the remote object for.
+ * @method: method name for the session.
+ * @cb: (scope async): completion callback.
+ *
+ * Obtain a remote object for a local session object.
+ */
 void signon_identity_get_auth_session (SignonIdentity *self,
                                        SignonAuthSession *session,
                                        const gchar *method,

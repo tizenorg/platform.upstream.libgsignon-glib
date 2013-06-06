@@ -24,6 +24,10 @@
 
 #include "signon-security-context.h"
 
+G_DEFINE_BOXED_TYPE (SignonSecurityContext, signon_security_context,
+                     (GBoxedCopyFunc) signon_security_context_copy,
+                     (GBoxedFreeFunc) signon_security_context_free);
+
 static void
 _security_context_free (gpointer ptr)
 {
@@ -265,7 +269,7 @@ signon_security_context_list_build_variant (
  * Builds a GList of #SignonSecurityContext items from a GVariant of type
  * "a(ss)".
  *
- * Returns: (transfer full) #SignonSecurityContextList item.
+ * Returns: (transfer full): #SignonSecurityContextList item.
  */
 SignonSecurityContextList *
 signon_security_context_list_deconstruct_variant (GVariant *variant)
@@ -293,7 +297,7 @@ signon_security_context_list_deconstruct_variant (GVariant *variant)
  *
  * Copies a GList of #SignonSecurityContext items.
  *
- * Returns: (transfer full) #SignonSecurityContextList item.
+ * Returns: (transfer full): #SignonSecurityContextList item.
  */
 SignonSecurityContextList *
 signon_security_context_list_copy (const SignonSecurityContextList *src_list)

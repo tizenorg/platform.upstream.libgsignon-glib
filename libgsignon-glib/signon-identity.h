@@ -202,6 +202,16 @@ void signon_identity_remove_reference(SignonIdentity *self,
                                       SignonIdentityReferenceRemovedCb cb,
                                       gpointer user_data);
 
+/**
+ * SignonIdentitySessionReadyCb:
+ * @self: the #SignonAuthSession.
+ * @error: a #GError if an error occurred, or %NULL otherwise.
+ * @connection: a #GDBusConnection for the session.
+ * @bus_name: a D-Bus bus name for the session.
+ * @object_path: a D-Bus object path for the session.
+ *
+ * Callback to be passed to signon_identity_get_auth_session().
+ */
 typedef void (*SignonIdentitySessionReadyCb) (SignonAuthSession *self,
                                               GError *error,
                                               GDBusConnection *connection,

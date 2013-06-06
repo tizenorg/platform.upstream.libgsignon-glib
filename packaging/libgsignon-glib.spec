@@ -1,3 +1,6 @@
+#define dbus bus type to use [p2p, session, system]
+%define dbus_type session
+
 Name:       libgsignon-glib
 Summary:    GLib API for the SSO framework
 Version:    2.0.0
@@ -12,6 +15,7 @@ BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  gobject-introspection
 
 %description
 %{summary}.
@@ -33,7 +37,11 @@ autoreconf -f -i
 
 
 %build
-%configure --enable-gtk-doc --enable-gtk-doc-html --enable-python
+%configure \
+	--enable-gtk-doc \
+	--enable-gtk-doc-html \
+	--enable-python \
+	--enable-dbus-type=%{dbus_type}
 make #%{?_smp_mflags}
 
 
@@ -60,11 +68,13 @@ rm -rf %{buildroot}
 %{_libdir}/%{name}.so
 %{_libdir}/%{name}.la
 %{_libdir}/pkgconfig/%{name}.pc
-%{_datadir}/vala/vapi/signon.vapi
+%{_libdir}/girepository-1.0/gSignon-1.0.typelib
+%{_datadir}/gir-1.0/gSignon-1.0.gir
+#%{_datadir}/vala/vapi/gsignon.vapi
 %{_datadir}/gtk-doc/html/%{name}/*
 
 
 %changelog
-* Fri May 31 2013 Jussi Laako <jussi.laako@linux.intel.com> - 2.0
-- Initial version of the renamed fork
+* Mon Feb 11 2013 Jussi Laako <jussi.laako@linux.intel.com> - 2.0
+- Refresh for the libgsignon-glib
 
