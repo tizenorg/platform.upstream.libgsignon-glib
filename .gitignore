@@ -15,11 +15,11 @@ debian
 /docs/reference/xml/
 gtk-doc.make
 /INSTALL
-/libsignon-glib/signon-errors-map.c
-/libsignon-glib/signon-marshal.c
-/libsignon-glib/signon-marshal.h
-/libsignon-glib/sso-*-gen.*
-/libsignon-glib/sso-*-gen-doc-*
+/libgsignon-glib/signon-errors-map.c
+/libgsignon-glib/signon-marshal.c
+/libgsignon-glib/signon-marshal.h
+/libgsignon-glib/sso-*-gen.*
+/libgsignon-glib/sso-*-gen-doc-*
 libtool
 m4/gtk-doc.m4
 m4/libtool.m4
