@@ -782,6 +782,7 @@ signon_identity_store_credentials_with_info(SignonIdentity *self,
  * @methods: (transfer none) (element-type utf8 GStrv): methods.
  * @caption: caption.
  * @realms: realms.
+ * @owner: owner.
  * @access_control_list: access control list.
  * @type: the type of the identity.
  * @cb: (scope async): callback.

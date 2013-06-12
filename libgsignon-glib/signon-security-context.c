@@ -22,6 +22,15 @@
  * 02110-1301 USA
  */
 
+/**
+ * SECTION:signon-security-context
+ * @title: SignonSecurityContext
+ * @short_description: Representation of a security context.
+ *
+ * The #SignonSecurityContext represents a security context within
+ * sytem and also within application.
+ */
+
 #include "signon-security-context.h"
 
 G_DEFINE_BOXED_TYPE (SignonSecurityContext, signon_security_context,
@@ -56,7 +65,7 @@ signon_security_context_new ()
 }
 
 /**
- * signon_security_context_new_from_vaues:
+ * signon_security_context_new_from_values:
  * @system_context: system security context (such as SMACK/MSSF label/token).
  * @application_context: application security context (such as a script name).
  *
@@ -188,7 +197,7 @@ signon_security_context_get_application_context (
 }
 
 /**
- * signon_security_conetxt_build_variant:
+ * signon_security_context_build_variant:
  * @ctx: #SignonSecurityContext item.
  *
  * Build a GVariant of type "(ss)" from a #SignonSecurityContext item.

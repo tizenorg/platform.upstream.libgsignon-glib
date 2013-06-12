@@ -4,9 +4,11 @@
 SignonAuthService
 SignonQueryMechanismCb
 SignonQueryMethodsCb
+SignonQueryIdentitiesCb
 signon_auth_service_new
 signon_auth_service_query_mechanisms
 signon_auth_service_query_methods
+signon_auth_service_query_identities
 <SUBSECTION Private>
 SignonAuthServiceClass
 SignonAuthServicePrivate
@@ -112,6 +114,7 @@ signon_identity_get_type
 
 <SECTION>
 <FILE>signon-identity-info</FILE>
+<TITLE>SignonIdentityInfo</TITLE>
 SignonIdentityInfo
 SignonIdentityType
 signon_identity_info_copy
@@ -137,4 +140,25 @@ signon_identity_info_set_username
 SIGNON_TYPE_IDENTITY_TYPE
 signon_identity_info_get_type
 signon_identity_type_get_type
+</SECTION>
+
+<SECTION>
+<FILE>signon-security-context</FILE>
+<TITLE>SignonSecurityContext</TITLE>
+SignonSecurityContext
+SignonSecurityContextList
+signon_security_context_new
+signon_security_context_new_from_values
+signon_security_context_copy
+signon_security_context_free
+signon_security_context_set_system_context
+signon_security_context_get_system_context
+signon_security_context_set_application_context
+signon_security_context_get_application_context
+signon_security_context_build_variant
+signon_security_context_deconstruct_variant
+signon_security_context_list_build_variant
+signon_security_context_list_deconstruct_variant
+signon_security_context_list_copy
+signon_security_context_list_free
 </SECTION>
