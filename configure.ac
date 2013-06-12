@@ -1,7 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ([2.64])
 AC_INIT([libgsignon-glib],
-        [2.0],
+        [2.0.0],
         [http://code.google.com/p/accounts-sso/issues/entry],
         [libgsignon-glib],
         [http://code.google.com/p/accounts-sso/])
@@ -11,7 +11,7 @@ AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR([libgsignon-glib.pc.in])
 AC_CONFIG_MACRO_DIR([m4])
 
-AM_INIT_AUTOMAKE([1.11 check-news nostdinc silent-rules subdir-objects -Wno-portability])
+AM_INIT_AUTOMAKE([1.11 nostdinc silent-rules subdir-objects -Wno-portability])
 
 AC_PROG_CC
 AC_PROG_CC_STDC
@@ -62,6 +62,9 @@ elif test "x$enable_dbus_type" = "xsession" ; then
     fi
 elif test "x$enable_dbus_type" = "xsystem" ; then
     AC_DEFINE(SIGNOND_BUS_TYPE, [G_BUS_TYPE_SYSTEM], [Use system bus])
+fi
+if test "x$enable_dbus_type" != "xp2p" ; then
+    DBUS_INTERFACES_DIR="`pkg-config --variable interfaces_dir dbus-1`"
 fi
 
 AM_CONDITIONAL(HAVE_GTESTDBUS, [test x$gtestdbus = xyes])

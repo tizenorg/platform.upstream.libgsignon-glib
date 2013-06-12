@@ -80,23 +80,23 @@ libgsignon_glib_headers_with_enums = \
 
 # This should come from `pkg-config --variable=interfaces_dir dbus-1`
 # default is /usr/share/dbus-1/interfaces
-DBUS_INTERFACES_DIR = interfaces
+INTERFACES_DIR = $(top_srcdir)/libgsignon-glib/interfaces
 
-sso-auth-service-gen.h sso-auth-service-gen.c: $(DBUS_INTERFACES_DIR)/com.google.code.AccountsSSO.gSingleSignOn.AuthService.xml
+sso-auth-service-gen.h sso-auth-service-gen.c: $(INTERFACES_DIR)/com.google.code.AccountsSSO.gSingleSignOn.AuthService.xml
 	$(AM_V_GEN)gdbus-codegen \
 		--generate-c-code sso-auth-service-gen \
 		--generate-docbook sso-auth-service-gen-doc \
 		--annotate "com.google.code.AccountsSSO.gSingleSignOn.AuthService" org.gtk.GDBus.C.Name SsoAuthService \
 		$<
 
-sso-auth-session-gen.h sso-auth-session-gen.c: $(DBUS_INTERFACES_DIR)/com.google.code.AccountsSSO.gSingleSignOn.AuthSession.xml
+sso-auth-session-gen.h sso-auth-session-gen.c: $(INTERFACES_DIR)/com.google.code.AccountsSSO.gSingleSignOn.AuthSession.xml
 	$(AM_V_GEN)gdbus-codegen \
 		--generate-c-code sso-auth-session-gen \
 		--generate-docbook sso-auth-session-gen-doc \
 		--annotate "com.google.code.AccountsSSO.gSingleSignOn.AuthSession" org.gtk.GDBus.C.Name SsoAuthSession \
 		$<
 
-sso-identity-gen.h sso-identity-gen.c: $(DBUS_INTERFACES_DIR)/com.google.code.AccountsSSO.gSingleSignOn.Identity.xml
+sso-identity-gen.h sso-identity-gen.c: $(INTERFACES_DIR)/com.google.code.AccountsSSO.gSingleSignOn.Identity.xml
 	$(AM_V_GEN)gdbus-codegen \
 		--generate-c-code sso-identity-gen \
 		--generate-docbook sso-identity-gen-doc \
@@ -208,6 +208,14 @@ typelib_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
 
 CLEANFILES += $(gir_DATA) $(typelib_DATA)
 endif
+
+dbusinterfacesdir = $(DBUS_INTERFACES_DIR)
+dbusinterfaces_DATA = \
+    $(INTERFACES_DIR)/com.google.code.AccountsSSO.gSingleSignOn.AuthService.xml\
+    $(INTERFACES_DIR)/com.google.code.AccountsSSO.gSingleSignOn.AuthSession.xml\
+    $(INTERFACES_DIR)/com.google.code.AccountsSSO.gSingleSignOn.Identity.xml
+
+EXTRA_DIST = interfaces
 
 # Vala bindings
 #vapidir = $(datadir)/vala/vapi
