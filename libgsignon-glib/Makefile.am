@@ -119,9 +119,9 @@ stamp-signon-enum-types.h: Makefile \
 	    --fprod "/* enumerations from \"@filename@\" */\n" \
 	    --vhead "GType @enum_name@_get_type (void) G_GNUC_CONST;\n#define SIGNON_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
 	    --ftail "G_END_DECLS\n\n#endif /* __SIGNON_ENUM_TYPES_H__ */" \
-	    $(libgsignon_glib_headers_with_enums) signon-errors.h ) >> xgen-geth \
-	    && (cmp -s xgen-geth signon-enum-types.h || cp xgen-geth signon-enum-types.h ) \
-	    && rm -f xgen-geth \
+	    $(libgsignon_glib_headers_with_enums) signon-errors.h ) >> stamp-xgen-geth \
+	    && (cmp -s stamp-xgen-geth signon-enum-types.h || cp stamp-xgen-geth signon-enum-types.h ) \
+	    && rm -f stamp-xgen-geth \
 	    && echo timestamp > $(@F)
 
 signon-enum-types.c: Makefile $(libgsignon_glib_headers_with_enums)
@@ -135,9 +135,9 @@ signon-enum-types.c: Makefile $(libgsignon_glib_headers_with_enums)
 	    --vhead "GType\n@enum_name@_get_type (void)\n{\n  static GType etype = 0;\n  if (etype == 0) {\n    static const G@Type@Value values[] = {" \
 	    --vprod "      { @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
 	    --vtail "      { 0, NULL, NULL }\n    };\n    etype = g_@type@_register_static (g_intern_static_string (\"@EnumName@\"), values);\n  }\n  return etype;\n}\n" \
-	    $(libgsignon_glib_headers_with_enums) ) > xgen-getc \
-	    && cp xgen-getc signon-enum-types.c  \
-	    && rm -f xgen-getc
+	    $(libgsignon_glib_headers_with_enums) ) > enum-xgen-getc \
+	    && cp enum-xgen-getc signon-enum-types.c  \
+	    && rm -f enum-xgen-getc
 
 signon-errors-enum.c: Makefile signon-errors.h
 	$(AM_V_GEN)( cd $(srcdir) && glib-mkenums \
@@ -149,9 +149,9 @@ signon-errors-enum.c: Makefile signon-errors.h
 	    --vtail "      { 0, NULL, NULL }\n    };\n    etype = g_@type@_register_static (g_intern_static_string (\"@EnumName@\"), values);\n  }\n  return etype;\n}\n" \
 	    signon-errors.h ) | \
 	    $(SED) -e 's/SEDSIGNON_ERROR_\([^,]*\)/SIGNOND_\1_ERR_NAME/' \
-	    > xgen-getc \
-	    && cp xgen-getc signon-errors-enum.c  \
-	    && rm -f xgen-getc
+	    > errors-xgen-getc \
+	    && cp errors-xgen-getc signon-errors-enum.c  \
+	    && rm -f errors-xgen-getc
 
 signon-errors-map.c: Makefile signon-errors.h
 	$(AM_V_GEN)( cd $(srcdir) && \
