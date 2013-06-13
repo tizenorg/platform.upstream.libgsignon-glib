@@ -11,7 +11,6 @@ Source:	    %{name}-%{version}.tar.gz
 Requires: dbus-1
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
-BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -33,16 +32,16 @@ Requires:   %{name} = %{version}-%{release}
 
 %prep
 %setup -q -n %{name}-%{version}
-gtkdocize
+if [ -f = "gtk-doc.make" ]
+then
+rm gtk-doc.make
+fi
+touch gtk-doc.make
 autoreconf -f -i
 
 
 %build
-%configure \
-	--enable-gtk-doc \
-	--enable-gtk-doc-html \
-	--enable-python \
-	--enable-dbus-type=%{dbus_type}
+%configure --enable-dbus-type=%{dbus_type}
 make %{?_smp_mflags}
 
 
@@ -67,12 +66,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %{_includedir}/%{name}/*.h
 %{_libdir}/%{name}.so
-%{_libdir}/%{name}.la
 %{_libdir}/pkgconfig/%{name}.pc
-%{_libdir}/girepository-1.0/gSignon-1.0.typelib
-%{_datadir}/gir-1.0/gSignon-1.0.gir
-#%{_datadir}/vala/vapi/gsignon.vapi
-%{_datadir}/gtk-doc/html/%{name}/*
 
 
 %changelog

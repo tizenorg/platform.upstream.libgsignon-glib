@@ -87,7 +87,11 @@ AS_IF([test "x$have_check" = "xyes"],
 
 AM_CONDITIONAL([ENABLE_TESTS], [test "x$have_check" = "xyes"])
 
-GTK_DOC_CHECK([1.14], [--flavour no-tmpl])
+m4_ifdef([GTK_DOC_CHECK], [
+GTK_DOC_CHECK([1.14],[--flavour no-tmpl])
+],[
+AM_CONDITIONAL([ENABLE_GTK_DOC], false)
+])
 
 AC_ARG_ENABLE([cast-checks],
     [AS_HELP_STRING([--disable-cast-checks], [compile with GLib cast checks disabled])])
