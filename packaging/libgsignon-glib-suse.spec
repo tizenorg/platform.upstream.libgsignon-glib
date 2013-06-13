@@ -7,7 +7,7 @@ Version:    2.0.0
 Release:    1
 Group:      System/Libraries
 License:    LGPL
-Source:	    %{name}-%{version}.tar.bz2
+Source:	    %{name}-%{version}.tar.gz
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(gtk-doc)
@@ -42,7 +42,7 @@ autoreconf -f -i
 	--enable-gtk-doc-html \
 	--enable-python \
 	--enable-dbus-type=%{dbus_type}
-make #%{?_smp_mflags}
+make %{?_smp_mflags}
 
 
 %install
