@@ -30,20 +30,21 @@
 
 G_BEGIN_DECLS
 
+typedef struct _SignonSecurityContext SignonSecurityContext;
+
 /**
  * SignonSecurityContext:
- *
- * Security context descriptor. Practically a string tuple.
- *
  * @sys_ctx: system context, such as SMACK-label, MSSF token or just a
  *           binary path.
  * @app_ctx: application context, such as a script or a web page.
+ *
+ * Security context descriptor. Practically a string tuple.
  */
-typedef struct _SignonSecurityContext
+struct _SignonSecurityContext
 {
     gchar *sys_ctx;
     gchar *app_ctx;
-} SignonSecurityContext;
+};
 
 /**
  * SignonSecurityContextList:
