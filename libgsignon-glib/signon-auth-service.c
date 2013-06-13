@@ -308,6 +308,7 @@ auth_query_identities_cb (GObject *object, GAsyncResult *res,
  * SignonQueryIdentitiesCb:
  * @auth_service: the #SignonAuthService.
  * @identities: (transfer full): #GList based list of #SignonIdentityInfo.
+ * @error: a #GError if an error occurred, %NULL otherwise.
  * @user_data: the user data that was passed when installing this callback.
  *
  * Callback to be passed to signon_auth_service_query_identities().
@@ -320,6 +321,8 @@ auth_query_identities_cb (GObject *object, GAsyncResult *res,
  * @application_context: application security context, can be %NULL.
  * @cb: (scope async): callback to be invoked.
  * @user_data: user data.
+ *
+ * Query identities.
  */
 void
 signon_auth_service_query_identities (SignonAuthService *auth_service,

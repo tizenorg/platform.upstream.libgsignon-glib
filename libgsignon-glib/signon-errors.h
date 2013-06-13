@@ -35,7 +35,7 @@
  * SignonError:
  * @SIGNON_ERROR_UNKNOWN: Catch-all for errors not distinguished by another code.
  * @SIGNON_ERROR_INTERNAL_SERVER: Signon daemon internal error.
- * @SIGNON_ERROR_INTERNAL_COMMUNICATION: Error communicating with Sigon daemon.
+ * @SIGNON_ERROR_INTERNAL_COMMUNICATION: Error communicating with Signon daemon.
  * @SIGNON_ERROR_PERMISSION_DENIED: The operation cannot be performed due to
  * insufficient client permissions.
  * @SIGNON_ERROR_METHOD_NOT_KNOWN: The method with this name was not found.
@@ -53,7 +53,7 @@
  * @SIGNON_ERROR_REFERENCE_NOT_FOUND: Trying to remove non-existent reference.
  * @SIGNON_ERROR_MECHANISM_NOT_AVAILABLE: The requested mechanism in not
  * available.
- * @SIGNON_ERROR_MISSING_DATA: The #SessionData does not contain the necessary
+ * @SIGNON_ERROR_MISSING_DATA: The SessionData does not contain the necessary
  * information.
  * @SIGNON_ERROR_INVALID_CREDENTIALS: The supplied credentials are invalid for
  * the mechanism implementation.
@@ -65,7 +65,7 @@
  * @SIGNON_ERROR_NO_CONNECTION: No network connection.
  * @SIGNON_ERROR_NETWORK: Network connection failed.
  * @SIGNON_ERROR_SSL: SSL connection failed.
- * @SIGNON_ERROR_RUNTIME: Casting #SessionData into subclass failed.
+ * @SIGNON_ERROR_RUNTIME: Casting SessionData into subclass failed.
  * @SIGNON_ERROR_SESSION_CANCELED: Challenge was canceled.
  * @SIGNON_ERROR_TIMED_OUT: Challenge timed out.
  * @SIGNON_ERROR_USER_INTERACTION: User interaction dialog failed.

@@ -74,7 +74,18 @@ typedef void (*SignonQueryMechanismCb) (SignonAuthService *auth_service,
                                         const GError *error,
                                         gpointer user_data);
 
+/**
+ * SignonIdentityList:
+ *
+ * GList of #SignonIdentity items.
+ */
 typedef GList SignonIdentityList;
+
+/**
+ * SignonIdentityFilter:
+ *
+ * #GHashTable based filter variant dictionary.
+ */
 typedef GHashTable SignonIdentityFilter;
 
 typedef void (*SignonQueryIdentitiesCb) (SignonAuthService *auth_service,

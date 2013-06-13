@@ -28,7 +28,7 @@
  * @short_description: Representation of a security context.
  *
  * The #SignonSecurityContext represents a security context within
- * sytem and also within application.
+ * system and also within application.
  */
 
 #include "signon-security-context.h"
@@ -97,7 +97,7 @@ signon_security_context_new_from_values (const gchar *system_context,
  *
  * Copy a security context item.
  *
- * Returns: (transfer full) a copy of the #SignonSecurityContex item.
+ * Returns: (transfer full) a copy of the #SignonSecurityContext item.
  */
 SignonSecurityContext *
 signon_security_context_copy (const SignonSecurityContext *src_ctx)

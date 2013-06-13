@@ -79,6 +79,8 @@ signon_error_get_type
 <FILE>signon-identity</FILE>
 <TITLE>SignonIdentity</TITLE>
 SignonIdentity
+SignonIdentityFilter
+SignonIdentityList
 SignonIdentityInfoCb
 SignonIdentityReferenceAddedCb
 SignonIdentityReferenceRemovedCb
@@ -87,6 +89,7 @@ SignonIdentitySignedOutCb
 SignonIdentityStoreCredentialsCb
 SignonIdentityVerifyCb
 SignonIdentityVoidCb
+SignonIdentitySessionReadyCb
 signon_identity_add_reference
 signon_identity_create_session
 signon_identity_get_last_error
@@ -99,6 +102,12 @@ signon_identity_signout
 signon_identity_store_credentials_with_args
 signon_identity_store_credentials_with_info
 signon_identity_verify_secret
+signon_identity_get_auth_session
+signon_identity_info_access_control_list_append
+signon_identity_info_get_owner
+signon_identity_info_set_methods
+signon_identity_info_set_owner
+signon_identity_info_set_owner_from_values
 <SUBSECTION Private>
 SignonIdentityClass
 SignonIdentityPrivate
@@ -161,4 +170,6 @@ signon_security_context_list_build_variant
 signon_security_context_list_deconstruct_variant
 signon_security_context_list_copy
 signon_security_context_list_free
+<SUBSECTION Standard>
+signon_security_context_get_type
 </SECTION>
