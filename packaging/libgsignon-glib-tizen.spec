@@ -67,7 +67,7 @@ rm -rf %{buildroot}
 %{_includedir}/%{name}/*.h
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
-
+%{_datadir}/gtk-doc/html/%{name}/*
 
 %changelog
 * Mon Feb 11 2013 Jussi Laako <jussi.laako@linux.intel.com> - 2.0
