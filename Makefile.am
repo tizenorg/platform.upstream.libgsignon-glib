@@ -36,6 +36,6 @@ DISTCLEANFILES = \
 valgrind:
 	cd tests; make valgrind
 
-EXTRA_DIST = packaging
+EXTRA_DIST = dists tools
 
 .PHONY:  git-changelog-hook
