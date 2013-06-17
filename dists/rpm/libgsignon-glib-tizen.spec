@@ -69,7 +69,3 @@ rm -rf %{buildroot}
 %{_libdir}/pkgconfig/%{name}.pc
 %{_datadir}/gtk-doc/html/%{name}/*
 
-%changelog
-* Mon Feb 11 2013 Jussi Laako <jussi.laako@linux.intel.com> - 2.0
-- Refresh for the libgsignon-glib
-
