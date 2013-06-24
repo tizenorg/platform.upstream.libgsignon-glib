@@ -3,7 +3,7 @@
 
 Name:       libgsignon-glib
 Summary:    GLib API for the SSO framework
-Version:    2.0.0
+Version:    2.0.1
 Release:    1
 Group:      System/Libraries
 License:    LGPL
@@ -76,6 +76,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Mon Jun 24 2013 Imran Zaman <imran.zaman@intel.com>
+- Release 2.0.1 that comprises of bug fixes
+
 * Mon Feb 11 2013 Jussi Laako <jussi.laako@linux.intel.com> - 2.0
 - Refresh for the libgsignon-glib
 

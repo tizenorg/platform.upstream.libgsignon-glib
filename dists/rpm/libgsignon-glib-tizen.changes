@@ -1,2 +1,5 @@
+* Mon Jun 24 2013 Imran Zaman <imran.zaman@intel.com>
+- Release 2.0.1 that comprises of bug fixes
+
 * Mon Jun 17 2013 Imran Zaman <imran.zaman@.intel.com> - 2.0.0
 - Prepare for first release of libgsignon-glib 2.0.0
