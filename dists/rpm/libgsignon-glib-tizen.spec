@@ -1,5 +1,5 @@
 #define dbus bus type to use [p2p, session, system]
-%define dbus_type session
+%define dbus_type p2p
 
 Name:       libgsignon-glib
 Summary:    GLib API for the SSO framework
