@@ -7,7 +7,6 @@ aclocal.m4
 /build-aux/
 configure
 config.*
-debian
 /docs/reference/html/
 /docs/reference/libgsignon-glib*
 !/docs/reference/libgsignon-glib-sections.txt

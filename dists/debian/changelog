@@ -1,0 +1,5 @@
+libgsignon-glib (2.0.1-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Jussi Laako <jussi.laako@linux.intel.com>  Thu, 04 Jul 2013 15:28:50 +0300
