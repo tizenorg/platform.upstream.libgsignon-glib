@@ -15,5 +15,11 @@ export DH_OPTIONS
 override_dh_auto_configure:
 	dh_auto_configure -- --enable-dbus-type=session --enable-gtk-doc --enable-introspection=yes
 
+.PHONY: override_dh_auto_test
 override_dh_auto_test:
 	true
+
+.PHONY: override_dh_strip
+override_dh_strip:
+	dh_strip --dbg-package=libgsignon-glib-dbg
+

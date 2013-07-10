@@ -16,9 +16,15 @@ Description: gSSO client library
 
 Package: libgsignon-glib-dev
 Architecture: any
-Depends: ${shlibs:Depens}, ${misc:Depends}
+Depends: libgsignon-glib (= ${binary:Version}), ${misc:Depends}
 Description: development files for libgsignon-glib
  Headers and libraries necessary for developing applications using gSSO.
+
+Package: libgsignon-glib-dbg
+Architecture: any
+Depends: libgsignon-glib (= ${binary:Version}), ${misc:Depends}
+Description: debug symbols for libgsignon-glib
+ Debug symbols necessary for debugging applications using gSSO.
 
 Package: libgsignon-glib-doc
 Architecture: all
