@@ -2,7 +2,7 @@ ACLOCAL_AMFLAGS = -I m4
 AM_DISTCHECK_CONFIGURE_FLAGS = \
 	--enable-gtk-doc \
 	--enable-introspection=yes
-SUBDIRS = libgsignon-glib docs
+SUBDIRS = libgsignon-glib docs examples
 
 if ENABLE_PYTHON
 SUBDIRS += pygobject

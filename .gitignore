@@ -13,6 +13,7 @@ config.*
 /docs/reference/version.xml
 /docs/reference/xml/
 gtk-doc.make
+examples/gsso-example
 /INSTALL
 /libgsignon-glib/signon-errors-map.c
 /libgsignon-glib/signon-marshal.c

@@ -143,5 +143,6 @@ AC_CONFIG_FILES([
 	docs/reference/version.xml
 	tests/Makefile
 	pygobject/Makefile
+	examples/Makefile
 ])
 AC_OUTPUT
