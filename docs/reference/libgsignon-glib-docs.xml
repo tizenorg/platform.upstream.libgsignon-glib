@@ -9,8 +9,9 @@
     <title>libgsignon-glib Reference Manual</title>
     <releaseinfo>
       This document is for libgsignon-glib, version &version;. The latest
-      version of this documentation can be built from the source code at
-      <ulink role="online-location" url="https://code.google.com/p/accounts-sso/source/checkout?repo=libgsignon-glib">https://code.google.com/p/accounts-sso/source/checkout?repo=libgsignon-glib</ulink>.
+      version of this documentation can be found on-line at
+      <ulink role="online-location" url="http://gsignon-docs.accounts-sso.googlecode.com/git/libgsignon-glib/index.html">
+      http://gsignon-docs.accounts-sso.googlecode.com/git/libgsignon-glib/index.html</ulink>.
     </releaseinfo>
   </bookinfo>
 
