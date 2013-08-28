@@ -24,6 +24,7 @@
       GLib applications.
       </para>
     </partintro>
+    <xi:include href="examples.xml"/>
   </part>
 
   <part id="libgsignon-glib-objects">
