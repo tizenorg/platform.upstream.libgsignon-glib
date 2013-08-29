@@ -9,7 +9,7 @@ configure
 config.*
 /docs/reference/html/
 /docs/reference/libgsignon-glib*
-!/docs/reference/libgsignon-glib-sections.txt
+/docs/reference/libgsignon-glib-sections.txt
 /docs/reference/version.xml
 /docs/reference/xml/
 gtk-doc.make
