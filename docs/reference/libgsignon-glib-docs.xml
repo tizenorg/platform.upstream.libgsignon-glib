@@ -16,14 +16,9 @@
   </bookinfo>
 
   <part id="libgsignon-glib-overview">
-    <title>libgsignon-glib Overview</title>
+    <title>gSSO Overview</title>
 
-    <partintro>
-      <para>
-      libgsignon-glib provides authorization and authentication management for
-      GLib applications.
-      </para>
-    </partintro>
+    <xi:include href="introduction.xml"/>
     <xi:include href="examples.xml"/>
   </part>
 
