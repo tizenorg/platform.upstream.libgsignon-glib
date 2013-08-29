@@ -40,22 +40,6 @@
     </chapter>
   </part>
 
-  <part id="signond-dbus-api">
-    <title>signond D-Bus API</title>
-
-    <partintro>
-      <para>
-      The signond D-Bus APIs are unstable, subject to change and should not be
-      used by client applications, which should use libgsignon-glib or
-      libgsignon-qt instead.
-      </para>
-    </partintro>
-
-    <xi:include href="../../libgsignon-glib/sso-auth-service-gen-doc-com.google.code.AccountsSSO.gSingleSignOn.AuthService.xml"/>
-    <xi:include href="../../libgsignon-glib/sso-auth-session-gen-doc-com.google.code.AccountsSSO.gSingleSignOn.AuthSession.xml"/>
-    <xi:include href="../../libgsignon-glib/sso-identity-gen-doc-com.google.code.AccountsSSO.gSingleSignOn.Identity.xml"/>
-  </part>
-
   <part id="appendices">
     <title>Appendices</title>
     <index id="api-index-full">
