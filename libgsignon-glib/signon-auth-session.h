@@ -70,7 +70,7 @@ G_BEGIN_DECLS
  * @SIGNON_POLICY_VALIDATION: UI elements can be shown to the user only when
  * CAPTCHA-like security measures are required.
  *
- * Policy for the signon process, passed to the UI plugin.
+ * UI policy for the signon process, passed to the UI plugin.
  */
 typedef enum {
     SIGNON_POLICY_DEFAULT = 0,
@@ -135,6 +135,7 @@ struct _SignonAuthSession {
 
 /**
  * SignonAuthSessionClass:
+ * @parent: reference to the parent class
  *
  * Opaque struct. Use the accessor functions below.
  */

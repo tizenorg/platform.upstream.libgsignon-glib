@@ -28,16 +28,13 @@
 /**
  * SECTION:signon-auth-session
  * @title: SignonAuthSession
- * @short_description: Authentication session handler.
+ * @short_description: the authentication session object
  *
  * The #SignonAuthSession object is responsible for handling the client
- * authentication. #SignonAuthSession objects can be created from existing
- * identities (via signon_identity_create_session() or by passing a non-zero ID
+ * authentication. #SignonAuthSession objects should be created from existing
+ * identities (via signon_identity_create_session() or by passing a non-NULL identity
  * to signon_auth_session_new()), in which case the authentication data such as
- * username and password will be implicitly taken from the identity, or they
- * can be created with no existing identity bound to them, in which case all
- * the authentication data must be filled in by the client when
- * signon_auth_session_process() is called.
+ * username and password will be implicitly taken from the identity.
  */
 
 #include "signon-internals.h"
@@ -384,6 +381,8 @@ signon_auth_session_class_init (SignonAuthSessionClass *klass)
      * @message: the message associated with the state change
      *
      * Emitted when the state of the #SignonAuthSession changes.
+     * FIXME: @state should be registered as a GLib type (or use one from
+     * libgsignond-common)
      */
     auth_session_signals[STATE_CHANGED] =
             g_signal_new ("state-changed",
@@ -484,9 +483,10 @@ signon_auth_session_get_method (SignonAuthSession *self)
  * @cb: (scope async): a callback which will be called with the result.
  * @user_data: user data to be passed to the callback.
  *
- * Queries the mechanisms available for this authentication session. the result
+ * Queries the mechanisms available for this authentication session. The result
  * will be the intersection between @wanted_mechanisms and the mechanisms
- * supported by the authentication plugin.
+ * supported by the authentication plugin (and allowed by the #SignonIdentity that this
+ * session belongs to).
  */
 void
 signon_auth_session_query_available_mechanisms (SignonAuthSession *self,
@@ -535,11 +535,11 @@ signon_auth_session_query_available_mechanisms (SignonAuthSession *self,
  * @cb: (scope async): a callback which will be called with the result.
  * @user_data: user data to be passed to the callback.
  *
- * Performs one step of the authentication process. If the #SignonAuthSession
- * object is bound to an existing identity, the identity properties such as
- * username and password will be also passed to the authentication plugin, so
- * there's no need to fill them into @session_data.
- * @session_data can be used to add additional authentication parameters to the
+ * Performs one step of the authentication process. If the #SignonIdentity that
+ * this session belongs to contains a username and a password, they will be also 
+ * passed to the authentication plugin, otherwise they should be set directly in
+ * @session_data.
+ * @session_data should be used to add additional authentication parameters to the
  * session, or to override the parameters otherwise taken from the identity.
  *
  * Deprecated: 1.8: Use signon_auth_session_process_async() instead.
@@ -569,19 +569,24 @@ signon_auth_session_process (SignonAuthSession *self,
 /**
  * signon_auth_session_process_async:
  * @self: the #SignonAuthSession.
- * @session_data: (transfer floating): a dictionary of parameters.
+ * @session_data: (transfer full): a dictionary of parameters.
  * @mechanism: the authentication mechanism to be used.
  * @cancellable: (allow-none): optional #GCancellable object, %NULL to ignore.
  * @callback: (scope async): a callback which will be called when the
  * authentication reply is available.
  * @user_data: user data to be passed to the callback.
  *
- * Performs one step of the authentication process. If the #SignonAuthSession
- * object is bound to an existing identity, the identity properties such as
- * username and password will be also passed to the authentication plugin, so
- * there's no need to fill them into @session_data.
- * @session_data can be used to add additional authentication parameters to the
+ * Performs one step of the authentication process. If the #SignonIdentity that
+ * this session belongs to contains a username and a password, the daemon will
+ * pass them to the authentication plugin, otherwise they should be set directly in
+ * @session_data.
+ * @session_data should be used to add additional authentication parameters to the
  * session, or to override the parameters otherwise taken from the identity.
+ * 
+ * What specific parameters should be used can be found from authentication plugins'
+ * documentation (look for parameters that are expected in gsignond_plugin_request_initial()
+ * for the first step, and parameters that are expected in gsignond_plugin_request() for
+ * the subsequent steps). See, for example, #GSignondPasswordPlugin and #GSignondDigestPlugin.
  *
  * Since: 1.8
  */
@@ -632,7 +637,11 @@ signon_auth_session_process_async (SignonAuthSession *self,
  * Collect the result of the signon_auth_session_process_async() operation.
  *
  * Returns: a #GVariant of type %G_VARIANT_TYPE_VARDICT containing the
- * authentication reply.
+ * authentication reply. As with signon_auth_session_process_async(), specific
+ * parameters contained in the #GVariant can be found from plugins' documentation:
+ * #GSignondPlugin::response-final for the final response, and #GSignondPlugin::response
+ * for the intermediate responses. See, for example, #GSignondPasswordPlugin 
+ * and #GSignondDigestPlugin.
  *
  * Since: 1.8
  */
