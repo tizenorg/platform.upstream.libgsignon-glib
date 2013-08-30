@@ -42,6 +42,7 @@ typedef struct _SignonAuthService SignonAuthService;
 
 /**
  * SignonAuthServiceClass:
+ * @parent_class: a reference to the parent class
  *
  * Opaque struct. Use the accessor functions below.
  */

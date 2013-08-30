@@ -26,9 +26,10 @@
 /**
  * SECTION:signon-auth-service
  * @title: SignonAuthService
- * @short_description: The authorization service object
+ * @short_description: the authorization service object
  *
- * The #SignonAuthService is the main object in this library.
+ * The #SignonAuthService is the main object in this library. It provides top-level
+ * functions to query existing identities, available methods and their mechanisms.
  */
 
 #include "signon-auth-service.h"
@@ -194,7 +195,7 @@ auth_query_mechanisms_cb (GObject *object, GAsyncResult *res,
  * @cb: (scope async): callback to be invoked.
  * @user_data: user data.
  *
- * Lists all the available methods.
+ * Lists all the available authentication methods.
  */
 void
 signon_auth_service_query_methods (SignonAuthService *auth_service,
@@ -238,7 +239,7 @@ signon_auth_service_query_methods (SignonAuthService *auth_service,
  * @cb: (scope async): callback to be invoked.
  * @user_data: user data.
  *
- * Lists all the available mechanisms.
+ * Lists all the available mechanisms for an authentication method.
  */
 void
 signon_auth_service_query_mechanisms (SignonAuthService *auth_service,
@@ -322,7 +323,30 @@ auth_query_identities_cb (GObject *object, GAsyncResult *res,
  * @cb: (scope async): callback to be invoked.
  * @user_data: user data.
  *
- * Query identities.
+ * Query available identities, possibly applying a filter. 
+ *
+ * @filter is a #GHashTable that contains filter conditions in the form of 
+ * string keys and #GVariant values. Currently the following keys are supported:
+ * 
+ * - "Owner". The value should be a #SignonSecurityContext (use 
+ * signon_security_context_build_variant() to create a #GVariant). 
+ * Identites whose owner doesn't match will be filtered out. This key has
+ * effect only if the requesting application is a keychain application as determined
+ * by #GSignondAccessControlManager.
+ * - "Type". The value should be a #SignonIdentityType.
+ * - "Caption". The value is a string, and only those identites whose caption
+ * begins with the supplied value will be returned.
+ * 
+ * The meaning of @application_context is explained in #SignonSecurityContext.
+ * It is used by #GSignondAccessControlManager to determine if the requesting 
+ * application is a keychain application. If it is, then all identites will be
+ * returned (subject to "Owner" key in @filter). If it's not, then only the
+ * identites which the application owns will be returned (but "Type" and "Caption"
+ * can still be set in the @filter).
+ * 
+ */
+/*
+ * //FIXME: @filter should come with setters and getters!
  */
 void
 signon_auth_service_query_identities (SignonAuthService *auth_service,

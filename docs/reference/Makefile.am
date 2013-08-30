@@ -33,7 +33,7 @@ MKDB_OPTIONS=--source-dir=$(top_srcdir)/libgsignon-glib --sgml-mode --output-for
 
 # Extra options to supply to gtkdoc-fixref. Not normally needed.
 # e.g. FIXXREF_OPTIONS=--extra-dir=../gdk-pixbuf/html --extra-dir=../gdk/html
-FIXXREF_OPTIONS=
+FIXXREF_OPTIONS=--extra-dir=../../../accounts-sso.gsignond/docs/html
 
 # Used for dependencies. The docs will be rebuilt if any of these change.
 # e.g. HFILE_GLOB=$(top_srcdir)/gtk/*.h
