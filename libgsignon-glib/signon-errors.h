@@ -29,8 +29,14 @@
 #include <glib-object.h>
 #include "signon-enum-types.h"
 
+/**
+ * SIGNON_ERROR:
+ *
+ * This macro is used when creating a #GError in libgsignond-glib library
+ */
 #define SIGNON_ERROR (signon_error_quark())
 
+//FIXME: reuse error definitions from libgsignond-common
 /**
  * SignonError:
  * @SIGNON_ERROR_UNKNOWN: Catch-all for errors not distinguished by another code.

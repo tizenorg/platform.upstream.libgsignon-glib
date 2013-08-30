@@ -33,14 +33,19 @@
 /**
  * SECTION:signon-errors
  * @title: SignonError
- * @short_description: Possible errors from Signon.
+ * @short_description: possible gSSO errors
  *
- * An enumeration of errors that are possible from Signon.
+ * An enumeration of errors that are possible when using gSSO
  */
 #define SIGNON_ERROR_PREFIX SIGNOND_SERVICE_PREFIX ".Error"
 
 #include "signon-errors-map.c"
 
+/**
+ * signon_error_quark:
+ * 
+ * Creates and returns a domain for gSSO errors.
+ */
 GQuark signon_error_quark (void)
 {
     static volatile gsize quark = 0;
