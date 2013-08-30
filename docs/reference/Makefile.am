@@ -29,7 +29,8 @@ SCAN_OPTIONS=--rebuild-types --deprecated-guards="SIGNON_DISABLE_DEPRECATED"
 
 # Extra options to supply to gtkdoc-mkdb.
 # e.g. MKDB_OPTIONS=--sgml-mode --output-format=xml
-MKDB_OPTIONS=--source-dir=$(top_srcdir)/libgsignon-glib --sgml-mode --output-format=xml --name-space=signon
+MKDB_OPTIONS=--source-dir=$(top_srcdir)/libgsignon-glib --sgml-mode --output-format=xml --name-space=signon \
+--ignore-files="sso-auth-service-gen.c sso-auth-session-gen.c sso-identity-gen.c"
 
 # Extra options to supply to gtkdoc-fixref. Not normally needed.
 # e.g. FIXXREF_OPTIONS=--extra-dir=../gdk-pixbuf/html --extra-dir=../gdk/html
@@ -48,14 +49,17 @@ IGNORE_HFILES= \
 	signon-client-glib-gen.h \
 	signon-identity-glib-gen.h \
 	signon-dbus-queue.h \
+	signon-enum-types.h \
 	signon-internals.h \
 	signon-proxy.h \
+	signon-types.h \
 	signon-utils.h \
 	signon-marshal.h \
 	sso-auth-service-gen.h \
 	sso-auth-service.h \
 	sso-auth-session-gen.h \
-	sso-identity-gen.h
+	sso-identity-gen.h \
+	stamp-signon-enum-types.h
 
 # Images to copy into HTML directory.
 # e.g. HTML_IMAGES=$(top_srcdir)/gtk/stock-icons/stock_about_24.png

@@ -46,6 +46,7 @@ typedef struct _SignonIdentity SignonIdentity;
 
 /**
  * SignonIdentityClass:
+ * @parent_class: reference to a parent class
  *
  * Opaque struct. Use the accessor functions below.
  */

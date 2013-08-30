@@ -32,4 +32,12 @@
 #include <libgsignon-glib/signon-identity-info.h>
 #include <libgsignon-glib/signon-identity.h>
 
+/**
+ * SECTION:signon-glib
+ * @title: libgsignon-glib headers
+ * @short_description: what headers to include
+ *
+ * Include signon-glib.h header to get all necessary library declarations.
+ */ 
+
 #endif /* SIGNON_GLIB_H */
