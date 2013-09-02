@@ -28,9 +28,97 @@
 /**
  * SECTION:signon-identity
  * @title: SignonIdentity
- * @short_description: Client side presentation of a credential.
+ * @short_description: client side presentation of a credential.
  *
- * The #SignonIdentity represents a database entry for a single identity.
+ * The #SignonIdentity objects represent identities and provide operations that 
+ * can be performed on them such as identity creation, removal, starting an authentication 
+ * session, and so on. 
+ * 
+ * Identities can also be stored and retrieved from a gSSO database, in which
+ * case they also contain a number of properties that can be retrieved
+ * using signon_identity_query_info() and are represented via #SignonIdentityInfo.
+ * Such identities are identified by a numeric id number and they are subject
+ * to access control.
+ * 
+ * <refsect1><title>Operations on an identity</title></refsect1>
+ * 
+ * - a new identity can be created with signon_identity_new(). This operation
+ * does not store the identity to the database, the identity is not visible
+ * to other applications, and accordingly it is not subject to access control.
+ * 
+ * - an authentication session can be started from an identity using 
+ * signon_identity_create_session() or signon_auth_session_new(). If the identity
+ * has been retrieved from a database, only the authentication methods listed
+ * in associated #SignonIdentityInfo are allowed to be used.
+ * 
+ * - identites stored in a database can be enumerated using 
+ * signon_auth_service_query_identities(). Only the identites owned by the 
+ * requesting application are returned.
+ * 
+ * - identities stored in a database can be retrieved using signon_identity_new_from_db(),
+ * subject to access control (an application performing that operation has to be
+ * either the identity's owner, or it has to be on the ACL list).
+ * 
+ * - newly created identities can be stored to the database, and identities already
+ * in the database can be updated using signon_identity_store_credentials_with_info()
+ * (with #SignonIdentityInfo)
+ * or signon_identity_store_credentials_with_args() (with separate arguments that
+ * together form the contents of #SignonIdentityInfo). Only the owners can update
+ * identites.
+ * 
+ * - identites in the database can be removed by their owners using
+ * signon_identity_remove().
+ * 
+ * - identity owners can request to close all authentication sessions and
+ * remove all secrets and tokens using signon_identity_signout().
+ * 
+ * <refsect1><title>Data fields in #SignonIdentityInfo</title></refsect1>
+ * 
+ * These are the data fields that are stored into the database as a part of an
+ * identity record using signon_identity_store_credentials_with_args() or
+ * signon_identity_store_credentials_with_info() and can be retrieved using
+ * signon_identity_query_info() or signon_auth_service_query_identities():
+ * 
+ * - Caption is a display name for the identity, presented to the user. Default
+ * value is an empty caption. 
+ *
+ * - Realms is a list of realms that the identity can be used in. Interpretation
+ * of this field is up to the application; it is not used by gSSO. Default value
+ * is an empty list.
+ * 
+ * - Type is a #SignonIdentityType. Interpretation of this field is up to the application;
+ * gSSO does not use it. Default value is #SIGNON_IDENTITY_TYPE_OTHER
+ * 
+ * - Owner is a #SignonSecurityContext object, which specifies the identity
+ * owner. Owners are allowed to perform all of the operations on the identity
+ * specified above. By default an identity's owner is determined by gSSO daemon
+ * using system services for the system context, and a string supplied in 
+ * signon_identity_new() for the application context.
+ * 
+ * - ACL is a list of #SignonSecurityContext objects, that specifies applications
+ * that can access the identity to perform authentication sessions. They're not
+ * allowed to make any changes to the identity. Default value is an empty list,
+ * and depending on how gSSO is configured it's also possible to provide a list 
+ * with a wildcard item to relax the access control restriction 
+ * (see #SignonSecurityContext).
+ * 
+ * - Methods is a #GHashTable containing method names as keys, and lists of 
+ * allowed mechanisms as values (also, a special value "*" means that any 
+ * mechanism is allowed). Only those methods and mechanisms that are in the table
+ * are allowed to be used in authentication sessions. Default is an empty list.
+ * 
+ * - Id is a numeric identification of the identity record in the database. The
+ * application cannot set this, as it's determined by the daemon.
+ * 
+ * - Username is used to provide a username to authentication plugins after 
+ * issuing signon_auth_session_process_async(). Applications can override this
+ * by providing a username explicitly in the @session_data parameter to that 
+ * function. By default there is no username.
+ * 
+ * - Secret is used in the same way as username, but it is write-only (cannot
+ * be retrieved from a #SignonIdentityInfo). It is also possible to prevent
+ * secret from being stored in the database.
+ * 
  */
 
 #include "signon-identity.h"
@@ -605,8 +693,16 @@ identity_check_remote_registration (SignonIdentity *self)
  * @application_context: application security context, can be %NULL.
  *
  * Construct an identity object associated with an existing identity
- * record.
- *
+ * record. See #SignonSecurityContext for a discussion of @application_context contents.
+ * Together with the system context it is used to determine by the gSSO daemon 
+ * if the application can access the identity (the application needs to be either the 
+ * identity's owner or to be present on the ACL).
+ * 
+ * Applications can determine the @id either by enumerating the identities with 
+ * signon_auth_service_query_identities() (if they're the owner of the identity) 
+ * or via other means (such as the system's accounts service, or an application 
+ * configuration).
+ * 
  * Returns: an instance of a #SignonIdentity.
  */
 SignonIdentity*
@@ -636,7 +732,10 @@ signon_identity_new_from_db (guint32 id, const gchar *application_context)
  * signon_identity_new:
  * @application_context: application security context, can be %NULL.
  *
- * Construct new, empty, identity object.
+ * Construct a new, empty, identity object. See #SignonSecurityContext for a 
+ * discussion of @application_context contents. @application_context is used to set the identity's owner
+ * if the identity is stored to the database with signon_identity_store_credentials_with_args()
+ * or signon_identity_store_credentials_with_info().
  *
  * Returns: an instance of an #SignonIdentity.
  */
@@ -661,10 +760,13 @@ signon_identity_new (const gchar *application_context)
 /**
  * signon_identity_create_session:
  * @self: the #SignonIdentity.
- * @method: method.
+ * @method: authentication method.
  * @error: pointer to a location which will receive the error, if any.
  *
- * Creates an authentication session for this identity.
+ * Creates an authentication session for this identity. If the identity has been
+ * retrieved from the database, the authentication method must be one of those 
+ * listed in signon_identity_info_get_methods(), otherwise it can be any method
+ * supported by gSSO.
  *
  * Returns: (transfer full): a new #SignonAuthSession.
  */
@@ -737,7 +839,9 @@ signon_identity_create_session(SignonIdentity *self,
  * @cb: (scope async): callback.
  * @user_data: user_data.
  *
- * Stores the data from @info into the identity.
+ * Stores the data contained in @info into the identity record in the database.
+ * See above for the detailed discussion of the meaning of various fields and
+ * their defaults.
  */
 void
 signon_identity_store_credentials_with_info(SignonIdentity *self,
@@ -776,19 +880,20 @@ signon_identity_store_credentials_with_info(SignonIdentity *self,
 /**
  * signon_identity_store_credentials_with_args:
  * @self: the #SignonIdentity.
- * @username: username.
- * @secret: secret.
- * @store_secret: whether signond should store the password.
- * @methods: (transfer none) (element-type utf8 GStrv): methods.
- * @caption: caption.
- * @realms: realms.
- * @owner: owner.
- * @access_control_list: access control list.
+ * @username: (allow-none): username.
+ * @secret: (allow-none): secret.
+ * @store_secret: whether gSSO should save the password in secret storage.
+ * @methods: (transfer none) (element-type utf8 GStrv): allowed methods.
+ * @caption: (allow-none): caption.
+ * @realms: (allow-none): realms.
+ * @owner: (allow-none): owner.
+ * @access_control_list: (allow-none): access control list.
  * @type: the type of the identity.
  * @cb: (scope async): callback.
  * @user_data: user_data.
  *
- * Stores the given data into the identity.
+ * Stores the given data into the identity. See above for the meaning
+ * of the specific fields.
  */
 void signon_identity_store_credentials_with_args(SignonIdentity *self,
                                                  const gchar *username,
@@ -1038,7 +1143,7 @@ identity_verify_data(SignonIdentity *self,
  * @cb: (scope async): callback.
  * @user_data: user_data.
  *
- * Verifies the given secret.
+ * Verifies the given secret. Not currently supported by gSSO.
  */
 void signon_identity_verify_secret(SignonIdentity *self,
                                   const gchar *secret,
@@ -1453,7 +1558,7 @@ void signon_identity_signout(SignonIdentity *self,
  * @cb: callback
  * @user_data: user_data.
  *
- * Adds named reference to identity
+ * Adds named reference to identity. Not currently supported by gSSO.
  */
 void signon_identity_add_reference(SignonIdentity *self,
                              const gchar *reference,
@@ -1478,7 +1583,7 @@ void signon_identity_add_reference(SignonIdentity *self,
  * @cb: callback
  * @user_data: user_data.
  *
- * Removes named reference from identity
+ * Removes named reference from identity. Not currently supported by gSSO.
  */
 void signon_identity_remove_reference(SignonIdentity *self,
                              const gchar *reference,
@@ -1616,6 +1721,7 @@ identity_session_object_destroyed_cb(gpointer data,
     g_object_unref (self);
 }
 
+//FIXME: is this a private method?
 /**
  * signon_identity_get_auth_session:
  * @self: the #SignonIdentity.
@@ -1623,7 +1729,8 @@ identity_session_object_destroyed_cb(gpointer data,
  * @method: method name for the session.
  * @cb: (scope async): completion callback.
  *
- * Obtain a remote object for a local session object.
+ * Obtain a remote object for a local session object. Should not be used by
+ * applications.
  */
 void signon_identity_get_auth_session (SignonIdentity *self,
                                        SignonAuthSession *session,
