@@ -25,10 +25,34 @@
 /**
  * SECTION:signon-security-context
  * @title: SignonSecurityContext
- * @short_description: Representation of a security context.
+ * @short_description: representation of a security context.
  *
  * The #SignonSecurityContext represents a security context within
- * system and also within application.
+ * system and also within application. Security contexts are used:
+ * 
+ * - within identities to specify the owner of the identity, and 
+ * users of the identity (items on the access control list). See #SignonIdentity.
+ * - by gSSO daemon to identify the application accessing the gSSO service and
+ * to determine if the application is an identity's owner, or is on the identity's access
+ * control list, and make access control decisions accordingly.
+ * 
+ * #SignonSecurityContext contains two strings: a system context and an 
+ * application context.
+ *
+ * System context can be a binary path, SMACK-label, or MSSF token. Specific 
+ * interpretation of the system context value is performed by a gSSO extension module.
+ * The default gSSO extension expects binary paths.
+ * 
+ * Application context identifies a script or a webpage within an application,
+ * and it's used for providing access control to runtime environments (when making an access
+ * control decision requires not only a binary identifier, but also information
+ * about what the binary is doing). 
+ * 
+ * System context
+ * and application context can contain a wildcard match "*" which disables the ACL
+ * check when a default gSSO extension is used. Check the documentation for a 
+ * platform specific extension to determine if "*" has any effect with that
+ * custom extension.
  */
 
 #include "signon-security-context.h"
@@ -50,7 +74,7 @@ _security_context_free (gpointer ptr)
  *
  * Allocates a new security context item.
  *
- * Returns: (transfer full) allocated #SignonSecurityContext.
+ * Returns: (transfer full): allocated #SignonSecurityContext.
  */
 SignonSecurityContext *
 signon_security_context_new ()
@@ -71,7 +95,7 @@ signon_security_context_new ()
  *
  * Allocates and initializes a new security context item.
  *
- * Returns: (transfer full) allocated #SignonSecurityContext.
+ * Returns: (transfer full): allocated #SignonSecurityContext.
  */
 SignonSecurityContext *
 signon_security_context_new_from_values (const gchar *system_context,
@@ -97,7 +121,7 @@ signon_security_context_new_from_values (const gchar *system_context,
  *
  * Copy a security context item.
  *
- * Returns: (transfer full) a copy of the #SignonSecurityContext item.
+ * Returns: (transfer full): a copy of the #SignonSecurityContext item.
  */
 SignonSecurityContext *
 signon_security_context_copy (const SignonSecurityContext *src_ctx)
@@ -150,7 +174,7 @@ signon_security_context_set_system_context (SignonSecurityContext *ctx,
  * Get the system context part (such as SMACK label or MSSF token) of the
  * #SignonSecurityContext.
  *
- * Returns: (transfer none) system context.
+ * Returns: (transfer none): system context.
  */
 const gchar *
 signon_security_context_get_system_context (const SignonSecurityContext *ctx)
@@ -185,7 +209,7 @@ signon_security_context_set_application_context (SignonSecurityContext *ctx,
  * Get the application context part (such as script name or a web page) of
  * the #SignonSecurityContext.
  *
- * Returns: (transfer none) application context.
+ * Returns: (transfer none): application context.
  */
 const gchar *
 signon_security_context_get_application_context (
@@ -202,7 +226,7 @@ signon_security_context_get_application_context (
  *
  * Build a GVariant of type "(ss)" from a #SignonSecurityContext item.
  *
- * Returns: (transfer full) GVariant construct of a #SignonSecurityContext.
+ * Returns: (transfer full): GVariant construct of a #SignonSecurityContext.
  */
 GVariant *
 signon_security_context_build_variant (const SignonSecurityContext *ctx)
@@ -224,7 +248,7 @@ signon_security_context_build_variant (const SignonSecurityContext *ctx)
  *
  * Builds a #SignonSecurityContext item from a GVariant of type "(ss)".
  *
- * Returns: (transfer full) #SignonSecurityContext item.
+ * Returns: (transfer full): #SignonSecurityContext item.
  */
 SignonSecurityContext *
 signon_security_context_deconstruct_variant (GVariant *variant)
@@ -249,7 +273,7 @@ signon_security_context_deconstruct_variant (GVariant *variant)
  * Builds a GVariant of type "a(ss)" from a GList of #SignonSecurityContext
  * items.
  *
- * Returns: (transfer full) GVariant construct of a #SignonSecurityContextList.
+ * Returns: (transfer full): GVariant construct of a #SignonSecurityContextList.
  */
 GVariant *
 signon_security_context_list_build_variant (
@@ -326,7 +350,7 @@ signon_security_context_list_copy (const SignonSecurityContextList *src_list)
 
 /**
  * signon_security_context_list_free:
- * @seclist: (transfer full) #SignonSecurityContextList item.
+ * @seclist: (transfer full): #SignonSecurityContextList item.
  *
  * Frees all items and the GList of #SignonSecurityContext.
  */

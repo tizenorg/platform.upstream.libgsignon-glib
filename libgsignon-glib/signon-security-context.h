@@ -38,7 +38,7 @@ typedef struct _SignonSecurityContext SignonSecurityContext;
  *           binary path.
  * @app_ctx: application context, such as a script or a web page.
  *
- * Security context descriptor. Practically a string tuple.
+ * Security context descriptor used for access control checks. 
  */
 struct _SignonSecurityContext
 {
