@@ -28,9 +28,13 @@
 /**
  * SECTION:signon-identity-info
  * @title: SignonIdentityInfo
- * @short_description: Extra data for a #SignonIdentity.
+ * @short_description: data contained in a SignonIdentity.
  *
- * Extra data retreived from a #SignonIdentity.
+ * #SignonIdentityInfo represents data contained in a database record for an identity
+ * and provides getters and setters for individual items.
+ * 
+ * See #SignonIdentity for a detailed discussion
+ * of what each item means and how and when it's used. 
  */
 
 #include "signon-identity-info.h"
@@ -74,10 +78,9 @@ static void identity_methods_copy (gpointer key, gpointer value, gpointer user_d
 /**
  * signon_identity_info_set_methods:
  * @info: the #SignonIdentityInfo.
- * @methods: (transfer none) (element-type utf8 GStrv): methods.
+ * @methods: (transfer none): (element-type utf8 GStrv): methods.
  *
- * Set allowed methods.
- * Mechanisms are method-specific functions.
+ * Set authentication methods that are allowed to be used with this identity. 
  */
 void signon_identity_info_set_methods (SignonIdentityInfo *info,
                                        const GHashTable *methods)
@@ -357,7 +360,7 @@ SignonIdentityInfo *signon_identity_info_copy (const SignonIdentityInfo *other)
  * signon_identity_info_get_id:
  * @info: the #SignonIdentityInfo.
  *
- * Get the numeric ID of @info.
+ * Get the numeric identity ID of @info.
  *
  * Returns: the numeric ID of the identity.
  */
@@ -371,7 +374,7 @@ gint signon_identity_info_get_id (const SignonIdentityInfo *info)
  * signon_identity_info_get_username:
  * @info: the #SignonIdentityInfo.
  *
- * Get the username of @info.
+ * Get the username associated with an identity.
  *
  * Returns: the username, or %NULL.
  */
@@ -385,9 +388,9 @@ const gchar *signon_identity_info_get_username (const SignonIdentityInfo *info)
  * signon_identity_info_get_storing_secret:
  * @info: the #SignonIdentityInfo.
  *
- * Get whether the secret of @info should be stored.
+ * Get whether the secret of @info should be stored by gSSO in the secret database.
  *
- * Returns: %TRUE if Signon must store the secret, %FALSE otherwise.
+ * Returns: %TRUE if gSSO must store the secret, %FALSE otherwise.
  */
 gboolean signon_identity_info_get_storing_secret (const SignonIdentityInfo *info)
 {
@@ -413,9 +416,10 @@ const gchar *signon_identity_info_get_caption (const SignonIdentityInfo *info)
  * signon_identity_info_get_methods:
  * @info: the #SignonIdentityInfo.
  *
- * Get a hash table of the methods and mechanisms of @info.
+ * Get a hash table of the methods and mechanisms of @info. See 
+ * signon_identity_info_set_methods().
  *
- * Returns: (transfer none) (element-type utf8 GStrv): the table of allowed
+ * Returns: (transfer none): (element-type utf8 GStrv): the table of allowed
  * methods and mechanisms.
  */
 const GHashTable *signon_identity_info_get_methods (const SignonIdentityInfo *info)
@@ -442,8 +446,8 @@ const gchar* const *signon_identity_info_get_realms (const SignonIdentityInfo *i
  * signon_identity_info_get_owner:
  * @info: the #SignonIdentityInfo.
  *
- * Get owner security context of @info.
- *
+ * Get identity owner's security context. 
+ * 
  * Returns: (transfer none): a security context.
  */
 const SignonSecurityContext *signon_identity_info_get_owner (const SignonIdentityInfo *info)
@@ -456,7 +460,7 @@ const SignonSecurityContext *signon_identity_info_get_owner (const SignonIdentit
  * signon_identity_info_get_access_control_list:
  * @info: the #SignonIdentityInfo.
  *
- * Get an array of ACL statements of the identity.
+ * Get an access control list associated with an identity. 
  *
  * Returns: (transfer none): a list of ACL security contexts.
  */
@@ -486,6 +490,7 @@ SignonIdentityType signon_identity_info_get_identity_type (const SignonIdentityI
  * @username: the username.
  *
  * Sets the username for the identity.
+ *
  */
 void signon_identity_info_set_username (SignonIdentityInfo *info, const gchar *username)
 {
@@ -502,8 +507,9 @@ void signon_identity_info_set_username (SignonIdentityInfo *info, const gchar *u
  * @secret: the secret.
  * @store_secret: whether signond should store the secret in its DB.
  *
- * Sets the secret (password) for the identity, and whether the signon daemon
+ * Sets the secret (password) for the identity, and whether the gSSO daemon
  * should remember it.
+ *
  */
 void signon_identity_info_set_secret (SignonIdentityInfo *info, const gchar *secret,
                                       gboolean store_secret)
@@ -522,6 +528,7 @@ void signon_identity_info_set_secret (SignonIdentityInfo *info, const gchar *sec
  * @caption: the caption.
  *
  * Sets the caption (display name) for the identity.
+ *
  */
 void signon_identity_info_set_caption (SignonIdentityInfo *info, const gchar *caption)
 {
@@ -536,10 +543,9 @@ void signon_identity_info_set_caption (SignonIdentityInfo *info, const gchar *ca
  * signon_identity_info_set_method:
  * @info: the #SignonIdentityInfo.
  * @method: an authentication method.
- * @mechanisms: a %NULL-termianted list of mechanisms.
+ * @mechanisms: a %NULL-terminated list of mechanisms.
  *
- * Adds a method to the list of allowed methods.
- * Mechanisms are method-specific functions.
+ * Adds a method to the list of allowed authentication methods. 
  */
 void signon_identity_info_set_method (SignonIdentityInfo *info, const gchar *method,
                                       const gchar* const *mechanisms)
@@ -559,8 +565,7 @@ void signon_identity_info_set_method (SignonIdentityInfo *info, const gchar *met
  * @info: the #SignonIdentityInfo.
  * @method: an authentication method.
  *
- * Remove @method from the list of allowed authentication methods. If all
- * methods are removed, then all methods are allowed.
+ * Remove @method from the list of allowed authentication methods.
  */
 void signon_identity_info_remove_method (SignonIdentityInfo *info, const gchar *method)
 {
@@ -575,7 +580,7 @@ void signon_identity_info_remove_method (SignonIdentityInfo *info, const gchar *
  * @info: the #SignonIdentityInfo.
  * @realms: a %NULL-terminated list of realms.
  *
- * Specify what realms this identity can be used in.
+ * Specify what realms this identity can be used in. 
  */
 void signon_identity_info_set_realms (SignonIdentityInfo *info,
                                       const gchar* const *realms)
@@ -590,9 +595,9 @@ void signon_identity_info_set_realms (SignonIdentityInfo *info,
 /**
  * signon_identity_info_set_owner:
  * @info: the #SignonIdentityInfo.
- * @owner: (transfer none) a security context of owner.
+ * @owner: (transfer none): a security context of owner.
  *
- * Specify owner security context.
+ * Set identity owner's security context. 
  */
 void signon_identity_info_set_owner (SignonIdentityInfo *info,
                                      const SignonSecurityContext *owner)
@@ -610,7 +615,7 @@ void signon_identity_info_set_owner (SignonIdentityInfo *info,
  * @system_context: owner's system context.
  * @application_context: owner's application context.
  *
- * Specify owner security context.
+ * Set identity owner's security context. 
  */
 void signon_identity_info_set_owner_from_values (
                                                SignonIdentityInfo *info,
@@ -630,10 +635,9 @@ void signon_identity_info_set_owner_from_values (
 /**
  * signon_identity_info_set_access_control_list:
  * @info: the #SignonIdentityInfo.
- * @access_control_list: (transfer none) a list of ACL security contexts.
+ * @access_control_list: (transfer none): a list of ACL security contexts.
  *
- * Specifies the ACL for this identity. The actual meaning of the ACL depends
- * on the security framework used by signond. Ownership of the list is trans
+ * Set an access control list associated with an identity. 
  */
 void signon_identity_info_set_access_control_list (SignonIdentityInfo *info,
                            const SignonSecurityContextList *access_control_list)
@@ -650,7 +654,7 @@ void signon_identity_info_set_access_control_list (SignonIdentityInfo *info,
 /**
  * signon_identity_info_access_control_list_append:
  * @info: the #SignonIdentityInfo.
- * @security_context: (transfer full) a security context to be appended.
+ * @security_context: (transfer full): a security context to be appended.
  *
  * Appends a new #SignonSecurityContext item to the access control list.
  */
