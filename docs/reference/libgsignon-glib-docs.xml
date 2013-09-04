@@ -32,11 +32,11 @@
     <chapter id="credential-management">
       <title>Credential management</title>
       <xi:include href="xml/signon-auth-service.xml"/>
-      <xi:include href="xml/signon-auth-session.xml"/>
-      <xi:include href="xml/signon-errors.xml"/>
       <xi:include href="xml/signon-identity.xml"/>
       <xi:include href="xml/signon-identity-info.xml"/>
       <xi:include href="xml/signon-security-context.xml"/>
+      <xi:include href="xml/signon-auth-session.xml"/>
+      <xi:include href="xml/signon-errors.xml"/>
     </chapter>
   </part>
 
