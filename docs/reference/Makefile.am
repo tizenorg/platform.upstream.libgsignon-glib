@@ -87,3 +87,5 @@ include $(top_srcdir)/gtk-doc.make
 if ENABLE_GTK_DOC
 TESTS = $(GTKDOC_CHECK)
 endif
+
+CLEANFILES += $(DOC_MODULE)-*.txt $(DOC_MODULE).types
