@@ -1,3 +1,5 @@
+/* vi: set et sw=4 ts=4 cino=t0,(0: */
+/* -*- Mode: C; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 /*
  * Copyright (C) 2013 Intel Corporation.
  *
@@ -26,7 +28,7 @@
 
 static void
 signon_query_methods_cb (SignonAuthService *auth_service, gchar **methods,
-                         GError *error, gpointer user_data)
+                         const GError *error, gpointer user_data)
 {
     if (error)
     {
@@ -52,15 +54,19 @@ static void query_auth_methods(GMainLoop* main_loop)
     SignonAuthService* auth_service = signon_auth_service_new();
     
     signon_auth_service_query_methods (auth_service, 
-                                       (SignonQueryMethodsCb)signon_query_methods_cb, main_loop);
+                                       signon_query_methods_cb,
+				                       main_loop);
     g_main_loop_run(main_loop);
     
     g_object_unref(auth_service);
 }
 
 static void
-signon_query_mechanisms_cb (SignonAuthService *auth_service, gchar *method,
-        gchar **mechanisms, GError *error, gpointer user_data)
+signon_query_mechanisms_cb (SignonAuthService *auth_service,
+                            const gchar *method,
+                            gchar **mechanisms,
+                            const GError *error,
+                            gpointer user_data)
 {
     if (error)
     {
@@ -85,9 +91,10 @@ static void query_auth_mechanisms(GMainLoop* main_loop, const gchar* method)
 {
     SignonAuthService* auth_service = signon_auth_service_new();
     
-    signon_auth_service_query_mechanisms (auth_service, method,
-                                       (SignonQueryMechanismCb)signon_query_mechanisms_cb, 
-                                       main_loop);
+    signon_auth_service_query_mechanisms (auth_service,
+                                          method,
+                                          signon_query_mechanisms_cb, 
+                                          main_loop);
     g_main_loop_run(main_loop);
     
     g_object_unref(auth_service);
@@ -126,8 +133,10 @@ static void query_auth_identities(GMainLoop* main_loop)
 {
     SignonAuthService* auth_service = signon_auth_service_new();
     
-    signon_auth_service_query_identities (auth_service, NULL, NULL,
-                                       (SignonQueryIdentitiesCb)signon_query_identities_cb, main_loop);
+    signon_auth_service_query_identities (auth_service,
+                                          NULL, NULL,
+                                          signon_query_identities_cb,
+                                          main_loop);
     g_main_loop_run(main_loop);
     
     g_object_unref(auth_service);
@@ -161,9 +170,10 @@ static void create_auth_identity(GMainLoop* main_loop, const gchar* identity_cap
     if (g_strcmp0(identity_method, "password") == 0)
         signon_identity_info_set_secret(identity_info, NULL, TRUE);
     
-    signon_identity_store_credentials_with_info (identity, identity_info,
-                                       (SignonIdentityStoreCredentialsCb)signon_store_identity_cb, 
-                                       main_loop);
+    signon_identity_store_credentials_with_info (identity,
+                                                 identity_info,
+                                                 signon_store_identity_cb, 
+                                                 main_loop);
     g_main_loop_run(main_loop);
     
     g_object_unref(identity);
@@ -190,8 +200,8 @@ static void remove_auth_identity(GMainLoop* main_loop, gint identity_id)
 {
     SignonIdentity* identity = signon_identity_new_from_db(identity_id, NULL);
     signon_identity_remove (identity, 
-                                       (SignonIdentityRemovedCb)signon_remove_identity_cb, 
-                                       main_loop);
+                            signon_remove_identity_cb, 
+                            main_loop);
     g_main_loop_run(main_loop);
     
     g_object_unref(identity);
