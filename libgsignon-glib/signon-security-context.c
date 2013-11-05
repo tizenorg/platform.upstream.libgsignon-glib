@@ -50,11 +50,10 @@
  * 
  * System context and application context can contain a wildcard
  * operator "*" to match 'any', while "" matches 'none' when a default
- * gSSO extension is used. Matches are always evaluated in order where
- * system context is evaluated first and if match is found, only then
- * application context is evaluated.
- * Check the documentation for a platform specific extension to determine
- * any specific match rules with custom ACM (Access Control Manager).
+ * gSSO extension is used. The system context is always evaluated first 
+ * and if a match is found, only then the application context is evaluated.
+ * Check the documentation for platform specific extensions to determine
+ * any specific match rules with custom ACMs (Access Control Managers).
  */
 
 #include "signon-security-context.h"

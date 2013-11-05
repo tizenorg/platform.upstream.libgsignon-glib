@@ -84,7 +84,7 @@
  *
  * - Realms is a list of realms that the identity can be used in.
  *   Interpretation of this field is up to the method. Typically it is
- *   list of internet domains allowed for authentication request.
+ *   a list of internet domains allowed for an authentication request.
  *   Default value is an empty list.
  * 
  * - Type is a #SignonIdentityType. Interpretation of this field is up to the application;
