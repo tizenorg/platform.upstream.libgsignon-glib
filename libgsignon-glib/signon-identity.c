@@ -82,9 +82,10 @@
  * - Caption is a display name for the identity, presented to the user. Default
  * value is an empty caption. 
  *
- * - Realms is a list of realms that the identity can be used in. Interpretation
- * of this field is up to the application; it is not used by gSSO. Default value
- * is an empty list.
+ * - Realms is a list of realms that the identity can be used in.
+ *   Interpretation of this field is up to the method. Typically it is
+ *   list of internet domains allowed for authentication request.
+ *   Default value is an empty list.
  * 
  * - Type is a #SignonIdentityType. Interpretation of this field is up to the application;
  * gSSO does not use it. Default value is #SIGNON_IDENTITY_TYPE_OTHER

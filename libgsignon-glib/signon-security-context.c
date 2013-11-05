@@ -48,11 +48,13 @@
  * control decision requires not only a binary identifier, but also information
  * about what the binary is doing). 
  * 
- * System context
- * and application context can contain a wildcard match "*" which disables the ACL
- * check when a default gSSO extension is used. Check the documentation for a 
- * platform specific extension to determine if "*" has any effect with that
- * custom extension.
+ * System context and application context can contain a wildcard
+ * operator "*" to match 'any', while "" matches 'none' when a default
+ * gSSO extension is used. Matches are always evaluated in order where
+ * system context is evaluated first and if match is found, only then
+ * application context is evaluated.
+ * Check the documentation for a platform specific extension to determine
+ * any specific match rules with custom ACM (Access Control Manager).
  */
 
 #include "signon-security-context.h"
