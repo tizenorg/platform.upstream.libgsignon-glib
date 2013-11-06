@@ -52,8 +52,8 @@
  * operator "*" to match 'any', while "" matches 'none' when a default
  * gSSO extension is used. The system context is always evaluated first 
  * and if a match is found, only then the application context is evaluated.
- * Check the documentation for platform specific extensions to determine
- * any specific match rules with custom ACMs (Access Control Managers).
+ * Check the documentation of a platform specific extension to determine
+ * any particular match rules used by a custom ACM (Access Control Manager).
  */
 
 #include "signon-security-context.h"
