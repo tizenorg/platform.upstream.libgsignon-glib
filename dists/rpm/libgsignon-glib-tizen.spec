@@ -3,11 +3,12 @@
 
 Name:       libgsignon-glib
 Summary:    GLib API for the SSO framework
-Version:    2.0.1
-Release:    3
+Version:    2.0.2
+Release:    4
 Group:      System/Libraries
 License:    LGPL-2.1+
 Source:	    %{name}-%{version}.tar.gz
+URL: https://01.org/gsso
 Requires: dbus-1
 Requires: gsignon
 Requires(post): /sbin/ldconfig
@@ -69,4 +70,5 @@ rm -rf %{buildroot}
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_datadir}/gtk-doc/html/%{name}/*
+%{_bindir}/gsso-example
 

@@ -18,7 +18,7 @@ git rm -r * && \
 tar -xzvf $1 -C $2 --strip-components 1 && \
 mkdir -p packaging && \
 cd packaging && \
-cp -f ../dists/rpm/libgsignon-glib-tizen.spec libgsignon-glib.spec && \
-cp -f ../dists/rpm/libgsignon-glib-tizen.changes libgsignon-glib.changes && \
+ln -s ../dists/rpm/libgsignon-glib-tizen.spec libgsignon-glib.spec && \
+ln -s ../dists/rpm/libgsignon-glib-tizen.changes libgsignon-glib.changes && \
 cd .. && git add *;
 

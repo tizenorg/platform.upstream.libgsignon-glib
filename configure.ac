@@ -1,7 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ([2.64])
 AC_INIT([libgsignon-glib],
-        [2.0.1],
+        [2.0.2],
         [http://code.google.com/p/accounts-sso/issues/entry],
         [libgsignon-glib],
         [http://code.google.com/p/accounts-sso/])

@@ -3,11 +3,12 @@
 
 Name:       libgsignon-glib
 Summary:    GLib API for the SSO framework
-Version:    2.0.1
+Version:    2.0.2
 Release:    4
 Group:      System/Libraries
 License:    LGPL-2.1+
 Source:	    %{name}-%{version}.tar.gz
+URL: https://01.org/gsso
 Requires: dbus-1
 Requires: gsignon
 Requires(post): /sbin/ldconfig
@@ -77,9 +78,13 @@ rm -rf %{buildroot}
 %{_datadir}/gir-1.0/gSignon-1.0.gir
 #%{_datadir}/vala/vapi/gsignon.vapi
 %{_datadir}/gtk-doc/html/%{name}/*
+%{_bindir}/gsso-example
 
 
 %changelog
+* Fri Nov 22 2013 Imran Zaman <imran.zaman@intel.com>
+- Release 2.0.2 that fixes package licensing info and added docs 
+
 * Mon Jun 24 2013 Imran Zaman <imran.zaman@intel.com>
 - Release 2.0.1 that comprises of bug fixes
 
