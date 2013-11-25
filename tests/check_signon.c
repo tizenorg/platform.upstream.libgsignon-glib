@@ -762,7 +762,7 @@ START_TEST(test_auth_session_process_after_store)
 
     info = signon_identity_info_new ();
     signon_identity_info_set_method (info, "ssotest", ssotest_mechanisms);
-    signon_identity_info_set_owner_from_values (info, "", "");
+    signon_identity_info_set_owner_from_values (info, "someone", "else");
     signon_identity_info_access_control_list_append (info,
         signon_security_context_new_from_values ("*", "*"));
     signon_identity_info_set_username (info, "Nice user");
@@ -1349,8 +1349,9 @@ void query_identities_cb (SignonAuthService *auth_service,
         SignonIdentityInfo *info = (SignonIdentityInfo *) iter->data;
         const gchar *caption = signon_identity_info_get_caption (info);
 
-        g_print ("\tid=%d caption='%s'\n",
+        g_print ("\tid=%d username='%s' caption='%s'\n",
                  signon_identity_info_get_id (info),
+                 signon_identity_info_get_username (info),
                  caption);
 
         fail_unless (g_strcmp0 (caption, "MI-6") == 0,
