@@ -886,7 +886,7 @@ signon_identity_store_credentials_with_info(SignonIdentity *self,
  * @store_secret: whether gSSO should save the password in secret storage.
  * @methods: (transfer none) (element-type utf8 GStrv): allowed methods.
  * @caption: (allow-none): caption.
- * @realms: (allow-none): realms.
+ * @realms: (allow-none): allowed realms.
  * @owner: (allow-none): owner.
  * @access_control_list: (allow-none): access control list.
  * @type: the type of the identity.

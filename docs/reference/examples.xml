@@ -79,6 +79,15 @@ Identity stored with id 28
         </computeroutput></literallayout>
     </para>
     <para>
+        Depending on the identity method, you may also need to add a list of comma-separated 
+        realms that are allowed to be used with an identity. For example, the oauth method 
+        requires a list of domains that the OAuth authentication plugin is allowed to contact:
+        <literallayout><computeroutput>
+<userinput>> gsso-example --create-identity="Test Google identity" --identity-method=oauth --identity-realms=google.com</userinput>
+Identity stored with id 29            
+        </computeroutput></literallayout>
+    </para>
+    <para>
         To remove an identity, use <userinput>--remove-identity</userinput> option
         with identity id:
         <literallayout><computeroutput>

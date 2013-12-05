@@ -432,7 +432,7 @@ const GHashTable *signon_identity_info_get_methods (const SignonIdentityInfo *in
  * signon_identity_info_get_realms:
  * @info: the #SignonIdentityInfo.
  *
- * Get an array of the realms of @info.
+ * Get an array of the allowed realms of @info.
  *
  * Returns: (transfer none): a %NULL terminated array of realms.
  */

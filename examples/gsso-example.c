@@ -159,7 +159,7 @@ static void signon_store_identity_cb(SignonIdentity *self,
 }
 
 static void create_auth_identity(GMainLoop* main_loop, const gchar* identity_caption,
-    const gchar* identity_method)
+    const gchar* identity_method, const gchar* allowed_realms)
 {
     const gchar* all_mechanisms[] = { "*", NULL };
 
@@ -169,6 +169,12 @@ static void create_auth_identity(GMainLoop* main_loop, const gchar* identity_cap
     signon_identity_info_set_method(identity_info, identity_method, all_mechanisms);
     if (g_strcmp0(identity_method, "password") == 0)
         signon_identity_info_set_secret(identity_info, NULL, TRUE);
+    
+    if (allowed_realms != NULL) {
+        gchar** realms_array = g_strsplit(allowed_realms, ",", 0);
+        signon_identity_info_set_realms(identity_info, (const gchar* const *) realms_array);
+        g_strfreev(realms_array);
+    }
     
     signon_identity_store_credentials_with_info (identity,
                                                  identity_info,
@@ -325,6 +331,7 @@ main (int argc, char *argv[])
     gboolean query_identities = FALSE;
     gchar* create_identity_caption = NULL;
     gchar* create_identity_method = NULL;
+    gchar* create_identity_realms = NULL;
     gint remove_identity_id = 0;
     
     GOptionEntry main_entries[] =
@@ -334,6 +341,7 @@ main (int argc, char *argv[])
         { "query-identities", 0, 0, G_OPTION_ARG_NONE, &query_identities, "Query available authentication identities", NULL},
         { "create-identity", 0, 0, G_OPTION_ARG_STRING, &create_identity_caption, "Create a new authentication identity", "caption"},
         { "identity-method", 0, 0, G_OPTION_ARG_STRING, &create_identity_method, "Method to use when creating identity", "method"},
+        { "identity-realms", 0, 0, G_OPTION_ARG_STRING, &create_identity_realms, "A comma-separated list of allowed realms for the identity", "realms"},
         { "remove-identity", 0, 0, G_OPTION_ARG_INT, &remove_identity_id, "Remove an authentication identity", "id"},
         { NULL }
     };
@@ -389,7 +397,7 @@ main (int argc, char *argv[])
     } else if (query_identities) {
         query_auth_identities(main_loop);
     } else if (create_identity_caption) {
-        create_auth_identity(main_loop, create_identity_caption, create_identity_method);
+        create_auth_identity(main_loop, create_identity_caption, create_identity_method, create_identity_realms);
     } else if (remove_identity_id > 0) {
         remove_auth_identity(main_loop, remove_identity_id);
     } else if (google_identity_id > 0) {
@@ -407,6 +415,8 @@ main (int argc, char *argv[])
         g_free(query_mechanisms_method);
     if (create_identity_caption)
         g_free(create_identity_caption);
-    if (create_identity_caption)
+    if (create_identity_method)
         g_free(create_identity_method);
+    if (create_identity_realms)
+        g_free(create_identity_realms);
 }
