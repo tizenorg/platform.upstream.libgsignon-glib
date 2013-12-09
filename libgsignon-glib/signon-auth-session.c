@@ -33,8 +33,7 @@
  * The #SignonAuthSession object is responsible for handling the client
  * authentication. #SignonAuthSession objects should be created from existing
  * identities (via signon_identity_create_session() or by passing a non-NULL identity
- * to signon_auth_session_new()), in which case the authentication data such as
- * username and password will be implicitly taken from the identity.
+ * to signon_auth_session_new()).
  */
 
 #include "signon-internals.h"
@@ -380,8 +379,10 @@ signon_auth_session_class_init (SignonAuthSessionClass *klass)
      * @state: the current state of the #SignonAuthSession
      * @message: the message associated with the state change
      *
-     * Emitted when the state of the #SignonAuthSession changes.
-     * FIXME: @state should be registered as a GLib type (or use one from
+     * Emitted when the state of the #SignonAuthSession changes. The state change
+     * is initiated by #GSignondPlugin via #GSignondPlugin::state-changed signal.
+     */
+    /* FIXME: @state should be registered as a GLib type (or use one from
      * libgsignond-common)
      */
     auth_session_signals[STATE_CHANGED] =
@@ -576,17 +577,19 @@ signon_auth_session_process (SignonAuthSession *self,
  * authentication reply is available.
  * @user_data: user data to be passed to the callback.
  *
- * Performs one step of the authentication process. If the #SignonIdentity that
- * this session belongs to contains a username and a password, the daemon will
- * pass them to the authentication plugin, otherwise they should be set directly in
- * @session_data.
+ * Performs one step of the authentication process.
  * @session_data should be used to add additional authentication parameters to the
- * session, or to override the parameters otherwise taken from the identity.
+ * session.
  * 
  * What specific parameters should be used can be found from authentication plugins'
  * documentation (look for parameters that are expected in gsignond_plugin_request_initial()
  * for the first step, and parameters that are expected in gsignond_plugin_request() for
  * the subsequent steps). See, for example, #GSignondPasswordPlugin and #GSignondDigestPlugin.
+ * 
+ * If the #SignonIdentity that this session belongs to contains a username and a password, 
+ * the daemon will pass them to the authentication plugin, otherwise they should be set directly in
+ * @session_data. The daemon also passes a list of identity's allowed realms to the plugin,
+ * and they cannot be overriden.
  *
  * Since: 1.8
  */
