@@ -423,24 +423,11 @@ signon_auth_session_new (gint id,
 
     SignonIdentity *identity = (id == 0) ?
         signon_identity_new () : signon_identity_new_from_db (id);
+    g_return_val_if_fail (identity, NULL);
 
-    SignonAuthSession *self = SIGNON_AUTH_SESSION(g_object_new (
-                                     SIGNON_TYPE_AUTH_SESSION,
-                                     "identity", identity,
-                                     NULL));
-    g_return_val_if_fail (self != NULL, NULL);
-    /* This will not destroy the identity, as long as it's used by the
-     * SignonAuthSession. */
+    SignonAuthSession *self =
+        signon_auth_session_new_for_identity (identity, method_name, err);
     g_object_unref (identity);
-
-    if (!auth_session_priv_init(self, method_name, err))
-    {
-        if (*err)
-            g_warning ("%s returned error: %s", G_STRFUNC, (*err)->message);
-
-        g_object_unref (self);
-        return NULL;
-    }
 
     return self;
 }
