@@ -118,7 +118,6 @@ typedef enum {
 #define SIGNON_IS_AUTH_SESSION_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), SIGNON_TYPE_AUTH_SESSION))
 #define SIGNON_AUTH_SESSION_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), SIGNON_TYPE_AUTH_SESSION, SignonAuthSessionClass))
 
-typedef struct _SignonAuthSession        SignonAuthSession;
 typedef struct _SignonAuthSessionPrivate SignonAuthSessionPrivate;
 typedef struct _SignonAuthSessionClass   SignonAuthSessionClass;
 
@@ -145,9 +144,14 @@ struct _SignonAuthSessionClass {
 
 GType signon_auth_session_get_type (void) G_GNUC_CONST;
 
-SignonAuthSession *signon_auth_session_new(GObject *parent,
+SignonAuthSession *signon_auth_session_new(gint id,
                                            const gchar *method_name,
                                            GError **err);
+
+SignonAuthSession *
+signon_auth_session_new_for_identity(SignonIdentity *identity,
+                                     const gchar *method_name,
+                                     GError **err);
 
 const gchar *signon_auth_session_get_method (SignonAuthSession *self);
 

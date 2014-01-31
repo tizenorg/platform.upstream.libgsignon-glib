@@ -29,6 +29,9 @@
 
 G_BEGIN_DECLS
 
+typedef struct _SignonAuthSession SignonAuthSession;
+typedef struct _SignonIdentity SignonIdentity;
+
 #ifdef SIGNON_DISABLE_DEPRECATION_WARNINGS
 #define SIGNON_DEPRECATED
 #define SIGNON_DEPRECATED_FOR(x)

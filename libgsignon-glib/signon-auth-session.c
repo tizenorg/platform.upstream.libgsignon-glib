@@ -403,7 +403,8 @@ signon_auth_session_class_init (SignonAuthSessionClass *klass)
 
 /**
  * signon_auth_session_new:
- * @parent: #SignonIdentity parent object.
+ * @id: the id of the #SignonIdentity to be used. Can be 0, if this session is
+ * not bound to any stored identity.
  * @method_name: the name of the authentication method to be used.
  * @err: a pointer to a location which will contain the error, in case this
  * function fails.
@@ -414,19 +415,54 @@ signon_auth_session_class_init (SignonAuthSessionClass *klass)
  * Returns: a new #SignonAuthSession.
  */
 SignonAuthSession *
-signon_auth_session_new (GObject *parent,
+signon_auth_session_new (gint id,
                          const gchar *method_name,
                          GError **err)
 {
-    if (!SIGNON_IS_IDENTITY(parent))
+    DEBUG ("%s %d", G_STRFUNC, __LINE__);
+
+    SignonIdentity *identity = (id == 0) ?
+        signon_identity_new () : signon_identity_new_from_db (id);
+
+    SignonAuthSession *self = SIGNON_AUTH_SESSION(g_object_new (
+                                     SIGNON_TYPE_AUTH_SESSION,
+                                     "identity", identity,
+                                     NULL));
+    g_return_val_if_fail (self != NULL, NULL);
+    /* This will not destroy the identity, as long as it's used by the
+     * SignonAuthSession. */
+    g_object_unref (identity);
+
+    if (!auth_session_priv_init(self, method_name, err))
     {
-        g_set_error (err,
-                     signon_error_quark(),
-                     SIGNON_ERROR_UNKNOWN,
-                     "Parent object is wrong type");
+        if (*err)
+            g_warning ("%s returned error: %s", G_STRFUNC, (*err)->message);
+
+        g_object_unref (self);
         return NULL;
     }
-    SignonIdentity *identity = SIGNON_IDENTITY(parent);
+
+    return self;
+}
+
+/**
+ * signon_auth_session_new_for_identity:
+ * @identity: #SignonIdentity parent object.
+ * @method_name: the name of the authentication method to be used.
+ * @err: a pointer to a location which will contain the error, in case this
+ * function fails.
+ *
+ * Creates a new #SignonAuthSession, which can be used to authenticate using
+ * the specified method.
+ *
+ * Returns: a new #SignonAuthSession.
+ */
+SignonAuthSession *
+signon_auth_session_new_for_identity (SignonIdentity *identity,
+                                      const gchar *method_name,
+                                      GError **err)
+{
+    g_return_val_if_fail (SIGNON_IS_IDENTITY (identity), NULL);
 
     DEBUG ("%s %d", G_STRFUNC, __LINE__);
 
