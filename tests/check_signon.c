@@ -650,9 +650,9 @@ START_TEST(test_auth_session_process_failure)
     idty = signon_identity_new_from_db (id);
 
     fail_unless (idty != NULL, "Cannot create Identity object");
-    auth_session = signon_auth_session_new (G_OBJECT (idty),
-                                            "ssotest",
-                                            &error);
+    auth_session = signon_auth_session_new_for_identity (idty,
+                                                         "ssotest",
+                                                         &error);
     fail_unless (auth_session != NULL, "Cannot create AuthSession object");
     fail_unless (error == NULL);
 
@@ -1429,8 +1429,8 @@ START_TEST(test_regression_unref)
     idty = signon_identity_new_from_db (id);
 
     fail_unless (idty != NULL);
-    auth_session = signon_auth_session_new (G_OBJECT (idty), "ssotest",
-            &error);
+    auth_session = signon_auth_session_new_for_identity (idty, "ssotest",
+                                                         &error);
     fail_unless (auth_session != NULL);
 
     session_data = g_hash_table_new (g_str_hash, g_str_equal);

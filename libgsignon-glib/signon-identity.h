@@ -42,7 +42,6 @@ G_BEGIN_DECLS
 
 typedef struct _SignonIdentityClass SignonIdentityClass;
 typedef struct _SignonIdentityPrivate SignonIdentityPrivate;
-typedef struct _SignonIdentity SignonIdentity;
 
 /**
  * SignonIdentityClass:

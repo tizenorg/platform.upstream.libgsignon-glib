@@ -851,9 +851,10 @@ signon_identity_create_session(SignonIdentity *self,
         list = list->next;
     }
 
-    SignonAuthSession *session = signon_auth_session_new (G_OBJECT(self),
-                                                          method,
-                                                          error);
+    SignonAuthSession *session =
+        signon_auth_session_new_for_identity (self,
+                                              method,
+                                              error);
     if (session)
     {
         DEBUG ("%s %d - success", G_STRFUNC, __LINE__);
