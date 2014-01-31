@@ -105,9 +105,12 @@ typedef SignonIdentityVoidCb SignonIdentityReferenceRemovedCb;
 
 GType signon_identity_get_type (void) G_GNUC_CONST;
 
-SignonIdentity *signon_identity_new_from_db (guint32 id,
-                                             const gchar *application_context);
-SignonIdentity *signon_identity_new (const gchar *application_context);
+SignonIdentity *signon_identity_new_from_db (guint32 id);
+SignonIdentity *signon_identity_new ();
+
+SignonIdentity *signon_identity_new_with_context_from_db (guint32 id,
+                                                          const gchar *application_context);
+SignonIdentity *signon_identity_new_with_context (const gchar *application_context);
 
 const GError *signon_identity_get_last_error (SignonIdentity *identity);
 

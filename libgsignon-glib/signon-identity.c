@@ -42,9 +42,10 @@
  * 
  * <refsect1><title>Operations on an identity</title></refsect1>
  * 
- * - a new identity can be created with signon_identity_new(). This operation
- * does not store the identity to the database, the identity is not visible
- * to other applications, and accordingly it is not subject to access control.
+ * - a new identity can be created with signon_identity_new() or
+ * signon_identity_new_with_context(). This operation does not store the
+ * identity to the database, the identity is not visible to other applications,
+ * and accordingly it is not subject to access control.
  * 
  * - an authentication session can be started from an identity using 
  * signon_identity_create_session() or signon_auth_session_new(). If the identity
@@ -55,9 +56,10 @@
  * signon_auth_service_query_identities(). Only the identites owned by the 
  * requesting application are returned.
  * 
- * - identities stored in a database can be retrieved using signon_identity_new_from_db(),
- * subject to access control (an application performing that operation has to be
- * either the identity's owner, or it has to be on the ACL list).
+ * - identities stored in a database can be retrieved using signon_identity_new_from_db()
+ * or signon_identity_new_with_context_from_db(), subject to access control (an
+ * application performing that operation has to be either the identity's owner,
+ * or it has to be on the ACL list).
  * 
  * - newly created identities can be stored to the database, and identities already
  * in the database can be updated using signon_identity_store_credentials_with_info()
@@ -94,7 +96,7 @@
  * owner. Owners are allowed to perform all of the operations on the identity
  * specified above. By default an identity's owner is determined by gSSO daemon
  * using system services for the system context, and a string supplied in 
- * signon_identity_new() for the application context.
+ * signon_identity_new_with_context() for the application context.
  * 
  * - ACL is a list of #SignonSecurityContext objects, that specifies applications
  * that can access the identity to perform authentication sessions. They're not
@@ -691,6 +693,29 @@ identity_check_remote_registration (SignonIdentity *self)
 /**
  * signon_identity_new_from_db:
  * @id: identity ID.
+ *
+ * Construct an identity object associated with an existing identity
+ * record.
+ * This is essentially equivalent to calling
+ * signon_identity_new_with_context_from_db() and passing %NULL as the
+ * application context.
+ * 
+ * Applications can determine the @id either by enumerating the identities with 
+ * signon_auth_service_query_identities() (if they're the owner of the identity) 
+ * or via other means (such as the system's accounts service, or an application 
+ * configuration).
+ * 
+ * Returns: an instance of a #SignonIdentity.
+ */
+SignonIdentity *
+signon_identity_new_from_db (guint32 id)
+{
+    return signon_identity_new_with_context_from_db (id, NULL);
+}
+
+/**
+ * signon_identity_new_with_context_from_db:
+ * @id: identity ID.
  * @application_context: application security context, can be %NULL.
  *
  * Construct an identity object associated with an existing identity
@@ -707,7 +732,7 @@ identity_check_remote_registration (SignonIdentity *self)
  * Returns: an instance of a #SignonIdentity.
  */
 SignonIdentity*
-signon_identity_new_from_db (guint32 id, const gchar *application_context)
+signon_identity_new_with_context_from_db (guint32 id, const gchar *application_context)
 {
     SignonIdentity *identity;
     DEBUG ("%s %d: %d\n", G_STRFUNC, __LINE__, id);
@@ -731,6 +756,21 @@ signon_identity_new_from_db (guint32 id, const gchar *application_context)
 
 /**
  * signon_identity_new:
+ *
+ * Construct a new, empty, identity object.
+ * This is essentially equivalent to calling signon_identity_new_with_context()
+ * and passing %NULL as the application context.
+ *
+ * Returns: an instance of an #SignonIdentity.
+ */
+SignonIdentity *
+signon_identity_new ()
+{
+    return signon_identity_new_with_context (NULL);
+}
+
+/**
+ * signon_identity_new_with_context:
  * @application_context: application security context, can be %NULL.
  *
  * Construct a new, empty, identity object. See #SignonSecurityContext for a 
@@ -741,7 +781,7 @@ signon_identity_new_from_db (guint32 id, const gchar *application_context)
  * Returns: an instance of an #SignonIdentity.
  */
 SignonIdentity*
-signon_identity_new (const gchar *application_context)
+signon_identity_new_with_context (const gchar *application_context)
 {
     DEBUG ("%s %d", G_STRFUNC, __LINE__);
     SignonIdentity *identity = g_object_new (

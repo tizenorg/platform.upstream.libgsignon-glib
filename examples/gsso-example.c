@@ -163,7 +163,7 @@ static void create_auth_identity(GMainLoop* main_loop, const gchar* identity_cap
 {
     const gchar* all_mechanisms[] = { "*", NULL };
 
-    SignonIdentity* identity = signon_identity_new(NULL);
+    SignonIdentity* identity = signon_identity_new();
     SignonIdentityInfo* identity_info = signon_identity_info_new();
     signon_identity_info_set_caption(identity_info, identity_caption);
     signon_identity_info_set_method(identity_info, identity_method, all_mechanisms);
@@ -204,7 +204,7 @@ static void signon_remove_identity_cb(SignonIdentity *self,
 
 static void remove_auth_identity(GMainLoop* main_loop, gint identity_id)
 {
-    SignonIdentity* identity = signon_identity_new_from_db(identity_id, NULL);
+    SignonIdentity* identity = signon_identity_new_from_db(identity_id);
     signon_identity_remove (identity, 
                             signon_remove_identity_cb, 
                             main_loop);
@@ -250,7 +250,7 @@ static void get_google_token(GMainLoop* main_loop, gint identity_id,
         exit(1);
     }
     
-    SignonIdentity* identity = signon_identity_new_from_db(identity_id, NULL);
+    SignonIdentity* identity = signon_identity_new_from_db(identity_id);
     SignonAuthSession* session = signon_identity_create_session(identity, "oauth", NULL);
     
     GVariantBuilder builder;
@@ -296,7 +296,7 @@ static void get_google_token(GMainLoop* main_loop, gint identity_id,
 
 static void get_password(GMainLoop* main_loop, gint identity_id)
 {
-    SignonIdentity* identity = signon_identity_new_from_db(identity_id, NULL);
+    SignonIdentity* identity = signon_identity_new_from_db(identity_id);
     SignonAuthSession* session = signon_identity_create_session(identity, "password", NULL);
     
     GVariantBuilder builder;

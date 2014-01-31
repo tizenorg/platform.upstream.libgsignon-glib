@@ -129,7 +129,7 @@ new_identity()
     GHashTable *methods;
     guint id = 0;
 
-    idty = signon_identity_new (NULL);
+    idty = signon_identity_new ();
     fail_unless (SIGNON_IS_IDENTITY (idty));
     methods = g_hash_table_new (g_str_hash, g_str_equal);
     g_hash_table_insert (methods, "ssotest", ssotest_mechanisms);
@@ -336,7 +336,7 @@ START_TEST(test_auth_session_query_mechanisms)
     GError *err = NULL;
 
     g_debug("%s", G_STRFUNC);
-    SignonIdentity *idty = signon_identity_new(NULL);
+    SignonIdentity *idty = signon_identity_new();
     fail_unless (idty != NULL, "Cannot create Iddentity object");
 
     SignonAuthSession *auth_session = signon_identity_create_session(idty,
@@ -408,7 +408,7 @@ START_TEST(test_auth_session_query_mechanisms_nonexisting)
     GError *err = NULL;
 
     g_debug("%s", G_STRFUNC);
-    SignonIdentity *idty = signon_identity_new(NULL);
+    SignonIdentity *idty = signon_identity_new();
     fail_unless (idty != NULL, "Cannot create Iddentity object");
 
     SignonAuthSession *auth_session = signon_identity_create_session(idty,
@@ -501,7 +501,7 @@ START_TEST(test_auth_session_creation)
     gboolean auth_sess_destroyed = FALSE;
 
     g_debug("%s", G_STRFUNC);
-    SignonIdentity *idty = signon_identity_new(NULL);
+    SignonIdentity *idty = signon_identity_new();
     fail_unless (idty != NULL, "Cannot create Identity object");
 
     SignonAuthSession *auth_session = signon_identity_create_session(idty,
@@ -534,7 +534,7 @@ START_TEST(test_auth_session_process)
     GError *err = NULL;
 
     g_debug("%s", G_STRFUNC);
-    SignonIdentity *idty = signon_identity_new(NULL);
+    SignonIdentity *idty = signon_identity_new();
     fail_unless (idty != NULL, "Cannot create Iddentity object");
 
     SignonAuthSession *auth_session = signon_identity_create_session(idty,
@@ -647,7 +647,7 @@ START_TEST(test_auth_session_process_failure)
 
     fail_unless (id != 0);
 
-    idty = signon_identity_new_from_db (id, NULL);
+    idty = signon_identity_new_from_db (id);
 
     fail_unless (idty != NULL, "Cannot create Identity object");
     auth_session = signon_auth_session_new (G_OBJECT (idty),
@@ -756,7 +756,7 @@ START_TEST(test_auth_session_process_after_store)
 
     g_debug("%s", G_STRFUNC);
 
-    idty = signon_identity_new (NULL);
+    idty = signon_identity_new ();
     fail_unless (SIGNON_IS_IDENTITY (idty),
                  "Failed to initialize the Identity.");
 
@@ -812,7 +812,7 @@ START_TEST(test_get_existing_identity)
 
     fail_unless (id != 0);
 
-    identity = signon_identity_new_from_db (id, NULL);
+    identity = signon_identity_new_from_db (id);
 
     fail_unless (identity != NULL);
     fail_unless (SIGNON_IS_IDENTITY (identity),
@@ -830,7 +830,7 @@ END_TEST
 START_TEST(test_get_nonexisting_identity)
 {
     g_debug("%s", G_STRFUNC);
-    identity = signon_identity_new_from_db (G_MAXINT, NULL);
+    identity = signon_identity_new_from_db (G_MAXINT);
 
     fail_unless (identity != NULL);
     fail_unless (SIGNON_IS_IDENTITY (identity),
@@ -879,7 +879,7 @@ static void store_credentials_identity_cb(SignonIdentity *self,
 START_TEST(test_store_credentials_identity)
 {
     g_debug("%s", G_STRFUNC);
-    SignonIdentity *idty = signon_identity_new(NULL);
+    SignonIdentity *idty = signon_identity_new();
     fail_unless (idty != NULL);
     fail_unless (SIGNON_IS_IDENTITY (idty),
                  "Failed to initialize the Identity.");
@@ -930,7 +930,7 @@ static void identity_remove_cb(SignonIdentity *self, const GError *error, gpoint
 START_TEST(test_remove_identity)
 {
     g_debug("%s", G_STRFUNC);
-    SignonIdentity *idty = signon_identity_new (NULL);
+    SignonIdentity *idty = signon_identity_new ();
     fail_unless (idty != NULL);
     fail_unless (SIGNON_IS_IDENTITY (idty),
                  "Failed to initialize the Identity.");
@@ -946,7 +946,7 @@ START_TEST(test_remove_identity)
      * */
 
     gint id = new_identity();
-    SignonIdentity *idty2 = signon_identity_new_from_db (id, NULL);
+    SignonIdentity *idty2 = signon_identity_new_from_db (id);
 
     signon_identity_remove(idty2, identity_remove_cb, NULL);
     _run_mainloop ();
@@ -1070,7 +1070,7 @@ static SignonIdentityInfo *create_standard_info()
 START_TEST(test_info_identity)
 {
     g_debug("%s", G_STRFUNC);
-    SignonIdentity *idty = signon_identity_new (NULL);
+    SignonIdentity *idty = signon_identity_new ();
     fail_unless (idty != NULL);
     fail_unless (SIGNON_IS_IDENTITY (idty),
                  "Failed to initialize the Identity.");
@@ -1120,7 +1120,7 @@ START_TEST(test_info_identity)
 
     gint id = signon_identity_info_get_id (info);
     fail_unless (id != 0);
-    SignonIdentity *idty2 = signon_identity_new_from_db (id, NULL);
+    SignonIdentity *idty2 = signon_identity_new_from_db (id);
 
     signon_identity_query_info (idty2, identity_info_cb, &info);
     _run_mainloop ();
@@ -1185,7 +1185,7 @@ START_TEST(test_signout_identity)
 {
     gboolean as1_destroyed = FALSE, as2_destroyed = FALSE;
     g_debug("%s", G_STRFUNC);
-    SignonIdentity *idty = signon_identity_new (NULL);
+    SignonIdentity *idty = signon_identity_new ();
     fail_unless (idty != NULL);
     fail_unless (SIGNON_IS_IDENTITY (idty),
                  "Failed to initialize the Identity.");
@@ -1201,7 +1201,7 @@ START_TEST(test_signout_identity)
     _run_mainloop ();
 
     gint id = signon_identity_info_get_id (info);
-    SignonIdentity *idty2 = signon_identity_new_from_db (id, NULL);
+    SignonIdentity *idty2 = signon_identity_new_from_db (id);
 
     /* wait some more time to ensure that the object gets registered */
     g_timeout_add_seconds (2, test_quit_main_loop_cb, main_loop);
@@ -1247,7 +1247,7 @@ END_TEST
 START_TEST(test_unregistered_identity)
 {
     g_debug("%s", G_STRFUNC);
-    SignonIdentity *idty = signon_identity_new (NULL);
+    SignonIdentity *idty = signon_identity_new ();
     fail_unless (idty != NULL);
     fail_unless (SIGNON_IS_IDENTITY (idty),
                  "Failed to initialize the Identity.");
@@ -1264,7 +1264,7 @@ START_TEST(test_unregistered_identity)
      * give the time for identity to became idle
      * */
     sleep(SIGNOND_IDLE_TIMEOUT);
-    SignonIdentity *idty2 = signon_identity_new (NULL);
+    SignonIdentity *idty2 = signon_identity_new ();
 
     /*
      * give time to handle unregistered signal
@@ -1283,7 +1283,7 @@ END_TEST
 START_TEST(test_unregistered_auth_session)
 {
     g_debug("%s", G_STRFUNC);
-    SignonIdentity *idty = signon_identity_new (NULL);
+    SignonIdentity *idty = signon_identity_new ();
     fail_unless (idty != NULL);
     fail_unless (SIGNON_IS_IDENTITY (idty),
                  "Failed to initialize the Identity.");
@@ -1300,7 +1300,7 @@ START_TEST(test_unregistered_auth_session)
      * give the time for identity to became idle
      * */
     sleep(SIGNOND_IDLE_TIMEOUT);
-    SignonIdentity *idty2 = signon_identity_new (NULL);
+    SignonIdentity *idty2 = signon_identity_new ();
 
     /*
      * give time to handle unregistered signal
@@ -1426,7 +1426,7 @@ START_TEST(test_regression_unref)
 
     guint id = new_identity();
     fail_unless (id != 0);
-    idty = signon_identity_new_from_db (id, NULL);
+    idty = signon_identity_new_from_db (id);
 
     fail_unless (idty != NULL);
     auth_session = signon_auth_session_new (G_OBJECT (idty), "ssotest",
