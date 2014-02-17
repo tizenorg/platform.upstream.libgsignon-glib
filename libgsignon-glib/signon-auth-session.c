@@ -380,7 +380,7 @@ signon_auth_session_class_init (SignonAuthSessionClass *klass)
      * @message: the message associated with the state change
      *
      * Emitted when the state of the #SignonAuthSession changes. The state change
-     * is initiated by #GSignondPlugin via #GSignondPlugin::state-changed signal.
+     * is initiated by #GSignondPlugin via #GSignondPlugin::status-changed signal.
      */
     /* FIXME: @state should be registered as a GLib type (or use one from
      * libgsignond-common)
