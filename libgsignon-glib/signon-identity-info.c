@@ -123,16 +123,15 @@ signon_identity_info_new_from_variant (GVariant *variant)
                       "s",
                       &info->username);
 
-    if (g_variant_lookup (variant,
-                          SIGNOND_IDENTITY_INFO_SECRET,
-                          "s",
-                          &info->secret))
-    {
-        g_variant_lookup (variant,
-                          SIGNOND_IDENTITY_INFO_STORESECRET,
-                          "b",
-                          &info->store_secret);
-    }
+    g_variant_lookup (variant,
+                      SIGNOND_IDENTITY_INFO_SECRET,
+                      "s",
+                      &info->secret);
+
+    g_variant_lookup (variant,
+                      SIGNOND_IDENTITY_INFO_STORESECRET,
+                      "b",
+                      &info->store_secret);
 
     g_variant_lookup (variant,
                       SIGNOND_IDENTITY_INFO_CAPTION,
