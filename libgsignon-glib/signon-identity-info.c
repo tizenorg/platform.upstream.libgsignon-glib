@@ -204,38 +204,46 @@ signon_identity_info_to_variant (const SignonIdentityInfo *self)
                            SIGNOND_IDENTITY_INFO_ID,
                            g_variant_new_uint32 (self->id));
 
-    g_variant_builder_add (&builder, "{sv}",
-                           SIGNOND_IDENTITY_INFO_USERNAME,
-                           signon_variant_new_string (self->username));
+    if (self->username != NULL) {
+        g_variant_builder_add (&builder, "{sv}",
+                               SIGNOND_IDENTITY_INFO_USERNAME,
+                               signon_variant_new_string (self->username));
+    }
 
-    g_variant_builder_add (&builder, "{sv}",
-                           SIGNOND_IDENTITY_INFO_SECRET,
-                           signon_variant_new_string (self->secret));
+    if (self->secret != NULL) {
+        g_variant_builder_add (&builder, "{sv}",
+                               SIGNOND_IDENTITY_INFO_SECRET,
+                               signon_variant_new_string (self->secret));
+    }
 
-    g_variant_builder_add (&builder, "{sv}",
-                           SIGNOND_IDENTITY_INFO_CAPTION,
-                           signon_variant_new_string (self->caption));
+    if (self->caption != NULL) {
+        g_variant_builder_add (&builder, "{sv}",
+                               SIGNOND_IDENTITY_INFO_CAPTION,
+                               signon_variant_new_string (self->caption));
+    }
 
     g_variant_builder_add (&builder, "{sv}",
                            SIGNOND_IDENTITY_INFO_STORESECRET,
                            g_variant_new_boolean (self->store_secret));
 
-    g_variant_builder_init (&method_builder,
-                            (const GVariantType *)"a{sas}");
-    g_hash_table_iter_init (&iter, self->methods);
-    while (g_hash_table_iter_next (&iter,
-                                   (gpointer)&method,
-                                   (gpointer)&mechanisms))
-    {
-        g_variant_builder_add (&method_builder, "{s^as}",
-                               method,
-                               mechanisms);
-    }
-    method_map = g_variant_builder_end (&method_builder);
+    if (g_hash_table_size(self->methods) > 0) {
+        g_variant_builder_init (&method_builder,
+                                (const GVariantType *)"a{sas}");
+        g_hash_table_iter_init (&iter, self->methods);
+        while (g_hash_table_iter_next (&iter,
+                                       (gpointer)&method,
+                                       (gpointer)&mechanisms))
+        {
+            g_variant_builder_add (&method_builder, "{s^as}",
+                                   method,
+                                   mechanisms);
+        }
+        method_map = g_variant_builder_end (&method_builder);
 
-    g_variant_builder_add (&builder, "{sv}",
-                           SIGNOND_IDENTITY_INFO_AUTHMETHODS,
-                           method_map);
+        g_variant_builder_add (&builder, "{sv}",
+                               SIGNOND_IDENTITY_INFO_AUTHMETHODS,
+                               method_map);
+    }
 
     if (self->realms != NULL)
     {
