@@ -65,8 +65,8 @@ Available authentication mechanisms for method oauth:
         <literallayout><computeroutput>
 <userinput>> gsso-example --query-identities</userinput>
 Available identities:
-        id=27 caption='My test identity'
-        id=28 caption='Another test identity'
+        id=27 caption='My test identity' ACL: (*:*)
+        id=28 caption='Another test identity' ACL: (/usr/bin/gsso-example:)
         </computeroutput></literallayout>
     </para>
     <para>
@@ -93,6 +93,22 @@ Identity stored with id 29
         <literallayout><computeroutput>
 <userinput>> gsso-example --remove-identity=28</userinput>
 Identity removed
+        </computeroutput></literallayout>
+    </para>
+    <para>
+        To add security context to identity's Access Control List, use <userinput>--add-context</userinput> option
+        with identity id:
+        <literallayout><computeroutput>
+<userinput>> gsso-example --add-context=28 --system-context=* --application-context=*</userinput>
+Identity stored with id 28
+        </computeroutput></literallayout>
+    </para>
+    <para>
+        To remove security context from identity's Access Control List, use <userinput>--remove-context=</userinput> option
+        with identity id:
+        <literallayout><computeroutput>
+<userinput>> gsso-example --remove-context=28 --system-context=* --application-context=*</userinput>
+Identity stored with id 28
         </computeroutput></literallayout>
     </para>
   </refsect1>
