@@ -899,9 +899,10 @@ signon_identity_store_credentials_with_info(SignonIdentity *self,
     g_return_if_fail (info != NULL);
 
     SignonIdentityPrivate *priv = self->priv;
+    SignonIdentityInfo *new_info = signon_identity_info_copy (info);
     if (priv->identity_info)
         signon_identity_info_free (priv->identity_info);
-    priv->identity_info = signon_identity_info_copy (info);
+    priv->identity_info = new_info;
 
     cb_data = g_slice_new0 (IdentityStoreCredentialsCbData);
     cb_data->self = self;
@@ -909,7 +910,8 @@ signon_identity_store_credentials_with_info(SignonIdentity *self,
     cb_data->user_data = user_data;
 
     operation_data = g_slice_new0 (IdentityStoreCredentialsData);
-    operation_data->info_variant = signon_identity_info_to_variant (info);
+    operation_data->info_variant =
+        signon_identity_info_to_variant (priv->identity_info);
     operation_data->cb_data = cb_data;
 
     identity_check_remote_registration (self);
