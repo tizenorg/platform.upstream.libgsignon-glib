@@ -127,13 +127,13 @@ static void signon_query_identities_cb (SignonAuthService *auth_service,
                  signon_identity_info_get_id (info),
                  signon_identity_info_get_caption (info));
 
-        const SignonSecurityContextList *acl = signon_identity_info_get_access_control_list(info);
+        SignonSecurityContextList *acl = signon_identity_info_get_access_control_list(info);
         for(acl = g_list_first(acl); acl != NULL; acl = g_list_next(acl)) {
             const SignonSecurityContext *context = acl->data;
-            g_printf(" (%s:%s)", signon_security_context_get_system_context(context),
+            g_print(" (%s:%s)", signon_security_context_get_system_context(context),
                     signon_security_context_get_application_context(context));
         }
-        g_printf("\n");
+        g_print("\n");
 
         iter = g_list_next (iter);
     }
@@ -331,13 +331,12 @@ static void get_password(GMainLoop* main_loop, gint identity_id)
     g_object_unref(identity);
 }
 
-static void append_acl_cb(SignonIdentity *self, const SignonIdentityInfo *info, const GError *error, gpointer user_data)
+static void append_acl_cb(SignonIdentity *self, SignonIdentityInfo *info, const GError *error, gpointer user_data)
 {
     AclModifyUserData *am_user_data = (AclModifyUserData *)user_data;
 
     if (error) {
         g_warning("%s: %s", G_STRFUNC, error->message);
-        g_error_free(error);
         goto clean_user_data;
     }
 
@@ -361,13 +360,12 @@ static void append_acl(GMainLoop* main_loop, gint identity_id, SignonSecurityCon
     g_object_unref(identity);
 }
 
-static void remove_acl_cb(SignonIdentity *self, const SignonIdentityInfo *info, const GError *error, gpointer user_data)
+static void remove_acl_cb(SignonIdentity *self, SignonIdentityInfo *info, const GError *error, gpointer user_data)
 {
     AclModifyUserData *am_user_data = (AclModifyUserData *)user_data;
 
     if (error) {
         g_warning("%s: %s", G_STRFUNC, error->message);
-        g_error_free(error);
         goto clean_user_data;
     }
 
@@ -413,7 +411,7 @@ static void remove_acl(GMainLoop* main_loop, gint identity_id, SignonSecurityCon
     g_object_unref(identity);
 }
 
-const SignonSecurityContext *create_security_context_from_args(const gchar *sys_ctx, const gchar *app_ctx) {
+SignonSecurityContext *create_security_context_from_args(const gchar *sys_ctx, const gchar *app_ctx) {
     if (sys_ctx && app_ctx) {
         return signon_security_context_new_from_values(sys_ctx, app_ctx);
     }
