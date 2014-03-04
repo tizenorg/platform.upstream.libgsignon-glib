@@ -72,7 +72,9 @@ _run_mainloop ()
 static void
 _setup ()
 {
+#if !GLIB_CHECK_VERSION (2, 36, 0)
     g_type_init ();
+#endif
     if (main_loop == NULL) {
         main_loop = g_main_loop_new (NULL, FALSE);
     }
@@ -974,7 +976,7 @@ static gboolean _contains(gchar **mechs, gchar *mech)
     return present;
 }
 
-static void identity_info_cb(SignonIdentity *self, const SignonIdentityInfo *info, const GError *error, gpointer user_data)
+static void identity_info_cb(SignonIdentity *self, SignonIdentityInfo *info, const GError *error, gpointer user_data)
 {
      if (error)
      {
