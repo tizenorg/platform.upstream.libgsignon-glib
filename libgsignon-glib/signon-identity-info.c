@@ -471,7 +471,7 @@ const SignonSecurityContext *signon_identity_info_get_owner (const SignonIdentit
  *
  * Returns: (transfer none): a list of ACL security contexts.
  */
-const SignonSecurityContextList *signon_identity_info_get_access_control_list (const SignonIdentityInfo *info)
+SignonSecurityContextList *signon_identity_info_get_access_control_list (const SignonIdentityInfo *info)
 {
     g_return_val_if_fail (info != NULL, NULL);
     return info->access_control_list;

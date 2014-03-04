@@ -179,7 +179,7 @@ void signon_identity_verify_secret(SignonIdentity *self,
  * Callback to be passed to signon_identity_query_info().
  */
 typedef void (*SignonIdentityInfoCb) (SignonIdentity *self,
-                                      const SignonIdentityInfo *info,
+                                      SignonIdentityInfo *info,
                                       const GError *error,
                                       gpointer user_data);
 

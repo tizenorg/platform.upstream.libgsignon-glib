@@ -75,7 +75,7 @@ const gchar* const *signon_identity_info_get_realms (
                                                 const SignonIdentityInfo *info);
 const SignonSecurityContext *signon_identity_info_get_owner (
                                                 const SignonIdentityInfo *info);
-const SignonSecurityContextList *signon_identity_info_get_access_control_list (
+SignonSecurityContextList *signon_identity_info_get_access_control_list (
                                                 const SignonIdentityInfo *info);
 SignonIdentityType signon_identity_info_get_identity_type (
                                                 const SignonIdentityInfo *info);
