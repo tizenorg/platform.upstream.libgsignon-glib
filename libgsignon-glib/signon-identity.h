@@ -4,7 +4,7 @@
  * This file is part of libgsignon-glib
  *
  * Copyright (C) 2009-2010 Nokia Corporation.
- * Copyright (C) 2012-2013 Intel Corporation.
+ * Copyright (C) 2012-2014 Intel Corporation.
  *
  * Contact: Alberto Mardegan <alberto.mardegan@nokia.com>
  * Contact: Jussi Laako <jussi.laako@linux.intel.com>
@@ -141,11 +141,11 @@ void signon_identity_store_credentials_with_args(SignonIdentity *self,
                         const gchar *username,
                         const gchar *secret,
                         const gboolean store_secret,
-                        const GHashTable *methods,
+                        GHashTable *methods,
                         const gchar *caption,
                         const gchar* const *realms,
                         const SignonSecurityContext *owner,
-                        const SignonSecurityContextList *access_control_list,
+                        SignonSecurityContextList *access_control_list,
                         SignonIdentityType type,
                         SignonIdentityStoreCredentialsCb cb,
                         gpointer user_data);
@@ -172,7 +172,7 @@ void signon_identity_verify_secret(SignonIdentity *self,
 /**
  * SignonIdentityInfoCb:
  * @self: the #SignonIdentity.
- * @info: the #SignonIdentityInfo for @self.
+ * @info: (transfer none): the #SignonIdentityInfo for @self.
  * @error: a #GError if an error occurred, or %NULL otherwise.
  * @user_data: the user data that was passed when installing this callback.
  *

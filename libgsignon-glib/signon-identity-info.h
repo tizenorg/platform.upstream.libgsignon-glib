@@ -5,7 +5,7 @@
  *
  * Copyright (C) 2009-2010 Nokia Corporation.
  * Copyright (C) 2011 Canonical Ltd.
- * Copyright (C) 2012-2013 Intel Corporation.
+ * Copyright (C) 2012-2014 Intel Corporation.
  *
  * Contact: Alberto Mardegan <alberto.mardegan@canonical.com>
  * Contact: Jussi Laako <jussi.laako@linux.intel.com>
@@ -69,8 +69,7 @@ const gchar *signon_identity_info_get_username (const SignonIdentityInfo *info);
 gboolean signon_identity_info_get_storing_secret (
                                                 const SignonIdentityInfo *info);
 const gchar *signon_identity_info_get_caption (const SignonIdentityInfo *info);
-const GHashTable *signon_identity_info_get_methods (
-                                                const SignonIdentityInfo *info);
+GHashTable *signon_identity_info_get_methods (const SignonIdentityInfo *info);
 const gchar* const *signon_identity_info_get_realms (
                                                 const SignonIdentityInfo *info);
 const SignonSecurityContext *signon_identity_info_get_owner (
@@ -80,14 +79,15 @@ SignonSecurityContextList *signon_identity_info_get_access_control_list (
 SignonIdentityType signon_identity_info_get_identity_type (
                                                 const SignonIdentityInfo *info);
 
-void signon_identity_info_set_username (SignonIdentityInfo *info, const gchar *username);
+void signon_identity_info_set_username (SignonIdentityInfo *info,
+                                        const gchar *username);
 void signon_identity_info_set_secret (SignonIdentityInfo *info,
                                       const gchar *secret,
                                       gboolean store_secret);
 void signon_identity_info_set_caption (SignonIdentityInfo *info,
                                        const gchar *caption);
 void signon_identity_info_set_methods (SignonIdentityInfo *info,
-                                       const GHashTable *methods);
+                                       GHashTable *methods);
 void signon_identity_info_set_method (SignonIdentityInfo *info,
                                       const gchar *method,
                                       const gchar* const *mechanisms);
@@ -101,7 +101,7 @@ void signon_identity_info_set_owner_from_values (SignonIdentityInfo *info,
                                             const gchar *system_context,
                                             const gchar *application_context);
 void signon_identity_info_set_access_control_list (SignonIdentityInfo *info,
-                        const SignonSecurityContextList *access_control_list);
+                                SignonSecurityContextList *access_control_list);
 void signon_identity_info_access_control_list_append (SignonIdentityInfo *info,
                                     SignonSecurityContext *security_context);
 void signon_identity_info_set_identity_type (SignonIdentityInfo *info,

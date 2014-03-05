@@ -5,7 +5,7 @@
  *
  * Copyright (C) 2009-2010 Nokia Corporation.
  * Copyright (C) 2012 Canonical Ltd.
- * Copyright (C) 2012-2013 Intel Corporation.
+ * Copyright (C) 2012-2014 Intel Corporation.
  *
  * Contact: Alberto Mardegan <alberto.mardegan@canonical.com>
  * Contact: Jussi Laako <jussi.laako@linux.intel.com>
@@ -177,7 +177,7 @@ typedef void (*SignonAuthSessionProcessCb) (SignonAuthSession *self,
                                             gpointer user_data);
 SIGNON_DEPRECATED_FOR(signon_auth_session_process_async)
 void signon_auth_session_process(SignonAuthSession *self,
-                                const GHashTable *session_data,
+                                GHashTable *session_data,
                                 const gchar *mechanism,
                                 SignonAuthSessionProcessCb cb,
                                 gpointer user_data);

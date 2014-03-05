@@ -334,14 +334,17 @@ static void get_password(GMainLoop* main_loop, gint identity_id)
 static void append_acl_cb(SignonIdentity *self, SignonIdentityInfo *info, const GError *error, gpointer user_data)
 {
     AclModifyUserData *am_user_data = (AclModifyUserData *)user_data;
+    SignonIdentityInfo *new_info;
 
     if (error) {
         g_warning("%s: %s", G_STRFUNC, error->message);
         goto clean_user_data;
     }
 
-    signon_identity_info_access_control_list_append(info, am_user_data->security_context);
-    signon_identity_store_credentials_with_info(self, info, signon_store_identity_cb, am_user_data->main_loop);
+    new_info = signon_identity_info_copy(info);
+    signon_identity_info_access_control_list_append(new_info, am_user_data->security_context);
+    signon_identity_store_credentials_with_info(self, new_info, signon_store_identity_cb, am_user_data->main_loop);
+    signon_identity_info_free(new_info);
 
 clean_user_data:
     g_free(am_user_data);

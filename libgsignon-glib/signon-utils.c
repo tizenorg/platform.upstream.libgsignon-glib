@@ -5,6 +5,7 @@
  *
  * Copyright (C) 2009-2010 Nokia Corporation.
  * Copyright (C) 2012 Canonical Ltd.
+ * Copyright (C) 2014 Intel Corporation.
  *
  * Contact: Alberto Mardegan <alberto.mardegan@canonical.com>
  *
@@ -88,7 +89,7 @@ GHashTable *signon_hash_table_from_variant (GVariant *variant)
     return hash_table;
 }
 
-GVariant *signon_hash_table_to_variant (const GHashTable *hash_table)
+GVariant *signon_hash_table_to_variant (GHashTable *hash_table)
 {
     GVariantBuilder builder;
     GHashTableIter iter;
@@ -99,7 +100,7 @@ GVariant *signon_hash_table_to_variant (const GHashTable *hash_table)
 
     g_variant_builder_init (&builder, G_VARIANT_TYPE_VARDICT);
 
-    g_hash_table_iter_init (&iter, (GHashTable *)hash_table);
+    g_hash_table_iter_init (&iter, hash_table);
     while (g_hash_table_iter_next (&iter, (gpointer)&key, (gpointer)&value))
     {
         GVariant *val;

@@ -5,6 +5,7 @@
  *
  * Copyright (C) 2009-2010 Nokia Corporation.
  * Copyright (C) 2012 Canonical Ltd.
+ * Copyright (C) 2014 Intel Corporation.
  *
  * Contact: Alberto Mardegan <alberto.mardegan@canonical.com>
  *
@@ -40,6 +41,6 @@ void signon_gvalue_free (gpointer val);
 G_GNUC_INTERNAL
 GHashTable *signon_hash_table_from_variant (GVariant *variant);
 G_GNUC_INTERNAL
-GVariant *signon_hash_table_to_variant (const GHashTable *hash_table);
+GVariant *signon_hash_table_to_variant (GHashTable *hash_table);
 
 #endif //_SIGNON_UTILS_H_

@@ -5,7 +5,7 @@
  *
  * Copyright (C) 2009-2010 Nokia Corporation.
  * Copyright (C) 2011-2012 Canonical Ltd.
- * Copyright (C) 2012-2013 Intel Corporation.
+ * Copyright (C) 2012-2014 Intel Corporation.
  *
  * Contact: Alberto Mardegan <alberto.mardegan@canonical.com>
  * Contact: Jussi Laako <jussi.laako@linux.intel.com>
@@ -83,7 +83,7 @@ static void identity_methods_copy (gpointer key, gpointer value, gpointer user_d
  * Set authentication methods that are allowed to be used with this identity. 
  */
 void signon_identity_info_set_methods (SignonIdentityInfo *info,
-                                       const GHashTable *methods)
+                                       GHashTable *methods)
 {
     g_return_if_fail (info != NULL);
     g_return_if_fail (methods != NULL);
@@ -96,7 +96,7 @@ void signon_identity_info_set_methods (SignonIdentityInfo *info,
         info->methods = g_hash_table_new_full (g_str_hash, g_str_equal,
                                                g_free, (GDestroyNotify)g_strfreev);
 
-    g_hash_table_foreach ((GHashTable *)methods, identity_methods_copy, info);
+    g_hash_table_foreach (methods, identity_methods_copy, info);
 }
 
 SignonIdentityInfo *
@@ -429,7 +429,7 @@ const gchar *signon_identity_info_get_caption (const SignonIdentityInfo *info)
  * Returns: (transfer none): (element-type utf8 GStrv): the table of allowed
  * methods and mechanisms.
  */
-const GHashTable *signon_identity_info_get_methods (const SignonIdentityInfo *info)
+GHashTable *signon_identity_info_get_methods (const SignonIdentityInfo *info)
 {
     g_return_val_if_fail (info != NULL, NULL);
     return info->methods;
@@ -647,7 +647,7 @@ void signon_identity_info_set_owner_from_values (
  * Set an access control list associated with an identity. 
  */
 void signon_identity_info_set_access_control_list (SignonIdentityInfo *info,
-                           const SignonSecurityContextList *access_control_list)
+                                 SignonSecurityContextList *access_control_list)
 {
     g_return_if_fail (info != NULL);
 
