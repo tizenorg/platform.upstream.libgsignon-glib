@@ -68,11 +68,13 @@ static void identity_info_set_id (SignonIdentityInfo *info, gint id)
     info->id = id;
 }
 
-static void identity_methods_copy (gpointer key, gpointer value, gpointer user_data)
+static void identity_methods_copy (gpointer key,
+                                   gpointer value,
+                                   gpointer user_data)
 {
-    signon_identity_info_set_method ((SignonIdentityInfo *)user_data,
-                                     (const gchar *)key,
-                                     (const gchar* const *)value);
+    g_hash_table_insert ((GHashTable *) user_data,
+                         g_strdup ((const gchar *) key),
+                         g_strdupv ((gchar **) value));
 }
 
 /**
@@ -80,7 +82,7 @@ static void identity_methods_copy (gpointer key, gpointer value, gpointer user_d
  * @info: the #SignonIdentityInfo.
  * @methods: (transfer none): (element-type utf8 GStrv): methods.
  *
- * Set authentication methods that are allowed to be used with this identity. 
+ * Set authentication methods that are allowed to be used with this identity.
  */
 void signon_identity_info_set_methods (SignonIdentityInfo *info,
                                        GHashTable *methods)
@@ -90,13 +92,36 @@ void signon_identity_info_set_methods (SignonIdentityInfo *info,
 
     DEBUG("%s", G_STRFUNC);
 
-    if (info->methods)
-        g_hash_table_remove_all (info->methods);
-    else
-        info->methods = g_hash_table_new_full (g_str_hash, g_str_equal,
-                                               g_free, (GDestroyNotify)g_strfreev);
+    GHashTable *new_methods =
+        g_hash_table_new_full (g_str_hash,
+                               g_str_equal,
+                               g_free,
+                               (GDestroyNotify) g_strfreev);
+    g_hash_table_foreach (methods, identity_methods_copy, new_methods);
+    g_hash_table_unref (info->methods);
+    info->methods = new_methods;
+}
 
-    g_hash_table_foreach (methods, identity_methods_copy, info);
+/**
+ * signon_identity_info_own_methods:
+ * @info: the #SignonIdentityInfo.
+ * @methods: (transfer none): (element-type utf8 GStrv): methods.
+ *
+ * Set authentication methods that are allowed to be used with this identity.
+ *
+ * This function will just increment reference count of hash table, so
+ * it should be constructed with #g_hash_table_new_full.
+ */
+void signon_identity_info_own_methods (SignonIdentityInfo *info,
+                                       GHashTable *methods)
+{
+    g_return_if_fail (info != NULL);
+    g_return_if_fail (methods != NULL);
+
+    DEBUG("%s", G_STRFUNC);
+
+    g_hash_table_ref (methods);
+    info->methods = methods;
 }
 
 SignonIdentityInfo *
@@ -291,8 +316,10 @@ signon_identity_info_to_variant (const SignonIdentityInfo *self)
 SignonIdentityInfo *signon_identity_info_new ()
 {
     SignonIdentityInfo *info = g_slice_new0 (SignonIdentityInfo);
-    info->methods = g_hash_table_new_full (g_str_hash, g_str_equal,
-                                            g_free, (GDestroyNotify)g_strfreev);
+    info->methods = g_hash_table_new_full (g_str_hash,
+                                           g_str_equal,
+                                           g_free,
+                                           (GDestroyNotify) g_strfreev);
     info->store_secret = FALSE;
 
     return info;
@@ -312,7 +339,7 @@ void signon_identity_info_free (SignonIdentityInfo *info)
     g_free (info->secret);
     g_free (info->caption);
 
-    g_hash_table_destroy (info->methods);
+    g_hash_table_unref (info->methods);
 
     g_strfreev (info->realms);
     signon_security_context_free (info->owner);
@@ -491,6 +518,14 @@ SignonIdentityType signon_identity_info_get_identity_type (const SignonIdentityI
     return (SignonIdentityType)info->type;
 }
 
+
+static void _replace_string (gchar **dst, const gchar *src)
+{
+    gchar *new_str = g_strdup (src);
+    g_free (*dst);
+    *dst = new_str;
+}
+
 /**
  * signon_identity_info_set_username:
  * @info: the #SignonIdentityInfo.
@@ -499,13 +534,12 @@ SignonIdentityType signon_identity_info_get_identity_type (const SignonIdentityI
  * Sets the username for the identity.
  *
  */
-void signon_identity_info_set_username (SignonIdentityInfo *info, const gchar *username)
+void signon_identity_info_set_username (SignonIdentityInfo *info,
+                                        const gchar *username)
 {
     g_return_if_fail (info != NULL);
 
-    if (info->username) g_free (info->username);
-
-    info->username = g_strdup (username);
+    _replace_string (&info->username, username);
 }
 
 /**
@@ -518,14 +552,13 @@ void signon_identity_info_set_username (SignonIdentityInfo *info, const gchar *u
  * should remember it.
  *
  */
-void signon_identity_info_set_secret (SignonIdentityInfo *info, const gchar *secret,
+void signon_identity_info_set_secret (SignonIdentityInfo *info,
+                                      const gchar *secret,
                                       gboolean store_secret)
 {
     g_return_if_fail (info != NULL);
 
-    if (info->secret) g_free (info->secret);
-
-    info->secret = g_strdup (secret);
+    _replace_string (&info->secret, secret);
     info->store_secret = store_secret;
 }
 
@@ -537,13 +570,12 @@ void signon_identity_info_set_secret (SignonIdentityInfo *info, const gchar *sec
  * Sets the caption (display name) for the identity.
  *
  */
-void signon_identity_info_set_caption (SignonIdentityInfo *info, const gchar *caption)
+void signon_identity_info_set_caption (SignonIdentityInfo *info,
+                                       const gchar *caption)
 {
     g_return_if_fail (info != NULL);
 
-    if (info->caption) g_free (info->caption);
-
-    info->caption = g_strdup (caption);
+    _replace_string (&info->caption, caption);
 }
 
 /**
@@ -594,9 +626,11 @@ void signon_identity_info_set_realms (SignonIdentityInfo *info,
 {
     g_return_if_fail (info != NULL);
 
+    gchar **new_realms = g_strdupv ((gchar **) realms);
+
     if (info->realms) g_strfreev (info->realms);
 
-    info->realms = g_strdupv ((gchar **)realms);
+    info->realms = new_realms;
 }
 
 /**
@@ -611,9 +645,11 @@ void signon_identity_info_set_owner (SignonIdentityInfo *info,
 {
     g_return_if_fail (info != NULL);
 
+    SignonSecurityContext *new_owner = signon_security_context_copy (owner);
+
     if (info->owner) signon_security_context_free (info->owner);
 
-    info->owner = signon_security_context_copy (owner);
+    info->owner = new_owner;
 }
 
 /**
@@ -651,11 +687,13 @@ void signon_identity_info_set_access_control_list (SignonIdentityInfo *info,
 {
     g_return_if_fail (info != NULL);
 
+    SignonSecurityContextList *new_acl =
+        signon_security_context_list_copy (access_control_list);
+
     if (info->access_control_list)
         signon_security_context_list_free (info->access_control_list);
 
-    info->access_control_list =
-        signon_security_context_list_copy (access_control_list);
+    info->access_control_list = new_acl;
 }
 
 /**
@@ -687,5 +725,5 @@ void signon_identity_info_set_identity_type (SignonIdentityInfo *info,
                                              SignonIdentityType type)
 {
     g_return_if_fail (info != NULL);
-    info->type = (gint)type;
+    info->type = (gint) type;
 }

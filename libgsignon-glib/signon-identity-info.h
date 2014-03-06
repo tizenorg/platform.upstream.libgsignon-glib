@@ -88,6 +88,8 @@ void signon_identity_info_set_caption (SignonIdentityInfo *info,
                                        const gchar *caption);
 void signon_identity_info_set_methods (SignonIdentityInfo *info,
                                        GHashTable *methods);
+void signon_identity_info_own_methods (SignonIdentityInfo *info,
+                                       GHashTable *methods);
 void signon_identity_info_set_method (SignonIdentityInfo *info,
                                       const gchar *method,
                                       const gchar* const *mechanisms);
