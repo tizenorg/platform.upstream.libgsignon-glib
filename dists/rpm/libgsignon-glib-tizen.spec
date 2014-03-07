@@ -4,8 +4,8 @@
 Name:       libgsignon-glib
 Summary:    GLib API for the SSO framework
 Version:    2.1.0
-Release:    1
-Group:      System/Libraries
+Release:    2
+Group:      Security/Accounts
 License:    LGPL-2.1
 Source:	    %{name}-%{version}.tar.gz
 URL: https://01.org/gsso
@@ -17,7 +17,6 @@ BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  gobject-introspection
 
 %description
 %{summary}.
@@ -34,12 +33,6 @@ Requires:   %{name} = %{version}-%{release}
 
 %prep
 %setup -q -n %{name}-%{version}
-if [ -f = "gtk-doc.make" ]
-then
-rm gtk-doc.make
-fi
-touch gtk-doc.make
-autoreconf -f -i
 
 
 %build
