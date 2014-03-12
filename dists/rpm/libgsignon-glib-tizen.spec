@@ -4,8 +4,8 @@
 Name:       libgsignon-glib
 Summary:    GLib API for the SSO framework
 Version:    2.1.0
-Release:    1
-Group:      System/Libraries
+Release:    2
+Group:      Security/Accounts
 License:    LGPL-2.1
 Source:	    %{name}-%{version}.tar.gz
 URL: https://01.org/gsso
