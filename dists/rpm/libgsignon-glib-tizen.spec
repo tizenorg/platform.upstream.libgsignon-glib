@@ -7,7 +7,8 @@ Version:    2.1.0
 Release:    2
 Group:      Security/Accounts
 License:    LGPL-2.1
-Source:	    %{name}-%{version}.tar.gz
+Source:     %{name}-%{version}.tar.gz
+Source1:    %{name}.manifest
 URL: https://01.org/gsso
 Requires: dbus-1
 Requires: gsignon
@@ -24,15 +25,25 @@ BuildRequires:  pkgconfig(gio-2.0)
 
 %package devel
 Summary:    Development files for %{name}
-Group:      Development/Libraries
+Group:      SDK/Libraries
 Requires:   %{name} = %{version}-%{release}
 
 %description devel
 %{summary}.
 
 
+%package doc
+Summary:    Documentation files for %{name}
+Group:      SDK/Documentation
+Requires:   %{name}-devel = %{version}-%{release}
+
+%description doc
+%{summary}.
+
+
 %prep
 %setup -q -n %{name}-%{version}
+cp %{SOURCE1} .
 
 
 %build
@@ -53,15 +64,21 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
+%manifest %{name}.manifest
 %doc AUTHORS COPYING ChangeLog INSTALL NEWS README
 %{_libdir}/%{name}.so.*
 
 
 %files devel
 %defattr(-,root,root,-)
+%manifest %{name}.manifest
 %{_includedir}/%{name}/*.h
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
-%{_datadir}/gtk-doc/html/%{name}/*
 %{_bindir}/gsso-example
+
+
+%files doc
+%defattr(-,root,root,-)
+%{_datadir}/gtk-doc/html/%{name}/*
 
