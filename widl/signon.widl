@@ -1,0 +1,124 @@
+module SignOn {
+
+typedef Dictionary IdentityFilter;
+typedef DOMString[] MethodList;
+typedef DOMString[] MechanismList;
+typedef DOMString[] RealmList;
+typedef Dictionary ACL;
+typedef IdentityInfo[] IdentityInfoList;
+typedef unsigned long SessionState;
+
+enum SessionState {
+	"not-started",
+	"resolving-host",
+	"connecting",
+	"sending-data",
+	"waiting-reply",
+	"user-pending",
+	"ui-refreshing",
+	"process-pending",
+	"started",
+	"process-cenceling",
+	"process-done",
+	"custom"
+};
+
+enum UiPolicy {
+	"default",
+	"request-password",
+	"no-user-interaction",
+	"validation"
+};
+
+
+[Callback] void authServiceQueryMechanismsCB (DOMString method, MechanismList mechanisms);
+[Callback] void authServiceQueryIdentitiesCB (IdentityInfoList identityList);
+
+interface AuthService  : EventTarget {
+	readonly attribute MethodList methods;
+
+	void queryMethods (authServiceQueryMethodsCB callback);
+	void queryMechanisms (DOMString method, authServiceQueryMechanismsCB callback);
+	void queryIdentities (IdentityFilter filter, authServiceQueryIdentitiesCB callback);
+	void clear (authServiceClearCB callback);
+
+	attribute EventHandler onCleared;
+};
+
+
+[Callback] void authSessionQueryAvailableMechanismsCB (MechanismList mechanisms);
+[Callback] void authSessionProcessCB (SessionData authData);
+
+interface AuthSession : EventTarget {
+	readonly attribute DOMString method;
+	readonly attribute SessionState state;
+
+	void queryAvailableMechanisms (DOMString wantedMechanisms, authSessionQueryAvailableMechanismsCB callback);
+	void process (SessionData authData, DOMString mechanism, authSessionProcessCB callback);
+	void cancel ();
+
+	attribute EventHandler onStateChanged;
+};
+
+
+[Callback] void identityStoreCB (long id);
+[Callback] void userVerified (boolean valid);
+
+interface Identity {
+	static Identity newIdentity (IdentityInfo info);
+	static Identity existingIdentity (callbacks, long id);
+
+	readonly attribute long id;
+	readonly attribute IdentityInfo info;
+	readonly attribute MethodList methods;
+
+	AuthSession createSession (DOMString method);
+	void requestCredentialsUpdate (DOMString message);
+	void store (IdentityInfo info);
+	void addReference (DOMString reference);
+	void removeReference (DOMString reference);
+	void verifyUser (DOMString message);
+	void verifyUser (any params);
+	void remove ();
+	void signOut ();
+
+	attribute EventHandler onSignedOut;
+	attribute EventHandler onRemoved;
+};
+
+
+interface IdentityInfo {
+	attribute long id;
+	attribute DOMString secret;
+	attribute boolean storeSecret;
+	attribute DOMString username;
+	attribute DOMString caption;
+	attribute RealmList realms;
+	attribute DOMString owner;
+	attribute ACL accessControlList;
+	attribute long type;
+	attribute Dictionary methods;
+	readonly attribute boolean isStoringSecret;
+
+	void setMethod (DOMString method, MechanismList newMechanisms);
+	void removeMethod (DOMString method);
+};
+
+[Constructor, constructor (Dictionary initData)]
+interface SessionData : Dictionary {
+	// default properties
+	attribute DOMString username;
+	attribute DOMString secret;
+	attribute DOMString realm;
+	attribute DOMString proxy;
+	attribute DOMString timeout;
+	attribute boolean renewToken;
+
+	// UI properties
+	attribute UiPolicy uiPolicy;
+	attribute DOMString caption;
+	attribute long windowId;
+};
+
+};
+
