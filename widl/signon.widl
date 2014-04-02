@@ -1,13 +1,3 @@
-module SignOn {
-
-typedef Dictionary IdentityFilter;
-typedef DOMString[] MethodList;
-typedef DOMString[] MechanismList;
-typedef DOMString[] RealmList;
-typedef Dictionary ACL;
-typedef IdentityInfo[] IdentityInfoList;
-typedef unsigned long SessionState;
-
 enum SessionState {
 	"not-started",
 	"resolving-host",
@@ -23,7 +13,7 @@ enum SessionState {
 	"custom"
 };
 
-enum UiPolicy {
+enum UserPromptPolicy {
 	"default",
 	"request-password",
 	"no-user-interaction",
@@ -31,94 +21,94 @@ enum UiPolicy {
 };
 
 
-[Callback] void authServiceQueryMechanismsCB (DOMString method, MechanismList mechanisms);
-[Callback] void authServiceQueryIdentitiesCB (IdentityInfoList identityList);
+dictionary MechanismQueryResult {
+	DOMString method;
+	DOMString[] mechanisms;
+};
 
-interface AuthService  : EventTarget {
-	readonly attribute MethodList methods;
-
-	void queryMethods (authServiceQueryMethodsCB callback);
-	void queryMechanisms (DOMString method, authServiceQueryMechanismsCB callback);
-	void queryIdentities (IdentityFilter filter, authServiceQueryIdentitiesCB callback);
-	void clear (authServiceClearCB callback);
-
-	attribute EventHandler onCleared;
+interface AuthService : EventTarget {
+	Promise queryMethods(); // returns DOMString[]
+	Promise queryMechanisms(); // returns MechanismQueryResult
+	Promise queryIdentities(IdentityFilter filter); // returns DOMString[]
+	Promise getIdentity(long id);  // returns Identity object
+	Promise startSession(Identity identity, DOMString method);  // returns AuthSession object
+	Promise clear();
 };
 
 
-[Callback] void authSessionQueryAvailableMechanismsCB (MechanismList mechanisms);
-[Callback] void authSessionProcessCB (SessionData authData);
+dictionary SessionData {
+	// default properties
+	DOMString UserName;
+	DOMString Secret;
+	DOMString Realm;
+	DOMString NetworkProxy;
+	DOMString NetworkTimeout;
+	boolean RenewToken;
+
+	// UI properties
+	UserPromptPolicy UiPolicy;
+	DOMString Caption;
+	long WindowId;
+
+	// this dictionary is extended with method/mechanism specific items
+};
 
 interface AuthSession : EventTarget {
 	readonly attribute DOMString method;
 	readonly attribute SessionState state;
 
-	void queryAvailableMechanisms (DOMString wantedMechanisms, authSessionQueryAvailableMechanismsCB callback);
-	void process (SessionData authData, DOMString mechanism, authSessionProcessCB callback);
-	void cancel ();
+	Promise queryAvailableMechanisms(DOMString[] wantedMechanisms); // returns DOMString[]
+	Promise challenge(DOMString mechanism, SessionData authData); // returns SessionData
+	Promise cancel();
 
-	attribute EventHandler onStateChanged;
+	attribute EventHandler onstatechanged;
 };
 
 
-[Callback] void identityStoreCB (long id);
-[Callback] void userVerified (boolean valid);
+dictionary ACLEntry {
+	DOMString applicationId;
+	DOMString method;
+	DOMString[] mechanisms;
+};
 
+dictionary IdentityInfo {
+	long type;
+	DOMString username;
+	DOMString secret;
+	boolean storeSecret;
+	DOMString caption;
+	DOMString[] realms;
+	DOMString owner;
+	ACLEntry[] accessControlList;
+};
+
+
+dictionary VerifyUserPrompt {
+	DOMString forgotPasswordUrl;
+	DOMString title;
+	DOMString caption;
+	DOMString message;
+	DOMString captchaUrl;
+};
+
+
+Identity implements IdentityInfo;
+
+[Constructor(IdentityInfo info)]
 interface Identity {
-	static Identity newIdentity (IdentityInfo info);
-	static Identity existingIdentity (callbacks, long id);
-
 	readonly attribute long id;
-	readonly attribute IdentityInfo info;
-	readonly attribute MethodList methods;
-
-	AuthSession createSession (DOMString method);
-	void requestCredentialsUpdate (DOMString message);
-	void store (IdentityInfo info);
-	void addReference (DOMString reference);
-	void removeReference (DOMString reference);
-	void verifyUser (DOMString message);
-	void verifyUser (any params);
-	void remove ();
-	void signOut ();
-
-	attribute EventHandler onSignedOut;
-	attribute EventHandler onRemoved;
-};
-
-
-interface IdentityInfo {
-	attribute long id;
-	attribute DOMString secret;
-	attribute boolean storeSecret;
-	attribute DOMString username;
-	attribute DOMString caption;
-	attribute RealmList realms;
-	attribute DOMString owner;
-	attribute ACL accessControlList;
-	attribute long type;
-	attribute Dictionary methods;
 	readonly attribute boolean isStoringSecret;
 
-	void setMethod (DOMString method, MechanismList newMechanisms);
-	void removeMethod (DOMString method);
-};
+	Promise requestCredentialsUpdate(DOMString message);
+	Promise store();
+	Promise addReference(DOMString reference);
+	Promise removeReference(DOMString reference);
+	Promise verifyUser(DOMString message);
+	Promise verifyUser(VerifyUserPrompt params);
+	Promise remove();
+	Promise signOut();
 
-[Constructor, constructor (Dictionary initData)]
-interface SessionData : Dictionary {
-	// default properties
-	attribute DOMString username;
-	attribute DOMString secret;
-	attribute DOMString realm;
-	attribute DOMString proxy;
-	attribute DOMString timeout;
-	attribute boolean renewToken;
-
-	// UI properties
-	attribute UiPolicy uiPolicy;
-	attribute DOMString caption;
-	attribute long windowId;
-};
-
+	attribute EventHandler onsignedout;
+	attribute EventHandler onremoved;
 };
 
