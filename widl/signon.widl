@@ -1,3 +1,9 @@
+enum IdentityType {
+	"application",
+	"web",
+	"network"
+};
+
 enum SessionState {
 	"not-started",
 	"resolving-host",
@@ -26,10 +32,15 @@ dictionary MechanismQueryResult {
 	DOMString[] mechanisms;
 };
 
-interface AuthService : EventTarget {
+dictionary IdentityFilterItem {
+	DOMString key;
+	DOMString value;
+};
+
+interface AuthService {
 	Promise queryMethods(); // returns DOMString[]
 	Promise queryMechanisms(); // returns MechanismQueryResult
-	Promise queryIdentities(IdentityFilter filter); // returns DOMString[]
+	Promise queryIdentities(IdentityFilterItem[] filter); // returns Identity[]
 	Promise getIdentity(long id);  // returns Identity object
 	Promise startSession(Identity identity, DOMString method);  // returns AuthSession object
 	Promise clear();
@@ -66,13 +77,14 @@ interface AuthSession : EventTarget {
 
 
 dictionary ACLEntry {
-	DOMString applicationId;
+	DOMString sysContext;
+	DOMString appContext;
 	DOMString method;
 	DOMString[] mechanisms;
 };
 
 dictionary IdentityInfo {
-	long type;
+	IdentityType type;
 	DOMString username;
 	DOMString secret;
 	boolean storeSecret;
