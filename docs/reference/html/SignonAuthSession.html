@@ -1,0 +1,895 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>libgsignon-glib Reference Manual: SignonAuthSession</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="libgsignon-glib Reference Manual">
+<link rel="up" href="credential-management.html" title="Credential management">
+<link rel="prev" href="SignonSecurityContext.html" title="SignonSecurityContext">
+<link rel="next" href="libgsignon-glib-SignonError.html" title="SignonError">
+<meta name="generator" content="GTK-Doc V1.20 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="10"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description"> <span class="dim">|</span> 
+                  <a href="#SignonAuthSession.description" class="shortcut">Description</a></span><span id="nav_hierarchy"> <span class="dim">|</span> 
+                  <a href="#SignonAuthSession.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_properties"> <span class="dim">|</span> 
+                  <a href="#SignonAuthSession.properties" class="shortcut">Properties</a></span><span id="nav_signals"> <span class="dim">|</span> 
+                  <a href="#SignonAuthSession.signals" class="shortcut">Signals</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="credential-management.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="SignonSecurityContext.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="libgsignon-glib-SignonError.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="SignonAuthSession"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="SignonAuthSession.top_of_page"></a>SignonAuthSession</span></h2>
+<p>SignonAuthSession — the authentication session object</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="SignonAuthSession.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="returnvalue">SignonAuthSession</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="SignonAuthSession.html#signon-auth-session-new" title="signon_auth_session_new ()">signon_auth_session_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="returnvalue">SignonAuthSession</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="SignonAuthSession.html#signon-auth-session-new-for-identity" title="signon_auth_session_new_for_identity ()">signon_auth_session_new_for_identity</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="SignonAuthSession.html#signon-auth-session-get-method" title="signon_auth_session_get_method ()">signon_auth_session_get_method</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<span class="c_punctuation">(</span><a class="link" href="SignonAuthSession.html#SignonAuthSessionQueryAvailableMechanismsCb" title="SignonAuthSessionQueryAvailableMechanismsCb ()">*SignonAuthSessionQueryAvailableMechanismsCb</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="SignonAuthSession.html#signon-auth-session-query-available-mechanisms" title="signon_auth_session_query_available_mechanisms ()">signon_auth_session_query_available_mechanisms</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<span class="c_punctuation">(</span><a class="link" href="SignonAuthSession.html#SignonAuthSessionProcessCb" title="SignonAuthSessionProcessCb ()">*SignonAuthSessionProcessCb</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="SignonAuthSession.html#signon-auth-session-process" title="signon_auth_session_process ()">signon_auth_session_process</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="SignonAuthSession.html#signon-auth-session-process-async" title="signon_auth_session_process_async ()">signon_auth_session_process_async</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="returnvalue">GVariant</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="SignonAuthSession.html#signon-auth-session-process-finish" title="signon_auth_session_process_finish ()">signon_auth_session_process_finish</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="SignonAuthSession.html#signon-auth-session-cancel" title="signon_auth_session_cancel ()">signon_auth_session_cancel</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="SignonAuthSession.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody><tr>
+<td class="property_type">
+<a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *</td>
+<td class="property_name"><a class="link" href="SignonAuthSession.html#SignonAuthSession--identity" title="The “identity” property">identity</a></td>
+<td class="property_flags">Read / Write / Construct Only</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="SignonAuthSession.signals"></a><h2>Signals</h2>
+<div class="informaltable"><table border="0">
+<colgroup>
+<col width="150px" class="signals_return">
+<col width="300px" class="signals_name">
+<col width="200px" class="signals_flags">
+</colgroup>
+<tbody><tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="SignonAuthSession.html#SignonAuthSession-state-changed" title="The “state-changed” signal">state-changed</a></td>
+<td class="signal_flags"><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-ACTION:CAPS">Action</a></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="SignonAuthSession.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="SignonAuthSession.html#SIGNON-SESSION-DATA-USERNAME:CAPS" title="SIGNON_SESSION_DATA_USERNAME">SIGNON_SESSION_DATA_USERNAME</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="SignonAuthSession.html#SIGNON-SESSION-DATA-SECRET:CAPS" title="SIGNON_SESSION_DATA_SECRET">SIGNON_SESSION_DATA_SECRET</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="SignonAuthSession.html#SIGNON-SESSION-DATA-REALM:CAPS" title="SIGNON_SESSION_DATA_REALM">SIGNON_SESSION_DATA_REALM</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="SignonAuthSession.html#SIGNON-SESSION-DATA-PROXY:CAPS" title="SIGNON_SESSION_DATA_PROXY">SIGNON_SESSION_DATA_PROXY</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="SignonAuthSession.html#SignonSessionDataUiPolicy" title="enum SignonSessionDataUiPolicy">SignonSessionDataUiPolicy</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="SignonAuthSession.html#SIGNON-SESSION-DATA-UI-POLICY:CAPS" title="SIGNON_SESSION_DATA_UI_POLICY">SIGNON_SESSION_DATA_UI_POLICY</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="SignonAuthSession.html#SIGNON-SESSION-DATA-CAPTION:CAPS" title="SIGNON_SESSION_DATA_CAPTION">SIGNON_SESSION_DATA_CAPTION</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="SignonAuthSession.html#SIGNON-SESSION-DATA-TIMEOUT:CAPS" title="SIGNON_SESSION_DATA_TIMEOUT">SIGNON_SESSION_DATA_TIMEOUT</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="SignonAuthSession.html#SIGNON-SESSION-DATA-WINDOW-ID:CAPS" title="SIGNON_SESSION_DATA_WINDOW_ID">SIGNON_SESSION_DATA_WINDOW_ID</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="SignonAuthSession.html#SIGNON-SESSION-DATA-RENEW-TOKEN:CAPS" title="SIGNON_SESSION_DATA_RENEW_TOKEN">SIGNON_SESSION_DATA_RENEW_TOKEN</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="SignonAuthSession.html#SignonAuthSession-struct" title="struct SignonAuthSession">SignonAuthSession</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="SignonAuthSession.html#SignonAuthSessionClass" title="struct SignonAuthSessionClass">SignonAuthSessionClass</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="SignonAuthSession.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+    <span class="lineart">╰──</span> SignonAuthSession
+</pre>
+</div>
+<div class="refsect1">
+<a name="SignonAuthSession.description"></a><h2>Description</h2>
+<p>The <a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a> object is responsible for handling the client
+authentication. <a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a> objects should be created from existing
+identities (via <a class="link" href="SignonIdentity.html#signon-identity-create-session" title="signon_identity_create_session ()"><code class="function">signon_identity_create_session()</code></a> or by passing a non-NULL identity
+to <a class="link" href="SignonAuthSession.html#signon-auth-session-new" title="signon_auth_session_new ()"><code class="function">signon_auth_session_new()</code></a>).</p>
+</div>
+<div class="refsect1">
+<a name="SignonAuthSession.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="signon-auth-session-new"></a><h3>signon_auth_session_new ()</h3>
+<pre class="programlisting"><a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="returnvalue">SignonAuthSession</span></a> *
+signon_auth_session_new (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> id</code></em>,
+                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *method_name</code></em>,
+                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **err</code></em>);</pre>
+<p>Creates a new <a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a>, which can be used to authenticate using
+the specified method.</p>
+<div class="refsect3">
+<a name="id-1.3.3.6.9.2.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>id</p></td>
+<td class="parameter_description"><p>the id of the <a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> to be used. Can be 0, if this session is
+not bound to any stored identity.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>method_name</p></td>
+<td class="parameter_description"><p>the name of the authentication method to be used.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>err</p></td>
+<td class="parameter_description"><p>a pointer to a location which will contain the error, in case this
+function fails.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.6.9.2.6"></a><h4>Returns</h4>
+<p> a new <a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a>.</p>
+<p></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-auth-session-new-for-identity"></a><h3>signon_auth_session_new_for_identity ()</h3>
+<pre class="programlisting"><a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="returnvalue">SignonAuthSession</span></a> *
+signon_auth_session_new_for_identity (<em class="parameter"><code><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *identity</code></em>,
+                                      <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *method_name</code></em>,
+                                      <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **err</code></em>);</pre>
+<p>Creates a new <a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a>, which can be used to authenticate using
+the specified method.</p>
+<div class="refsect3">
+<a name="id-1.3.3.6.9.3.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>identity</p></td>
+<td class="parameter_description"><p><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> parent object.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>method_name</p></td>
+<td class="parameter_description"><p>the name of the authentication method to be used.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>err</p></td>
+<td class="parameter_description"><p>a pointer to a location which will contain the error, in case this
+function fails.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.6.9.3.6"></a><h4>Returns</h4>
+<p> a new <a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a>.</p>
+<p></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-auth-session-get-method"></a><h3>signon_auth_session_get_method ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+signon_auth_session_get_method (<em class="parameter"><code><a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a> *self</code></em>);</pre>
+<p>Get the current authentication method.</p>
+<div class="refsect3">
+<a name="id-1.3.3.6.9.4.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.6.9.4.6"></a><h4>Returns</h4>
+<p> the authentication method being used, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> on failure.</p>
+<p></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="SignonAuthSessionQueryAvailableMechanismsCb"></a><h3>SignonAuthSessionQueryAvailableMechanismsCb ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+<span class="c_punctuation">(</span>*SignonAuthSessionQueryAvailableMechanismsCb<span class="c_punctuation">)</span>
+                               (<em class="parameter"><code><a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a> *self</code></em>,
+                                <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> **mechanisms</code></em>,
+                                <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> *error</code></em>,
+                                <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+<p>Callback to be passed to <a class="link" href="SignonAuthSession.html#signon-auth-session-query-available-mechanisms" title="signon_auth_session_query_available_mechanisms ()"><code class="function">signon_auth_session_query_available_mechanisms()</code></a>.</p>
+<div class="refsect3">
+<a name="id-1.3.3.6.9.5.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>mechanisms</p></td>
+<td class="parameter_description"><p> list of available mechanisms. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Override the parsed C type with given type."><span class="acronym">type</span></acronym> GStrv]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> if an error occurred, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> otherwise.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>the user data that was passed when installing this callback.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-auth-session-query-available-mechanisms"></a><h3>signon_auth_session_query_available_mechanisms ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+signon_auth_session_query_available_mechanisms
+                               (<em class="parameter"><code><a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a> *self</code></em>,
+                                <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> **wanted_mechanisms</code></em>,
+                                <em class="parameter"><code><a class="link" href="SignonAuthSession.html#SignonAuthSessionQueryAvailableMechanismsCb" title="SignonAuthSessionQueryAvailableMechanismsCb ()"><span class="type">SignonAuthSessionQueryAvailableMechanismsCb</span></a> cb</code></em>,
+                                <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+<div class="warning"><p><code class="literal">signon_auth_session_query_available_mechanisms</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Queries the mechanisms available for this authentication session. The result
+will be the intersection between <em class="parameter"><code>wanted_mechanisms</code></em>
+ and the mechanisms
+supported by the authentication plugin (and allowed by the <a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> that this
+session belongs to).</p>
+<div class="refsect3">
+<a name="id-1.3.3.6.9.6.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>wanted_mechanisms</p></td>
+<td class="parameter_description"><p>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>-terminated list of mechanisms supported by the client.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>cb</p></td>
+<td class="parameter_description"><p> a callback which will be called with the result. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="The callback is valid until first called."><span class="acronym">scope async</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data to be passed to the callback.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="SignonAuthSessionProcessCb"></a><h3>SignonAuthSessionProcessCb ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+<span class="c_punctuation">(</span>*SignonAuthSessionProcessCb<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a> *self</code></em>,
+                               <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *session_data</code></em>,
+                               <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> *error</code></em>,
+                               <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+<div class="warning"><p><code class="literal">SignonAuthSessionProcessCb</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>This callback is invoked when the authentication plugin delivers the result
+of the <a class="link" href="SignonAuthSession.html#signon-auth-session-process" title="signon_auth_session_process ()"><code class="function">signon_auth_session_process()</code></a> operation.</p>
+<div class="refsect3">
+<a name="id-1.3.3.6.9.7.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>session_data</p></td>
+<td class="parameter_description"><p> a dictionary with
+the response. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8 GValue]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> if an error occurred, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> otherwise.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>the user data that was passed when installing this callback.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-auth-session-process"></a><h3>signon_auth_session_process ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+signon_auth_session_process (<em class="parameter"><code><a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a> *self</code></em>,
+                             <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *session_data</code></em>,
+                             <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *mechanism</code></em>,
+                             <em class="parameter"><code><a class="link" href="SignonAuthSession.html#SignonAuthSessionProcessCb" title="SignonAuthSessionProcessCb ()"><span class="type">SignonAuthSessionProcessCb</span></a> cb</code></em>,
+                             <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">signon_auth_session_process</code> has been deprecated since version 1.8 and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="SignonAuthSession.html#signon-auth-session-process-async" title="signon_auth_session_process_async ()"><code class="function">signon_auth_session_process_async()</code></a> instead.</p>
+</div>
+<p>Performs one step of the authentication process. If the <a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> that
+this session belongs to contains a username and a password, they will be also 
+passed to the authentication plugin, otherwise they should be set directly in
+<em class="parameter"><code>session_data</code></em>
+.
+<em class="parameter"><code>session_data</code></em>
+ should be used to add additional authentication parameters to the
+session, or to override the parameters otherwise taken from the identity.</p>
+<div class="refsect3">
+<a name="id-1.3.3.6.9.8.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>session_data</p></td>
+<td class="parameter_description"><p> a dictionary of parameters. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8 GValue]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>mechanism</p></td>
+<td class="parameter_description"><p>the authentication mechanism to be used.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>cb</p></td>
+<td class="parameter_description"><p> a callback which will be called with the result. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="The callback is valid until first called."><span class="acronym">scope async</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data to be passed to the callback.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-auth-session-process-async"></a><h3>signon_auth_session_process_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+signon_auth_session_process_async (<em class="parameter"><code><a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a> *self</code></em>,
+                                   <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> *session_data</code></em>,
+                                   <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *mechanism</code></em>,
+                                   <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> *cancellable</code></em>,
+                                   <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> callback</code></em>,
+                                   <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+<p>Performs one step of the authentication process.
+<em class="parameter"><code>session_data</code></em>
+ should be used to add additional authentication parameters to the
+session.</p>
+<p>What specific parameters should be used can be found from authentication plugins'
+documentation (look for parameters that are expected in <a href="http://gsignon-docs.accounts-sso.googlecode.com/git/gsignond/GSignondPlugin.html#gsignond-plugin-request-initial"><code class="function">gsignond_plugin_request_initial()</code></a>
+for the first step, and parameters that are expected in <a href="http://gsignon-docs.accounts-sso.googlecode.com/git/gsignond/GSignondPlugin.html#gsignond-plugin-request"><code class="function">gsignond_plugin_request()</code></a> for
+the subsequent steps). See, for example, <a href="http://gsignon-docs.accounts-sso.googlecode.com/git/gsignond/GSignondPasswordPlugin.html"><span class="type">GSignondPasswordPlugin</span></a> and <a href="http://gsignon-docs.accounts-sso.googlecode.com/git/gsignond/GSignondDigestPlugin.html"><span class="type">GSignondDigestPlugin</span></a>.</p>
+<p>If the <a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> that this session belongs to contains a username and a password, 
+the daemon will pass them to the authentication plugin, otherwise they should be set directly in
+<em class="parameter"><code>session_data</code></em>
+. The daemon also passes a list of identity's allowed realms to the plugin,
+and they cannot be overriden.</p>
+<div class="refsect3">
+<a name="id-1.3.3.6.9.9.7"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>session_data</p></td>
+<td class="parameter_description"><p> a dictionary of parameters. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>mechanism</p></td>
+<td class="parameter_description"><p>the authentication mechanism to be used.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>cancellable</p></td>
+<td class="parameter_description"><p> optional <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> object, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> to ignore. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>callback</p></td>
+<td class="parameter_description"><p> a callback which will be called when the
+authentication reply is available. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="The callback is valid until first called."><span class="acronym">scope async</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data to be passed to the callback.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since 1.8</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-auth-session-process-finish"></a><h3>signon_auth_session_process_finish ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="returnvalue">GVariant</span></a> *
+signon_auth_session_process_finish (<em class="parameter"><code><a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a> *self</code></em>,
+                                    <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> *res</code></em>,
+                                    <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>Collect the result of the <a class="link" href="SignonAuthSession.html#signon-auth-session-process-async" title="signon_auth_session_process_async ()"><code class="function">signon_auth_session_process_async()</code></a> operation.</p>
+<div class="refsect3">
+<a name="id-1.3.3.6.9.10.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>res</p></td>
+<td class="parameter_description"><p>A <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> obtained from the <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> passed to
+<a class="link" href="SignonAuthSession.html#signon-auth-session-process-async" title="signon_auth_session_process_async ()"><code class="function">signon_auth_session_process_async()</code></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>return location for error, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.6.9.10.6"></a><h4>Returns</h4>
+<p> a <a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> of type <a href="http://library.gnome.org/devel/glib/unstable/glib-GVariantType.html#G-VARIANT-TYPE-VARDICT:CAPS"><code class="literal">G_VARIANT_TYPE_VARDICT</code></a> containing the
+authentication reply. As with <a class="link" href="SignonAuthSession.html#signon-auth-session-process-async" title="signon_auth_session_process_async ()"><code class="function">signon_auth_session_process_async()</code></a>, specific
+parameters contained in the <a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> can be found from plugins' documentation:
+<a href="http://gsignon-docs.accounts-sso.googlecode.com/git/gsignond/GSignondPlugin.html#GSignondPlugin-response-final"><span class="type">“response-final”</span></a> for the final response, and <a href="http://gsignon-docs.accounts-sso.googlecode.com/git/gsignond/GSignondPlugin.html#GSignondPlugin-response"><span class="type">“response”</span></a>
+for the intermediate responses. See, for example, <a href="http://gsignon-docs.accounts-sso.googlecode.com/git/gsignond/GSignondPasswordPlugin.html"><span class="type">GSignondPasswordPlugin</span></a>
+and <a href="http://gsignon-docs.accounts-sso.googlecode.com/git/gsignond/GSignondDigestPlugin.html"><span class="type">GSignondDigestPlugin</span></a>.</p>
+<p></p>
+</div>
+<p class="since">Since 1.8</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-auth-session-cancel"></a><h3>signon_auth_session_cancel ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+signon_auth_session_cancel (<em class="parameter"><code><a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a> *self</code></em>);</pre>
+<p>Cancel the authentication session.</p>
+<div class="refsect3">
+<a name="id-1.3.3.6.9.11.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="SignonAuthSession.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="SIGNON-SESSION-DATA-USERNAME:CAPS"></a><h3>SIGNON_SESSION_DATA_USERNAME</h3>
+<pre class="programlisting">#define SIGNON_SESSION_DATA_USERNAME      "UserName"
+</pre>
+<p>Username.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="SIGNON-SESSION-DATA-SECRET:CAPS"></a><h3>SIGNON_SESSION_DATA_SECRET</h3>
+<pre class="programlisting">#define SIGNON_SESSION_DATA_SECRET        "Secret"
+</pre>
+<p>Secret.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="SIGNON-SESSION-DATA-REALM:CAPS"></a><h3>SIGNON_SESSION_DATA_REALM</h3>
+<pre class="programlisting">#define SIGNON_SESSION_DATA_REALM         "Realm"
+</pre>
+<p>Realm.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="SIGNON-SESSION-DATA-PROXY:CAPS"></a><h3>SIGNON_SESSION_DATA_PROXY</h3>
+<pre class="programlisting">#define SIGNON_SESSION_DATA_PROXY         "NetworkProxy"
+</pre>
+<p>Proxy.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="SignonSessionDataUiPolicy"></a><h3>enum SignonSessionDataUiPolicy</h3>
+<p>UI policy for the signon process, passed to the UI plugin.</p>
+<div class="refsect3">
+<a name="id-1.3.3.6.10.6.4"></a><h4>Members</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-POLICY-DEFAULT:CAPS"></a>SIGNON_POLICY_DEFAULT</p></td>
+<td class="enum_member_description">
+<p>The plugin can decide when to show UI.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-POLICY-REQUEST-PASSWORD:CAPS"></a>SIGNON_POLICY_REQUEST_PASSWORD</p></td>
+<td class="enum_member_description">
+<p>Force the user to enter the password.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-POLICY-NO-USER-INTERACTION:CAPS"></a>SIGNON_POLICY_NO_USER_INTERACTION</p></td>
+<td class="enum_member_description">
+<p>No UI elements will be shown to the user.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-POLICY-VALIDATION:CAPS"></a>SIGNON_POLICY_VALIDATION</p></td>
+<td class="enum_member_description">
+<p>UI elements can be shown to the user only when
+CAPTCHA-like security measures are required.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="SIGNON-SESSION-DATA-UI-POLICY:CAPS"></a><h3>SIGNON_SESSION_DATA_UI_POLICY</h3>
+<pre class="programlisting">#define SIGNON_SESSION_DATA_UI_POLICY     "UiPolicy"
+</pre>
+<p>Policy for the signon process.</p>
+<div class="refsect3">
+<a name="id-1.3.3.6.10.7.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>see_also</p></td>
+<td class="parameter_description"><p><a class="link" href="SignonAuthSession.html#SignonSessionDataUiPolicy" title="enum SignonSessionDataUiPolicy"><span class="type">SignonSessionDataUiPolicy</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="SIGNON-SESSION-DATA-CAPTION:CAPS"></a><h3>SIGNON_SESSION_DATA_CAPTION</h3>
+<pre class="programlisting">#define SIGNON_SESSION_DATA_CAPTION       "Caption"
+</pre>
+<p>Caption for the UI dialog.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="SIGNON-SESSION-DATA-TIMEOUT:CAPS"></a><h3>SIGNON_SESSION_DATA_TIMEOUT</h3>
+<pre class="programlisting">#define SIGNON_SESSION_DATA_TIMEOUT       "NetworkTimeout"
+</pre>
+<p>Network timeout, in milliseconds (uint32).</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="SIGNON-SESSION-DATA-WINDOW-ID:CAPS"></a><h3>SIGNON_SESSION_DATA_WINDOW_ID</h3>
+<pre class="programlisting">#define SIGNON_SESSION_DATA_WINDOW_ID     "WindowId"
+</pre>
+<p>Platform-specific window id (for dialog transiency) - uint32.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="SIGNON-SESSION-DATA-RENEW-TOKEN:CAPS"></a><h3>SIGNON_SESSION_DATA_RENEW_TOKEN</h3>
+<pre class="programlisting">#define SIGNON_SESSION_DATA_RENEW_TOKEN   "RenewToken"
+</pre>
+<p>Requests the signon plugin to obtain a new token (boolean).</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="SignonAuthSession-struct"></a><h3>struct SignonAuthSession</h3>
+<pre class="programlisting">struct SignonAuthSession;</pre>
+<p>Opaque struct. Use the accessor functions below.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="SignonAuthSessionClass"></a><h3>struct SignonAuthSessionClass</h3>
+<pre class="programlisting">struct SignonAuthSessionClass {
+    GObjectClass parent;
+};
+</pre>
+<p>Opaque struct. Use the accessor functions below.</p>
+<div class="refsect3">
+<a name="id-1.3.3.6.10.13.5"></a><h4>Members</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody><tr>
+<td class="struct_member_name"><p><a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObjectClass"><span class="type">GObjectClass</span></a> <em class="structfield"><code><a name="SignonAuthSessionClass.parent"></a>parent</code></em>;</p></td>
+<td class="struct_member_description"><p>reference to the parent class</p></td>
+<td class="struct_member_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="SignonAuthSession.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="SignonAuthSession--identity"></a><h3>The <code class="literal">“identity”</code> property</h3>
+<pre class="programlisting">  “identity”                 <a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *</pre>
+<p>Identity Object construct parameter.</p>
+<p>Flags: Read / Write / Construct Only</p>
+</div>
+</div>
+<div class="refsect1">
+<a name="SignonAuthSession.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2">
+<a name="SignonAuthSession-state-changed"></a><h3>The <code class="literal">“state-changed”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a> *auth_session,
+               <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a>               state,
+               <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>             *message,
+               <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>           user_data)</pre>
+<p>Emitted when the state of the <a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a> changes. The state change
+is initiated by <a href="http://gsignon-docs.accounts-sso.googlecode.com/git/gsignond/GSignondPlugin.html"><span class="type">GSignondPlugin</span></a> via <a href="http://gsignon-docs.accounts-sso.googlecode.com/git/gsignond/GSignondPlugin.html#GSignondPlugin-status-changed"><span class="type">“status-changed”</span></a> signal.</p>
+<div class="refsect3">
+<a name="id-1.3.3.6.12.2.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>auth_session</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>state</p></td>
+<td class="parameter_description"><p>the current state of the <a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>message</p></td>
+<td class="parameter_description"><p>the message associated with the state change</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-ACTION:CAPS">Action</a></p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.20</div>
+</body>
+</html>

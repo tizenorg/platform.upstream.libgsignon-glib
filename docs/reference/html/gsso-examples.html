@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>libgsignon-glib Reference Manual: gSSO usage examples</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="libgsignon-glib Reference Manual">
+<link rel="up" href="libgsignon-glib-overview.html" title="Part I. gSSO Overview">
+<link rel="prev" href="gsso-intro.html" title="gSSO introduction">
+<link rel="next" href="libgsignon-glib-objects.html" title="Part II. libgsignon-glib Objects">
+<meta name="generator" content="GTK-Doc V1.20 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="10"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts"></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="libgsignon-glib-overview.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="gsso-intro.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="libgsignon-glib-objects.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="gsso-examples"></a><div class="titlepage"></div>
+<div class="refsect1">
+<a name="intro"></a><h2>Introduction</h2>
+<p>
+        libgsignond-glib comes with an example application <span class="application">gsso-example</span>
+        that demonstrates the most common use cases: listing available authentication methods and
+        their mechanisms, creating and removing identities and performing authentication
+        sessions.
+    </p>
+<p>
+        Before running the example application, make sure that gSSO daemon and
+        gSSO UI (that is appropriate for your system) are installed and configured
+        correctly.
+    </p>
+<p>
+        The source code for the example application is available at
+        <a class="ulink" href="http://code.google.com/p/accounts-sso/source/browse/examples/gsso-example.c?repo=libgsignon-glib&amp;name=master" target="_top">
+            http://code.google.com/p/accounts-sso/source/browse/examples/gsso-example.c?repo=libgsignon-glib&amp;name=master</a>
+     </p>
+<p>
+         The full list of available <span class="application">gsso-example</span> options can be 
+         obtained with <strong class="userinput"><code>gsso-example --help-all</code></strong>
+     </p>
+</div>
+<div class="refsect1">
+<a name="id-1.2.3.3"></a><h2>Authentication methods and mechanisms</h2>
+<p>
+        The list of available authentication methods can be obtained with
+        <strong class="userinput"><code>--query-methods</code></strong>:
+        </p>
+<div class="literallayout"><p><code class="computeroutput"><br>
+<strong class="userinput"><code>&gt; gsso-example --query-methods</code></strong>:<br>
+Available authentication methods:<br>
+        password<br>
+        oauth<br>
+        digest<br>
+        </code></p></div>
+<p>
+     </p>
+<p>
+         For each of the available authentication methods it's possible to query
+         available authentication mechanisms with 
+         <strong class="userinput"><code>gsso-example --query-mechanisms=method</code></strong>:
+        </p>
+<div class="literallayout"><p><code class="computeroutput"><br>
+<strong class="userinput"><code>&gt; gsso-example --query-mechanisms=oauth</code></strong><br>
+Available authentication mechanisms for method oauth:<br>
+        oauth1<br>
+        oauth2<br>
+        </code></p></div>
+<p>
+     </p>
+</div>
+<div class="refsect1">
+<a name="id-1.2.3.4"></a><h2>Identity management</h2>
+<p>
+        The list of stored identities that the gsso-example application is allowed
+        to use can be obtained with <strong class="userinput"><code>gsso-example --query-identities</code></strong>:
+        </p>
+<div class="literallayout"><p><code class="computeroutput"><br>
+<strong class="userinput"><code>&gt; gsso-example --query-identities</code></strong><br>
+Available identities:<br>
+        id=27 caption='My test identity' ACL: (*:*)<br>
+        id=28 caption='Another test identity' ACL: (/usr/bin/gsso-example:)<br>
+        </code></p></div>
+<p>
+    </p>
+<p>
+        To create an identity, use <strong class="userinput"><code>--create-identity</code></strong> option
+        with identity caption (user-readable name) and <strong class="userinput"><code>--identity-method</code></strong>
+        with the authentication method that the identity will be using.
+        </p>
+<div class="literallayout"><p><code class="computeroutput"><br>
+<strong class="userinput"><code>&gt; gsso-example --create-identity="My test identity" --identity-method=password</code></strong><br>
+Identity stored with id 28            <br>
+        </code></p></div>
+<p>
+    </p>
+<p>
+        Depending on the identity method, you may also need to add a list of comma-separated 
+        realms that are allowed to be used with an identity. For example, the oauth method 
+        requires a list of domains that the OAuth authentication plugin is allowed to contact:
+        </p>
+<div class="literallayout"><p><code class="computeroutput"><br>
+<strong class="userinput"><code>&gt; gsso-example --create-identity="Test Google identity" --identity-method=oauth --identity-realms=google.com</code></strong><br>
+Identity stored with id 29            <br>
+        </code></p></div>
+<p>
+    </p>
+<p>
+        To remove an identity, use <strong class="userinput"><code>--remove-identity</code></strong> option
+        with identity id:
+        </p>
+<div class="literallayout"><p><code class="computeroutput"><br>
+<strong class="userinput"><code>&gt; gsso-example --remove-identity=28</code></strong><br>
+Identity removed<br>
+        </code></p></div>
+<p>
+    </p>
+<p>
+        To add security context to identity's Access Control List, use <strong class="userinput"><code>--add-context</code></strong> option
+        with identity id:
+        </p>
+<div class="literallayout"><p><code class="computeroutput"><br>
+<strong class="userinput"><code>&gt; gsso-example --add-context=28 --system-context=* --application-context=*</code></strong><br>
+Identity stored with id 28<br>
+        </code></p></div>
+<p>
+    </p>
+<p>
+        To remove security context from identity's Access Control List, use <strong class="userinput"><code>--remove-context=</code></strong> option
+        with identity id:
+        </p>
+<div class="literallayout"><p><code class="computeroutput"><br>
+<strong class="userinput"><code>&gt; gsso-example --remove-context=28 --system-context=* --application-context=*</code></strong><br>
+Identity stored with id 28<br>
+        </code></p></div>
+<p>
+    </p>
+</div>
+<div class="refsect1">
+<a name="id-1.2.3.5"></a><h2>Using 'password' authentication method</h2>
+<p>
+        'password' authentication simply returns to the application the username
+        and the password associated with an identity. If they haven't been stored
+        in gSSO secret database, they're asked from the user through gSSO UI.
+    </p>
+<p>
+        To use the method, first create an identity with authentication method
+        set to 'password' (as shown above), note its identitiy id and then run:
+        </p>
+<div class="literallayout"><p><code class="computeroutput"><br>
+<strong class="userinput"><code>&gt; gsso-example --get-password=27</code></strong><br>
+Geting password<br>
+Got response: {'UserName': &lt;'megauser'&gt;, 'Secret': &lt;'megapassword'&gt;}<br>
+        </code></p></div>
+<p>
+    </p>
+</div>
+<div class="refsect1">
+<a name="id-1.2.3.6"></a><h2>Using 'oauth' authentication method</h2>
+<p>
+        'oauth' authentication method is used to obtain an OAuth1 or OAuth2 
+        authentication token from a remote service over HTTP. An application
+        needs to supply a few service-specific parameters when initiating the
+        authentication. gSSO example application supports obtaining an oauth
+        token from Google service (google-specific parameters are hardcoded
+        into the app source code).
+    </p>
+<p>
+        Obtaining an OAuth token may also include authorization of the application
+        by the user, which is done through user interaction with the service webpages
+        that are shown by gSSO UI. From the application point of view this authorization
+        happens completely transparently behind the scenes.
+    </p>
+<p>
+        Before trying the example, if you're behind a proxy, and are using 
+        the Gtk-based gSSO UI, make sure that your GNOME proxy settings are
+        correctly configured, either via GNOME UI, or via command line:
+        </p>
+<div class="literallayout"><p><code class="computeroutput"><br>
+<strong class="userinput"><code>&gt; gsettings list-recursively org.gnome.system.proxy</code></strong><br>
+        </code></p></div>
+<p>
+        To set the proxy, use:
+        </p>
+<div class="literallayout"><p><code class="computeroutput"><br>
+<strong class="userinput"><code>&gt; gsettings set org.gnome.system.proxy mode 'manual'<br>
+&gt; gsettings set org.gnome.system.proxy.http port 8080<br>
+&gt; gsettings set org.gnome.system.proxy.http host 'myproxy.domain.lan'</code></strong><br>
+        </code></p></div>
+<p>
+        To disable the proxy, use
+        </p>
+<div class="literallayout"><p><code class="computeroutput"><br>
+<strong class="userinput"><code>&gt; gsettings set org.gnome.system.proxy mode 'none'</code></strong><br>
+        </code></p></div>
+<p>
+        See all available configurations keys here:
+        <a class="ulink" href="http://developer.gnome.org/ProxyConfiguration/" target="_top">
+        http://developer.gnome.org/ProxyConfiguration/</a>
+    </p>
+<p>
+        You would also need a client identifier and key from Google. Instructions
+        about how to get them are available at 
+        <a class="ulink" href="https://developers.google.com/console/help/#generatingoauth2" target="_top">https://developers.google.com/console/help/#generatingoauth2</a>
+    </p>
+<p>
+        Once the above are settled, create an identity with 'oauth' method
+        (as shown above) and issue:
+        </p>
+<div class="literallayout"><p><code class="computeroutput"><br>
+<strong class="userinput"><code>&gt; gsso-example --get-google-token=12 --client-id=xxxxxxx.apps.googleusercontent.com --client-secret=yyyyyyyyyyyyy</code></strong><br>
+Geting token<br>
+Got response: {'Scope': &lt;'email'&gt;, 'AccessToken': &lt;'tokenvalue'&gt;, <br>
+               'TokenParameters': &lt;@a{sv} {}&gt;, 'TokenType': &lt;'Bearer'&gt;, <br>
+               'RefreshToken': &lt;'refreshtokenvalue'&gt;, 'Duration': &lt;int64 3600&gt;, <br>
+               'Timestamp': &lt;int64 1377707888&gt;}                <br>
+        </code></p></div>
+<p>
+    </p>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.20</div>
+</body>
+</html>

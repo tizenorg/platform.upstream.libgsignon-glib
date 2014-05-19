@@ -1,0 +1,1065 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>libgsignon-glib Reference Manual: SignonIdentityInfo</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="libgsignon-glib Reference Manual">
+<link rel="up" href="credential-management.html" title="Credential management">
+<link rel="prev" href="SignonIdentity.html" title="SignonIdentity">
+<link rel="next" href="SignonSecurityContext.html" title="SignonSecurityContext">
+<meta name="generator" content="GTK-Doc V1.20 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="10"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description"> <span class="dim">|</span> 
+                  <a href="#SignonIdentityInfo.description" class="shortcut">Description</a></span><span id="nav_hierarchy"> <span class="dim">|</span> 
+                  <a href="#SignonIdentityInfo.object-hierarchy" class="shortcut">Object Hierarchy</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="credential-management.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="SignonIdentity.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="SignonSecurityContext.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="SignonIdentityInfo"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="SignonIdentityInfo.top_of_page"></a>SignonIdentityInfo</span></h2>
+<p>SignonIdentityInfo — data contained in a SignonIdentity.</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="SignonIdentityInfo.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="returnvalue">SignonIdentityInfo</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-new" title="signon_identity_info_new ()">signon_identity_info_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-free" title="signon_identity_info_free ()">signon_identity_info_free</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="returnvalue">SignonIdentityInfo</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-copy" title="signon_identity_info_copy ()">signon_identity_info_copy</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-get-id" title="signon_identity_info_get_id ()">signon_identity_info_get_id</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-get-username" title="signon_identity_info_get_username ()">signon_identity_info_get_username</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-get-storing-secret" title="signon_identity_info_get_storing_secret ()">signon_identity_info_get_storing_secret</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-get-caption" title="signon_identity_info_get_caption ()">signon_identity_info_get_caption</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="returnvalue">GHashTable</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-get-methods" title="signon_identity_info_get_methods ()">signon_identity_info_get_methods</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> * const *
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-get-realms" title="signon_identity_info_get_realms ()">signon_identity_info_get_realms</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="returnvalue">SignonSecurityContext</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-get-owner" title="signon_identity_info_get_owner ()">signon_identity_info_get_owner</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="SignonSecurityContext.html#SignonSecurityContextList" title="SignonSecurityContextList"><span class="returnvalue">SignonSecurityContextList</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-get-access-control-list" title="signon_identity_info_get_access_control_list ()">signon_identity_info_get_access_control_list</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="SignonIdentityInfo.html#SignonIdentityType" title="enum SignonIdentityType"><span class="returnvalue">SignonIdentityType</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-get-identity-type" title="signon_identity_info_get_identity_type ()">signon_identity_info_get_identity_type</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-set-username" title="signon_identity_info_set_username ()">signon_identity_info_set_username</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-set-secret" title="signon_identity_info_set_secret ()">signon_identity_info_set_secret</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-set-caption" title="signon_identity_info_set_caption ()">signon_identity_info_set_caption</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-set-methods" title="signon_identity_info_set_methods ()">signon_identity_info_set_methods</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-own-methods" title="signon_identity_info_own_methods ()">signon_identity_info_own_methods</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-set-method" title="signon_identity_info_set_method ()">signon_identity_info_set_method</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-remove-method" title="signon_identity_info_remove_method ()">signon_identity_info_remove_method</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-set-realms" title="signon_identity_info_set_realms ()">signon_identity_info_set_realms</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-set-owner" title="signon_identity_info_set_owner ()">signon_identity_info_set_owner</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-set-owner-from-values" title="signon_identity_info_set_owner_from_values ()">signon_identity_info_set_owner_from_values</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-set-access-control-list" title="signon_identity_info_set_access_control_list ()">signon_identity_info_set_access_control_list</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-access-control-list-append" title="signon_identity_info_access_control_list_append ()">signon_identity_info_access_control_list_append</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-set-identity-type" title="signon_identity_info_set_identity_type ()">signon_identity_info_set_identity_type</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="SignonIdentityInfo.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="SignonIdentityInfo.html#SignonIdentityType" title="enum SignonIdentityType">SignonIdentityType</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="SignonIdentityInfo.html#SignonIdentityInfo-struct" title="SignonIdentityInfo">SignonIdentityInfo</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="SignonIdentityInfo.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    GBoxed
+    <span class="lineart">╰──</span> SignonIdentityInfo
+</pre>
+</div>
+<div class="refsect1">
+<a name="SignonIdentityInfo.description"></a><h2>Description</h2>
+<p><a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> represents data contained in a database record for an identity
+and provides getters and setters for individual items.</p>
+<p>See <a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> for a detailed discussion
+of what each item means and how and when it's used.</p>
+</div>
+<div class="refsect1">
+<a name="SignonIdentityInfo.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="signon-identity-info-new"></a><h3>signon_identity_info_new ()</h3>
+<pre class="programlisting"><a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="returnvalue">SignonIdentityInfo</span></a> *
+signon_identity_info_new ();</pre>
+<p>Creates a new <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> item.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.2.5"></a><h4>Returns</h4>
+<p> a new <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> item.</p>
+<p></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-free"></a><h3>signon_identity_info_free ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+signon_identity_info_free (<em class="parameter"><code><a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>);</pre>
+<p>Destroys the given <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> item.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.3.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-copy"></a><h3>signon_identity_info_copy ()</h3>
+<pre class="programlisting"><a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="returnvalue">SignonIdentityInfo</span></a> *
+signon_identity_info_copy (<em class="parameter"><code>const <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *other</code></em>);</pre>
+<p>Get a newly-allocated copy of <em class="parameter"><code>info</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.4.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>other</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.4.6"></a><h4>Returns</h4>
+<p> a copy of the given <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> on failure.</p>
+<p></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-get-id"></a><h3>signon_identity_info_get_id ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>
+signon_identity_info_get_id (<em class="parameter"><code>const <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>);</pre>
+<p>Get the numeric identity ID of <em class="parameter"><code>info</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.5.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.5.6"></a><h4>Returns</h4>
+<p> the numeric ID of the identity.</p>
+<p></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-get-username"></a><h3>signon_identity_info_get_username ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+signon_identity_info_get_username (<em class="parameter"><code>const <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>);</pre>
+<p>Get the username associated with an identity.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.6.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.6.6"></a><h4>Returns</h4>
+<p> the username, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p>
+<p></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-get-storing-secret"></a><h3>signon_identity_info_get_storing_secret ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+signon_identity_info_get_storing_secret
+                               (<em class="parameter"><code>const <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>);</pre>
+<p>Get whether the secret of <em class="parameter"><code>info</code></em>
+ should be stored by gSSO in the secret database.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.7.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.7.6"></a><h4>Returns</h4>
+<p> <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if gSSO must store the secret, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</p>
+<p></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-get-caption"></a><h3>signon_identity_info_get_caption ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+signon_identity_info_get_caption (<em class="parameter"><code>const <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>);</pre>
+<p>Get the display name of <em class="parameter"><code>info</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.8.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.8.6"></a><h4>Returns</h4>
+<p> the display name for the identity.</p>
+<p></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-get-methods"></a><h3>signon_identity_info_get_methods ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="returnvalue">GHashTable</span></a> *
+signon_identity_info_get_methods (<em class="parameter"><code>const <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>);</pre>
+<p>Get a hash table of the methods and mechanisms of <em class="parameter"><code>info</code></em>
+. See 
+<a class="link" href="SignonIdentityInfo.html#signon-identity-info-set-methods" title="signon_identity_info_set_methods ()"><code class="function">signon_identity_info_set_methods()</code></a>.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.9.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.9.6"></a><h4>Returns</h4>
+<p> (element-type utf8 GStrv): the table of allowed
+methods and mechanisms. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-get-realms"></a><h3>signon_identity_info_get_realms ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> * const *
+signon_identity_info_get_realms (<em class="parameter"><code>const <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>);</pre>
+<p>Get an array of the allowed realms of <em class="parameter"><code>info</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.10.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.10.6"></a><h4>Returns</h4>
+<p> a <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> terminated array of realms. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-get-owner"></a><h3>signon_identity_info_get_owner ()</h3>
+<pre class="programlisting">const <a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="returnvalue">SignonSecurityContext</span></a> *
+signon_identity_info_get_owner (<em class="parameter"><code>const <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>);</pre>
+<p>Get identity owner's security context.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.11.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.11.6"></a><h4>Returns</h4>
+<p> a security context. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-get-access-control-list"></a><h3>signon_identity_info_get_access_control_list ()</h3>
+<pre class="programlisting"><a class="link" href="SignonSecurityContext.html#SignonSecurityContextList" title="SignonSecurityContextList"><span class="returnvalue">SignonSecurityContextList</span></a> *
+signon_identity_info_get_access_control_list
+                               (<em class="parameter"><code>const <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>);</pre>
+<p>Get an access control list associated with an identity.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.12.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.12.6"></a><h4>Returns</h4>
+<p> a list of ACL security contexts. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-get-identity-type"></a><h3>signon_identity_info_get_identity_type ()</h3>
+<pre class="programlisting"><a class="link" href="SignonIdentityInfo.html#SignonIdentityType" title="enum SignonIdentityType"><span class="returnvalue">SignonIdentityType</span></a>
+signon_identity_info_get_identity_type
+                               (<em class="parameter"><code>const <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>);</pre>
+<p>Get the type of the identity.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.13.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.13.6"></a><h4>Returns</h4>
+<p> the type of the identity.</p>
+<p></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-set-username"></a><h3>signon_identity_info_set_username ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+signon_identity_info_set_username (<em class="parameter"><code><a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>,
+                                   <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *username</code></em>);</pre>
+<p>Sets the username for the identity.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.14.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>username</p></td>
+<td class="parameter_description"><p>the username.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-set-secret"></a><h3>signon_identity_info_set_secret ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+signon_identity_info_set_secret (<em class="parameter"><code><a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>,
+                                 <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *secret</code></em>,
+                                 <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> store_secret</code></em>);</pre>
+<p>Sets the secret (password) for the identity, and whether the gSSO daemon
+should remember it.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.15.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>secret</p></td>
+<td class="parameter_description"><p>the secret.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>store_secret</p></td>
+<td class="parameter_description"><p>whether signond should store the secret in its DB.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-set-caption"></a><h3>signon_identity_info_set_caption ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+signon_identity_info_set_caption (<em class="parameter"><code><a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>,
+                                  <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *caption</code></em>);</pre>
+<p>Sets the caption (display name) for the identity.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.16.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>caption</p></td>
+<td class="parameter_description"><p>the caption.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-set-methods"></a><h3>signon_identity_info_set_methods ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+signon_identity_info_set_methods (<em class="parameter"><code><a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>,
+                                  <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *methods</code></em>);</pre>
+<p>Set authentication methods that are allowed to be used with this identity.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.17.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>methods</p></td>
+<td class="parameter_description"><p> (element-type utf8 GStrv): methods. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-own-methods"></a><h3>signon_identity_info_own_methods ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+signon_identity_info_own_methods (<em class="parameter"><code><a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>,
+                                  <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *methods</code></em>);</pre>
+<p>Set authentication methods that are allowed to be used with this identity.</p>
+<p>This function will just increment reference count of hash table, so
+it should be constructed with <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#g-hash-table-new-full"><span class="type">g_hash_table_new_full</span></a>.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.18.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>methods</p></td>
+<td class="parameter_description"><p> (element-type utf8 GStrv): methods. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-set-method"></a><h3>signon_identity_info_set_method ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+signon_identity_info_set_method (<em class="parameter"><code><a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>,
+                                 <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *method</code></em>,
+                                 <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> * const *mechanisms</code></em>);</pre>
+<p>Adds a method to the list of allowed authentication methods.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.19.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>method</p></td>
+<td class="parameter_description"><p>an authentication method.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>mechanisms</p></td>
+<td class="parameter_description"><p>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>-terminated list of mechanisms.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-remove-method"></a><h3>signon_identity_info_remove_method ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+signon_identity_info_remove_method (<em class="parameter"><code><a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>,
+                                    <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *method</code></em>);</pre>
+<p>Remove <em class="parameter"><code>method</code></em>
+ from the list of allowed authentication methods.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.20.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>method</p></td>
+<td class="parameter_description"><p>an authentication method.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-set-realms"></a><h3>signon_identity_info_set_realms ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+signon_identity_info_set_realms (<em class="parameter"><code><a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>,
+                                 <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> * const *realms</code></em>);</pre>
+<p>Specify what realms this identity can be used in.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.21.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>realms</p></td>
+<td class="parameter_description"><p>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>-terminated list of realms.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-set-owner"></a><h3>signon_identity_info_set_owner ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+signon_identity_info_set_owner (<em class="parameter"><code><a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>,
+                                <em class="parameter"><code>const <a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="type">SignonSecurityContext</span></a> *owner</code></em>);</pre>
+<p>Set identity owner's security context.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.22.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>owner</p></td>
+<td class="parameter_description"><p> a security context of owner. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-set-owner-from-values"></a><h3>signon_identity_info_set_owner_from_values ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+signon_identity_info_set_owner_from_values
+                               (<em class="parameter"><code><a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>,
+                                <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *system_context</code></em>,
+                                <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *application_context</code></em>);</pre>
+<p>Set identity owner's security context.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.23.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>system_context</p></td>
+<td class="parameter_description"><p>owner's system context.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>application_context</p></td>
+<td class="parameter_description"><p>owner's application context.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-set-access-control-list"></a><h3>signon_identity_info_set_access_control_list ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+signon_identity_info_set_access_control_list
+                               (<em class="parameter"><code><a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>,
+                                <em class="parameter"><code><a class="link" href="SignonSecurityContext.html#SignonSecurityContextList" title="SignonSecurityContextList"><span class="type">SignonSecurityContextList</span></a> *access_control_list</code></em>);</pre>
+<p>Set an access control list associated with an identity.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.24.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>access_control_list</p></td>
+<td class="parameter_description"><p> a list of ACL security contexts. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-access-control-list-append"></a><h3>signon_identity_info_access_control_list_append ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+signon_identity_info_access_control_list_append
+                               (<em class="parameter"><code><a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>,
+                                <em class="parameter"><code><a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="type">SignonSecurityContext</span></a> *security_context</code></em>);</pre>
+<p>Appends a new <a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="type">SignonSecurityContext</span></a> item to the access control list.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.25.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>security_context</p></td>
+<td class="parameter_description"><p> a security context to be appended. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-identity-info-set-identity-type"></a><h3>signon_identity_info_set_identity_type ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+signon_identity_info_set_identity_type
+                               (<em class="parameter"><code><a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>,
+                                <em class="parameter"><code><a class="link" href="SignonIdentityInfo.html#SignonIdentityType" title="enum SignonIdentityType"><span class="type">SignonIdentityType</span></a> type</code></em>);</pre>
+<p>Specifies the type of this identity.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.7.26.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>info</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>type</p></td>
+<td class="parameter_description"><p>the type of the identity.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="SignonIdentityInfo.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="SignonIdentityType"></a><h3>enum SignonIdentityType</h3>
+<p>Identity types used in <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>.</p>
+<div class="refsect3">
+<a name="id-1.3.3.4.8.2.4"></a><h4>Members</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-IDENTITY-TYPE-OTHER:CAPS"></a>SIGNON_IDENTITY_TYPE_OTHER</p></td>
+<td class="enum_member_description">
+<p>an identity that is not an app, web or network</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-IDENTITY-TYPE-APP:CAPS"></a>SIGNON_IDENTITY_TYPE_APP</p></td>
+<td class="enum_member_description">
+<p>an application identity</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-IDENTITY-TYPE-WEB:CAPS"></a>SIGNON_IDENTITY_TYPE_WEB</p></td>
+<td class="enum_member_description">
+<p>a web identity</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-IDENTITY-TYPE-NETWORK:CAPS"></a>SIGNON_IDENTITY_TYPE_NETWORK</p></td>
+<td class="enum_member_description">
+<p>a network server identity</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="SignonIdentityInfo-struct"></a><h3>SignonIdentityInfo</h3>
+<pre class="programlisting">typedef struct _SignonIdentityInfo SignonIdentityInfo;</pre>
+<p>Opaque struct. Use the accessor functions below.</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.20</div>
+</body>
+</html>
