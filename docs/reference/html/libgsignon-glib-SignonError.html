@@ -1,0 +1,377 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>libgsignon-glib Reference Manual: SignonError</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="libgsignon-glib Reference Manual">
+<link rel="up" href="credential-management.html" title="Credential management">
+<link rel="prev" href="SignonAuthSession.html" title="SignonAuthSession">
+<link rel="next" href="appendices.html" title="Part III. Appendices">
+<meta name="generator" content="GTK-Doc V1.20 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="10"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description"> <span class="dim">|</span> 
+                  <a href="#libgsignon-glib-SignonError.description" class="shortcut">Description</a></span><span id="nav_hierarchy"> <span class="dim">|</span> 
+                  <a href="#libgsignon-glib-SignonError.object-hierarchy" class="shortcut">Object Hierarchy</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="credential-management.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="SignonAuthSession.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="appendices.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="libgsignon-glib-SignonError"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="libgsignon-glib-SignonError.top_of_page"></a>SignonError</span></h2>
+<p>SignonError — possible gSSO errors</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="libgsignon-glib-SignonError.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="libgsignon-glib-SignonError.html#SIGNON-ERROR:CAPS" title="SIGNON_ERROR">SIGNON_ERROR</a></td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="returnvalue">GQuark</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="libgsignon-glib-SignonError.html#signon-error-quark" title="signon_error_quark ()">signon_error_quark</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="libgsignon-glib-SignonError.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody><tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="libgsignon-glib-SignonError.html#SignonError" title="enum SignonError">SignonError</a></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="libgsignon-glib-SignonError.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">
+</pre>
+</div>
+<div class="refsect1">
+<a name="libgsignon-glib-SignonError.description"></a><h2>Description</h2>
+<p>An enumeration of errors that are possible when using gSSO</p>
+</div>
+<div class="refsect1">
+<a name="libgsignon-glib-SignonError.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="SIGNON-ERROR:CAPS"></a><h3>SIGNON_ERROR</h3>
+<pre class="programlisting">#define SIGNON_ERROR (signon_error_quark())
+</pre>
+<p>This macro is used when creating a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> in libgsignond-glib library</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-error-quark"></a><h3>signon_error_quark ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="returnvalue">GQuark</span></a>
+signon_error_quark (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>Creates and returns a domain for gSSO errors.</p>
+</div>
+</div>
+<div class="refsect1">
+<a name="libgsignon-glib-SignonError.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="SignonError"></a><h3>enum SignonError</h3>
+<p>Possible Signon errors.</p>
+<div class="refsect3">
+<a name="id-1.3.3.7.8.2.4"></a><h4>Members</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-UNKNOWN:CAPS"></a>SIGNON_ERROR_UNKNOWN</p></td>
+<td class="enum_member_description">
+<p>Catch-all for errors not distinguished by another code.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-INTERNAL-SERVER:CAPS"></a>SIGNON_ERROR_INTERNAL_SERVER</p></td>
+<td class="enum_member_description">
+<p>Signon daemon internal error.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-INTERNAL-COMMUNICATION:CAPS"></a>SIGNON_ERROR_INTERNAL_COMMUNICATION</p></td>
+<td class="enum_member_description">
+<p>Error communicating with Signon daemon.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-PERMISSION-DENIED:CAPS"></a>SIGNON_ERROR_PERMISSION_DENIED</p></td>
+<td class="enum_member_description">
+<p>The operation cannot be performed due to
+insufficient client permissions.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-METHOD-NOT-KNOWN:CAPS"></a>SIGNON_ERROR_METHOD_NOT_KNOWN</p></td>
+<td class="enum_member_description">
+<p>The method with this name was not found.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-SERVICE-NOT-AVAILABLE:CAPS"></a>SIGNON_ERROR_SERVICE_NOT_AVAILABLE</p></td>
+<td class="enum_member_description">
+<p>The service is temporarily unavailable.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-INVALID-QUERY:CAPS"></a>SIGNON_ERROR_INVALID_QUERY</p></td>
+<td class="enum_member_description">
+<p>Parameters for the query are invalid.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-METHOD-NOT-AVAILABLE:CAPS"></a>SIGNON_ERROR_METHOD_NOT_AVAILABLE</p></td>
+<td class="enum_member_description">
+<p>The requested method is not available.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-IDENTITY-NOT-FOUND:CAPS"></a>SIGNON_ERROR_IDENTITY_NOT_FOUND</p></td>
+<td class="enum_member_description">
+<p>The identity mathching the <a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a>
+was not found on the service.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-STORE-FAILED:CAPS"></a>SIGNON_ERROR_STORE_FAILED</p></td>
+<td class="enum_member_description">
+<p>Storing credentials failed.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-REMOVE-FAILED:CAPS"></a>SIGNON_ERROR_REMOVE_FAILED</p></td>
+<td class="enum_member_description">
+<p>Removing credentials failed.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-SIGNOUT-FAILED:CAPS"></a>SIGNON_ERROR_SIGNOUT_FAILED</p></td>
+<td class="enum_member_description">
+<p>Signing out failed.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-IDENTITY-OPERATION-CANCELED:CAPS"></a>SIGNON_ERROR_IDENTITY_OPERATION_CANCELED</p></td>
+<td class="enum_member_description">
+<p>Identity operation was canceled
+by the user.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-CREDENTIALS-NOT-AVAILABLE:CAPS"></a>SIGNON_ERROR_CREDENTIALS_NOT_AVAILABLE</p></td>
+<td class="enum_member_description">
+<p>Query failed.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-REFERENCE-NOT-FOUND:CAPS"></a>SIGNON_ERROR_REFERENCE_NOT_FOUND</p></td>
+<td class="enum_member_description">
+<p>Trying to remove non-existent reference.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-MECHANISM-NOT-AVAILABLE:CAPS"></a>SIGNON_ERROR_MECHANISM_NOT_AVAILABLE</p></td>
+<td class="enum_member_description">
+<p>The requested mechanism in not
+available.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-MISSING-DATA:CAPS"></a>SIGNON_ERROR_MISSING_DATA</p></td>
+<td class="enum_member_description">
+<p>The SessionData does not contain the necessary
+information.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-INVALID-CREDENTIALS:CAPS"></a>SIGNON_ERROR_INVALID_CREDENTIALS</p></td>
+<td class="enum_member_description">
+<p>The supplied credentials are invalid for
+the mechanism implementation.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-NOT-AUTHORIZED:CAPS"></a>SIGNON_ERROR_NOT_AUTHORIZED</p></td>
+<td class="enum_member_description">
+<p>Authorization failed.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-WRONG-STATE:CAPS"></a>SIGNON_ERROR_WRONG_STATE</p></td>
+<td class="enum_member_description">
+<p>An operation method has been called in an
+incorrect state.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-OPERATION-NOT-SUPPORTED:CAPS"></a>SIGNON_ERROR_OPERATION_NOT_SUPPORTED</p></td>
+<td class="enum_member_description">
+<p>The operation is not supported by the
+mechanism implementation.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-NO-CONNECTION:CAPS"></a>SIGNON_ERROR_NO_CONNECTION</p></td>
+<td class="enum_member_description">
+<p>No network connection.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-NETWORK:CAPS"></a>SIGNON_ERROR_NETWORK</p></td>
+<td class="enum_member_description">
+<p>Network connection failed.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-SSL:CAPS"></a>SIGNON_ERROR_SSL</p></td>
+<td class="enum_member_description">
+<p>SSL connection failed.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-RUNTIME:CAPS"></a>SIGNON_ERROR_RUNTIME</p></td>
+<td class="enum_member_description">
+<p>Casting SessionData into subclass failed.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-SESSION-CANCELED:CAPS"></a>SIGNON_ERROR_SESSION_CANCELED</p></td>
+<td class="enum_member_description">
+<p>Challenge was canceled.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-TIMED-OUT:CAPS"></a>SIGNON_ERROR_TIMED_OUT</p></td>
+<td class="enum_member_description">
+<p>Challenge timed out.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-USER-INTERACTION:CAPS"></a>SIGNON_ERROR_USER_INTERACTION</p></td>
+<td class="enum_member_description">
+<p>User interaction dialog failed.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-OPERATION-FAILED:CAPS"></a>SIGNON_ERROR_OPERATION_FAILED</p></td>
+<td class="enum_member_description">
+<p>Temporary failure in authentication.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-ENCRYPTION-FAILED:CAPS"></a>SIGNON_ERROR_ENCRYPTION_FAILED</p></td>
+<td class="enum_member_description">
+<p><em class="parameter"><code>deprecated</code></em>
+: Failure during data
+encryption/decryption.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-TOS-NOT-ACCEPTED:CAPS"></a>SIGNON_ERROR_TOS_NOT_ACCEPTED</p></td>
+<td class="enum_member_description">
+<p>User declined Terms of Service.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-FORGOT-PASSWORD:CAPS"></a>SIGNON_ERROR_FORGOT_PASSWORD</p></td>
+<td class="enum_member_description">
+<p>User requested password reset sequence.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-METHOD-OR-MECHANISM-NOT-ALLOWED:CAPS"></a>SIGNON_ERROR_METHOD_OR_MECHANISM_NOT_ALLOWED</p></td>
+<td class="enum_member_description">
+<p>Method or mechanism not
+allowed for this identity.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-INCORRECT-DATE:CAPS"></a>SIGNON_ERROR_INCORRECT_DATE</p></td>
+<td class="enum_member_description">
+<p>Date/time incorrect on device.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="SIGNON-ERROR-USER-ERROR:CAPS"></a>SIGNON_ERROR_USER_ERROR</p></td>
+<td class="enum_member_description">
+<p>Placeholder to rearrange enumeration - userspace
+specific.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.20</div>
+</body>
+</html>

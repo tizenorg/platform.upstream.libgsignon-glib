@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE book PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "">
+<book xmlns="http://www.devhelp.net/book" title="libgsignon-glib Reference Manual" link="index.html" author="" name="libgsignon-glib" version="2" language="c">
+  <chapters>
+    <sub name="gSSO Overview" link="libgsignon-glib-overview.html">
+      <sub name="gSSO introduction" link="gsso-intro.html"/>
+      <sub name="gSSO usage examples" link="gsso-examples.html"/>
+    </sub>
+    <sub name="libgsignon-glib Objects" link="libgsignon-glib-objects.html">
+      <sub name="Object Hierarchy" link="object-tree.html"/>
+      <sub name="Credential management" link="credential-management.html">
+        <sub name="SignonAuthService" link="SignonAuthService.html"/>
+        <sub name="SignonIdentity" link="SignonIdentity.html"/>
+        <sub name="SignonIdentityInfo" link="SignonIdentityInfo.html"/>
+        <sub name="SignonSecurityContext" link="SignonSecurityContext.html"/>
+        <sub name="SignonAuthSession" link="SignonAuthSession.html"/>
+        <sub name="SignonError" link="libgsignon-glib-SignonError.html"/>
+      </sub>
+    </sub>
+    <sub name="Appendices" link="appendices.html">
+      <sub name="API Index" link="api-index-full.html"/>
+      <sub name="Index of deprecated symbols" link="api-index-deprecated.html"/>
+      <sub name="Index of new symbols in 1.8" link="api-index-1-8.html"/>
+      <sub name="Annotation Glossary" link="annotation-glossary.html"/>
+    </sub>
+  </chapters>
+  <functions>
+    <keyword type="function" name="SignonQueryMethodsCb ()" link="SignonAuthService.html#SignonQueryMethodsCb"/>
+    <keyword type="function" name="SignonQueryMechanismCb ()" link="SignonAuthService.html#SignonQueryMechanismCb"/>
+    <keyword type="function" name="SignonQueryIdentitiesCb ()" link="SignonAuthService.html#SignonQueryIdentitiesCb"/>
+    <keyword type="function" name="signon_auth_service_new ()" link="SignonAuthService.html#signon-auth-service-new"/>
+    <keyword type="function" name="signon_auth_service_query_methods ()" link="SignonAuthService.html#signon-auth-service-query-methods"/>
+    <keyword type="function" name="signon_auth_service_query_mechanisms ()" link="SignonAuthService.html#signon-auth-service-query-mechanisms"/>
+    <keyword type="function" name="signon_auth_service_query_identities ()" link="SignonAuthService.html#signon-auth-service-query-identities"/>
+    <keyword type="struct" name="struct SignonAuthServiceClass" link="SignonAuthService.html#SignonAuthServiceClass"/>
+    <keyword type="struct" name="struct SignonAuthService" link="SignonAuthService.html#SignonAuthService-struct"/>
+    <keyword type="typedef" name="SignonIdentityList" link="SignonAuthService.html#SignonIdentityList"/>
+    <keyword type="typedef" name="SignonIdentityFilter" link="SignonAuthService.html#SignonIdentityFilter"/>
+    <keyword type="function" name="SignonIdentityVoidCb ()" link="SignonIdentity.html#SignonIdentityVoidCb"/>
+    <keyword type="function" name="signon_identity_new_from_db ()" link="SignonIdentity.html#signon-identity-new-from-db"/>
+    <keyword type="function" name="signon_identity_new ()" link="SignonIdentity.html#signon-identity-new"/>
+    <keyword type="function" name="signon_identity_new_with_context_from_db ()" link="SignonIdentity.html#signon-identity-new-with-context-from-db"/>
+    <keyword type="function" name="signon_identity_new_with_context ()" link="SignonIdentity.html#signon-identity-new-with-context"/>
+    <keyword type="function" name="signon_identity_get_last_error ()" link="SignonIdentity.html#signon-identity-get-last-error"/>
+    <keyword type="function" name="signon_identity_create_session ()" link="SignonIdentity.html#signon-identity-create-session"/>
+    <keyword type="function" name="SignonIdentityStoreCredentialsCb ()" link="SignonIdentity.html#SignonIdentityStoreCredentialsCb"/>
+    <keyword type="function" name="signon_identity_store_credentials_with_info ()" link="SignonIdentity.html#signon-identity-store-credentials-with-info"/>
+    <keyword type="function" name="signon_identity_store_credentials_with_args ()" link="SignonIdentity.html#signon-identity-store-credentials-with-args"/>
+    <keyword type="function" name="SignonIdentityVerifyCb ()" link="SignonIdentity.html#SignonIdentityVerifyCb"/>
+    <keyword type="function" name="signon_identity_verify_secret ()" link="SignonIdentity.html#signon-identity-verify-secret"/>
+    <keyword type="function" name="SignonIdentityInfoCb ()" link="SignonIdentity.html#SignonIdentityInfoCb"/>
+    <keyword type="function" name="signon_identity_query_info ()" link="SignonIdentity.html#signon-identity-query-info"/>
+    <keyword type="function" name="signon_identity_remove ()" link="SignonIdentity.html#signon-identity-remove"/>
+    <keyword type="function" name="signon_identity_signout ()" link="SignonIdentity.html#signon-identity-signout"/>
+    <keyword type="function" name="signon_identity_add_reference ()" link="SignonIdentity.html#signon-identity-add-reference"/>
+    <keyword type="function" name="signon_identity_remove_reference ()" link="SignonIdentity.html#signon-identity-remove-reference"/>
+    <keyword type="function" name="SignonIdentitySessionReadyCb ()" link="SignonIdentity.html#SignonIdentitySessionReadyCb"/>
+    <keyword type="function" name="signon_identity_get_auth_session ()" link="SignonIdentity.html#signon-identity-get-auth-session"/>
+    <keyword type="struct" name="struct SignonIdentityClass" link="SignonIdentity.html#SignonIdentityClass"/>
+    <keyword type="struct" name="struct SignonIdentity" link="SignonIdentity.html#SignonIdentity-struct"/>
+    <keyword type="typedef" name="SignonIdentityRemovedCb" link="SignonIdentity.html#SignonIdentityRemovedCb"/>
+    <keyword type="typedef" name="SignonIdentitySignedOutCb" link="SignonIdentity.html#SignonIdentitySignedOutCb"/>
+    <keyword type="typedef" name="SignonIdentityReferenceAddedCb" link="SignonIdentity.html#SignonIdentityReferenceAddedCb"/>
+    <keyword type="typedef" name="SignonIdentityReferenceRemovedCb" link="SignonIdentity.html#SignonIdentityReferenceRemovedCb"/>
+    <keyword type="property" name="The “app-ctx” property" link="SignonIdentity.html#SignonIdentity--app-ctx"/>
+    <keyword type="property" name="The “id” property" link="SignonIdentity.html#SignonIdentity--id"/>
+    <keyword type="signal" name="The “signout” signal" link="SignonIdentity.html#SignonIdentity-signout"/>
+    <keyword type="function" name="signon_identity_info_new ()" link="SignonIdentityInfo.html#signon-identity-info-new"/>
+    <keyword type="function" name="signon_identity_info_free ()" link="SignonIdentityInfo.html#signon-identity-info-free"/>
+    <keyword type="function" name="signon_identity_info_copy ()" link="SignonIdentityInfo.html#signon-identity-info-copy"/>
+    <keyword type="function" name="signon_identity_info_get_id ()" link="SignonIdentityInfo.html#signon-identity-info-get-id"/>
+    <keyword type="function" name="signon_identity_info_get_username ()" link="SignonIdentityInfo.html#signon-identity-info-get-username"/>
+    <keyword type="function" name="signon_identity_info_get_storing_secret ()" link="SignonIdentityInfo.html#signon-identity-info-get-storing-secret"/>
+    <keyword type="function" name="signon_identity_info_get_caption ()" link="SignonIdentityInfo.html#signon-identity-info-get-caption"/>
+    <keyword type="function" name="signon_identity_info_get_methods ()" link="SignonIdentityInfo.html#signon-identity-info-get-methods"/>
+    <keyword type="function" name="signon_identity_info_get_realms ()" link="SignonIdentityInfo.html#signon-identity-info-get-realms"/>
+    <keyword type="function" name="signon_identity_info_get_owner ()" link="SignonIdentityInfo.html#signon-identity-info-get-owner"/>
+    <keyword type="function" name="signon_identity_info_get_access_control_list ()" link="SignonIdentityInfo.html#signon-identity-info-get-access-control-list"/>
+    <keyword type="function" name="signon_identity_info_get_identity_type ()" link="SignonIdentityInfo.html#signon-identity-info-get-identity-type"/>
+    <keyword type="function" name="signon_identity_info_set_username ()" link="SignonIdentityInfo.html#signon-identity-info-set-username"/>
+    <keyword type="function" name="signon_identity_info_set_secret ()" link="SignonIdentityInfo.html#signon-identity-info-set-secret"/>
+    <keyword type="function" name="signon_identity_info_set_caption ()" link="SignonIdentityInfo.html#signon-identity-info-set-caption"/>
+    <keyword type="function" name="signon_identity_info_set_methods ()" link="SignonIdentityInfo.html#signon-identity-info-set-methods"/>
+    <keyword type="function" name="signon_identity_info_own_methods ()" link="SignonIdentityInfo.html#signon-identity-info-own-methods"/>
+    <keyword type="function" name="signon_identity_info_set_method ()" link="SignonIdentityInfo.html#signon-identity-info-set-method"/>
+    <keyword type="function" name="signon_identity_info_remove_method ()" link="SignonIdentityInfo.html#signon-identity-info-remove-method"/>
+    <keyword type="function" name="signon_identity_info_set_realms ()" link="SignonIdentityInfo.html#signon-identity-info-set-realms"/>
+    <keyword type="function" name="signon_identity_info_set_owner ()" link="SignonIdentityInfo.html#signon-identity-info-set-owner"/>
+    <keyword type="function" name="signon_identity_info_set_owner_from_values ()" link="SignonIdentityInfo.html#signon-identity-info-set-owner-from-values"/>
+    <keyword type="function" name="signon_identity_info_set_access_control_list ()" link="SignonIdentityInfo.html#signon-identity-info-set-access-control-list"/>
+    <keyword type="function" name="signon_identity_info_access_control_list_append ()" link="SignonIdentityInfo.html#signon-identity-info-access-control-list-append"/>
+    <keyword type="function" name="signon_identity_info_set_identity_type ()" link="SignonIdentityInfo.html#signon-identity-info-set-identity-type"/>
+    <keyword type="enum" name="enum SignonIdentityType" link="SignonIdentityInfo.html#SignonIdentityType"/>
+    <keyword type="struct" name="SignonIdentityInfo" link="SignonIdentityInfo.html#SignonIdentityInfo-struct"/>
+    <keyword type="function" name="signon_security_context_new ()" link="SignonSecurityContext.html#signon-security-context-new"/>
+    <keyword type="function" name="signon_security_context_new_from_values ()" link="SignonSecurityContext.html#signon-security-context-new-from-values"/>
+    <keyword type="function" name="signon_security_context_free ()" link="SignonSecurityContext.html#signon-security-context-free"/>
+    <keyword type="function" name="signon_security_context_copy ()" link="SignonSecurityContext.html#signon-security-context-copy"/>
+    <keyword type="function" name="signon_security_context_set_system_context ()" link="SignonSecurityContext.html#signon-security-context-set-system-context"/>
+    <keyword type="function" name="signon_security_context_get_system_context ()" link="SignonSecurityContext.html#signon-security-context-get-system-context"/>
+    <keyword type="function" name="signon_security_context_set_application_context ()" link="SignonSecurityContext.html#signon-security-context-set-application-context"/>
+    <keyword type="function" name="signon_security_context_get_application_context ()" link="SignonSecurityContext.html#signon-security-context-get-application-context"/>
+    <keyword type="function" name="signon_security_context_build_variant ()" link="SignonSecurityContext.html#signon-security-context-build-variant"/>
+    <keyword type="function" name="signon_security_context_deconstruct_variant ()" link="SignonSecurityContext.html#signon-security-context-deconstruct-variant"/>
+    <keyword type="function" name="signon_security_context_list_build_variant ()" link="SignonSecurityContext.html#signon-security-context-list-build-variant"/>
+    <keyword type="function" name="signon_security_context_list_deconstruct_variant ()" link="SignonSecurityContext.html#signon-security-context-list-deconstruct-variant"/>
+    <keyword type="function" name="signon_security_context_list_copy ()" link="SignonSecurityContext.html#signon-security-context-list-copy"/>
+    <keyword type="function" name="signon_security_context_list_free ()" link="SignonSecurityContext.html#signon-security-context-list-free"/>
+    <keyword type="struct" name="struct SignonSecurityContext" link="SignonSecurityContext.html#SignonSecurityContext-struct"/>
+    <keyword type="typedef" name="SignonSecurityContextList" link="SignonSecurityContext.html#SignonSecurityContextList"/>
+    <keyword type="function" name="signon_auth_session_new ()" link="SignonAuthSession.html#signon-auth-session-new"/>
+    <keyword type="function" name="signon_auth_session_new_for_identity ()" link="SignonAuthSession.html#signon-auth-session-new-for-identity"/>
+    <keyword type="function" name="signon_auth_session_get_method ()" link="SignonAuthSession.html#signon-auth-session-get-method"/>
+    <keyword type="function" name="SignonAuthSessionQueryAvailableMechanismsCb ()" link="SignonAuthSession.html#SignonAuthSessionQueryAvailableMechanismsCb"/>
+    <keyword type="function" name="signon_auth_session_query_available_mechanisms ()" link="SignonAuthSession.html#signon-auth-session-query-available-mechanisms" deprecated=""/>
+    <keyword type="function" name="SignonAuthSessionProcessCb ()" link="SignonAuthSession.html#SignonAuthSessionProcessCb" deprecated=""/>
+    <keyword type="function" name="signon_auth_session_process ()" link="SignonAuthSession.html#signon-auth-session-process" deprecated="1.8: Use signon_auth_session_process_async() instead."/>
+    <keyword type="function" name="signon_auth_session_process_async ()" link="SignonAuthSession.html#signon-auth-session-process-async" since="1.8"/>
+    <keyword type="function" name="signon_auth_session_process_finish ()" link="SignonAuthSession.html#signon-auth-session-process-finish" since="1.8"/>
+    <keyword type="function" name="signon_auth_session_cancel ()" link="SignonAuthSession.html#signon-auth-session-cancel"/>
+    <keyword type="macro" name="SIGNON_SESSION_DATA_USERNAME" link="SignonAuthSession.html#SIGNON-SESSION-DATA-USERNAME:CAPS"/>
+    <keyword type="macro" name="SIGNON_SESSION_DATA_SECRET" link="SignonAuthSession.html#SIGNON-SESSION-DATA-SECRET:CAPS"/>
+    <keyword type="macro" name="SIGNON_SESSION_DATA_REALM" link="SignonAuthSession.html#SIGNON-SESSION-DATA-REALM:CAPS"/>
+    <keyword type="macro" name="SIGNON_SESSION_DATA_PROXY" link="SignonAuthSession.html#SIGNON-SESSION-DATA-PROXY:CAPS"/>
+    <keyword type="enum" name="enum SignonSessionDataUiPolicy" link="SignonAuthSession.html#SignonSessionDataUiPolicy"/>
+    <keyword type="macro" name="SIGNON_SESSION_DATA_UI_POLICY" link="SignonAuthSession.html#SIGNON-SESSION-DATA-UI-POLICY:CAPS"/>
+    <keyword type="macro" name="SIGNON_SESSION_DATA_CAPTION" link="SignonAuthSession.html#SIGNON-SESSION-DATA-CAPTION:CAPS"/>
+    <keyword type="macro" name="SIGNON_SESSION_DATA_TIMEOUT" link="SignonAuthSession.html#SIGNON-SESSION-DATA-TIMEOUT:CAPS"/>
+    <keyword type="macro" name="SIGNON_SESSION_DATA_WINDOW_ID" link="SignonAuthSession.html#SIGNON-SESSION-DATA-WINDOW-ID:CAPS"/>
+    <keyword type="macro" name="SIGNON_SESSION_DATA_RENEW_TOKEN" link="SignonAuthSession.html#SIGNON-SESSION-DATA-RENEW-TOKEN:CAPS"/>
+    <keyword type="struct" name="struct SignonAuthSession" link="SignonAuthSession.html#SignonAuthSession-struct"/>
+    <keyword type="struct" name="struct SignonAuthSessionClass" link="SignonAuthSession.html#SignonAuthSessionClass"/>
+    <keyword type="property" name="The “identity” property" link="SignonAuthSession.html#SignonAuthSession--identity"/>
+    <keyword type="signal" name="The “state-changed” signal" link="SignonAuthSession.html#SignonAuthSession-state-changed"/>
+    <keyword type="macro" name="SIGNON_ERROR" link="libgsignon-glib-SignonError.html#SIGNON-ERROR:CAPS"/>
+    <keyword type="function" name="signon_error_quark ()" link="libgsignon-glib-SignonError.html#signon-error-quark"/>
+    <keyword type="enum" name="enum SignonError" link="libgsignon-glib-SignonError.html#SignonError"/>
+  </functions>
+</book>

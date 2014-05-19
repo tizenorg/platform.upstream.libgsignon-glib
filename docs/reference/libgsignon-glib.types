@@ -1,0 +1,5 @@
+signon_auth_service_get_type
+signon_auth_session_get_type
+signon_identity_get_type
+signon_identity_info_get_type
+signon_security_context_get_type

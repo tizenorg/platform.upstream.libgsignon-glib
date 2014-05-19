@@ -1,0 +1,33 @@
+Source: libgsignon-glib
+Section: net
+Priority: extra
+Maintainer: Jussi Laako <jussi.laako@linux.intel.com>
+Build-Depends: debhelper (>= 8.0.0), autotools-dev, pkg-config, libdbus-1-dev, gtk-doc-tools, gobject-introspection, libglib2.0-dev, libgirepository1.0-dev
+Standards-Version: 3.9.2
+Homepage: https://01.org/gsso
+Vcs-Git: http://code.google.com/p/accounts-sso.libgsignon-glib/
+Vcs-Browser: http://code.google.com/p/accounts-sso/source/browse/?repo=libgsignon-glib
+
+Package: libgsignon-glib
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: gSSO client library
+ gSSO is a single sign-on framework, providing secure storage and single sign-on service.
+
+Package: libgsignon-glib-dev
+Architecture: any
+Depends: libgsignon-glib (= ${binary:Version}), ${misc:Depends}
+Description: development files for libgsignon-glib
+ Headers and libraries necessary for developing applications using gSSO.
+
+Package: libgsignon-glib-dbg
+Architecture: any
+Depends: libgsignon-glib (= ${binary:Version}), ${misc:Depends}
+Description: debug symbols for libgsignon-glib
+ Debug symbols necessary for debugging applications using gSSO.
+
+Package: libgsignon-glib-doc
+Architecture: all
+Description: documentation for libgsignon-glib
+ Developer documentation for developing applications using gSSO.
+

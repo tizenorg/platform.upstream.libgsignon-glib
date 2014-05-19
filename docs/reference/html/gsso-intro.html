@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>libgsignon-glib Reference Manual: gSSO introduction</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="libgsignon-glib Reference Manual">
+<link rel="up" href="libgsignon-glib-overview.html" title="Part I. gSSO Overview">
+<link rel="prev" href="libgsignon-glib-overview.html" title="Part I. gSSO Overview">
+<link rel="next" href="gsso-examples.html" title="gSSO usage examples">
+<meta name="generator" content="GTK-Doc V1.20 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="10"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts"></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="libgsignon-glib-overview.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="libgsignon-glib-overview.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="gsso-examples.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="gsso-intro"></a><div class="titlepage"></div>
+<div class="refsect1">
+<a name="id-1.2.2.2"></a><h2>What is gSSO?</h2>
+<p>
+        gSSO is a framework for centrally storing authentication credentials
+        and handling authentication on behalf of applications as requested by
+        them. It consists of a gSSO daemon that implements secure storage of 
+        login credentials (for example usernames and passwords), plugins for 
+        different authentication systems and a client library (libgsignond-glib) 
+        for applications to communicate with this system.        
+    </p>
+<p>
+        By using this client library, an application can authenticate to a
+        (usually remote) service using an existing set of credentials, and manage
+        the credentials database as well (subject to access restrictions).
+    </p>
+<p>
+        Some authentication methods require interaction with the user, for example
+        to request a username and password, or to show a webpage with which the
+        user is expected to interact. This functionality is provided by gSSO UI
+        component, and it's completely invisible from the applications' point
+        of view.
+    </p>
+<p>
+        The client library (libgsignond-glib) interacts with gSSO daemon through
+        D-Bus. These D-Bus APIs should not be used directly as they are not documented, subject
+        to change and don't come with backwards compatibility guarantees.
+    </p>
+</div>
+<div class="refsect1">
+<a name="id-1.2.2.3"></a><h2>Terminology</h2>
+<p>
+        gSSO is built around a few key concepts which are explained below:
+        </p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem"><p>
+                    <code class="systemitem">Authentication service</code>: the top level
+                    object representing the gSSO service. It can be used to query
+                    existing identities, available
+                    authentication menthods and their mechanisms. Authentication
+                    service is represented in the client library by
+                    <a class="link" href="SignonAuthService.html" title="SignonAuthService">SignonAuthService objects</a>.
+                </p></li>
+<li class="listitem"><p>
+                    <code class="systemitem">Identity</code>: This is a local object representing a record in the
+                    credentials DB. It contains information about the username and password (the
+                    latter is write-only), plus some metadata such as a descriptive caption, access
+                    control list, reference count, and other metadata. Identities are identified by
+                    numeric identity IDs and represented in the client library by <a class="link" href="SignonIdentity.html" title="SignonIdentity">
+                    SignonIdentity</a> objects.
+                </p></li>
+<li class="listitem"><p>
+                    <code class="systemitem">Security context</code>: The information that is used by gSSO daemon
+                    to make access control decisions when applications try to access identities
+                    for reading, writing, or starting authentication sessions. Security contexts
+                    consist of two strings: the system context which identifies the application process,
+                    and application context which identifies what the application process is doing. Security
+                    contexts are represented in the client library by <a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext">
+                    SignonSecurityContext</a> objects.        
+                </p></li>
+<li class="listitem"><p>
+                    <code class="systemitem">Authentication method</code>: the SSO daemon supports different
+                    authentication methods, each implemented by a plugin. Well known examples of
+                    authentication methods include <a class="ulink" href="http://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer" target="_top">SASL</a>,
+                    or <a class="ulink" href="http://en.wikipedia.org/wiki/Oauth" target="_top">OAuth</a>. Authentication methods
+                    might support different authentication mechanisms, which are method-specific variants of authentication process.
+                </p></li>
+<li class="listitem"><p>
+                    <code class="systemitem">Authentication session</code>: the process of performing the authentication.
+                    It is represented in the client library by <a class="link" href="SignonAuthSession.html" title="SignonAuthSession">SignonAuthSession objects</a>.
+                    Authentication sessions are started from existing identites.
+                </p></li>
+</ul></div>
+<p>        
+    </p>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.20</div>
+</body>
+</html>
