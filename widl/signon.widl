@@ -76,9 +76,13 @@ interface AuthSession : EventTarget {
 };
 
 
-dictionary ACLEntry {
+dictionary SecurityContext {
 	DOMString sysContext;
 	DOMString appContext;
+};
+
+dictionary ACLEntry {
+	SecurityContext secContext;
 	DOMString method;
 	DOMString[] mechanisms;
 };
@@ -90,7 +94,7 @@ dictionary IdentityInfo {
 	boolean storeSecret;
 	DOMString caption;
 	DOMString[] realms;
-	DOMString owner;
+	SecurityContext owner;
 	ACLEntry[] accessControlList;
 };
 
