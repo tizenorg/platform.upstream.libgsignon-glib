@@ -84,6 +84,12 @@ typedef void (*SignonIdentityVoidCb) (SignonIdentity *self,
  */
 typedef SignonIdentityVoidCb SignonIdentityRemovedCb;
 /**
+ * SignonIdentityCredentialsUpdatedCb:
+ *
+ * Callback to be passed to signon_identity_request_credentials_update().
+ */
+typedef SignonIdentityVoidCb SignonIdentityCredentialsUpdatedCb;
+/**
  * SignonIdentitySignedOutCb:
  *
  * Callback to be passed to signon_identity_signout().
@@ -153,7 +159,7 @@ void signon_identity_store_credentials_with_args(SignonIdentity *self,
 /**
  * SignonIdentityVerifyCb:
  * @self: the #SignonIdentity.
- * @valid: whether the secret is valid.
+ * @valid: whether the verification succeeded.
  * @error: a #GError if an error occurred, or %NULL otherwise.
  * @user_data: the user data that was passed when installing this callback.
  *
@@ -164,10 +170,10 @@ typedef void (*SignonIdentityVerifyCb) (SignonIdentity *self,
                                         const GError *error,
                                         gpointer user_data);
 
-void signon_identity_verify_secret(SignonIdentity *self,
-                                   const gchar *secret,
-                                   SignonIdentityVerifyCb cb,
-                                   gpointer user_data);
+void signon_identity_verify_user(SignonIdentity *self,
+                                 GVariant *args,
+                                 SignonIdentityVerifyCb cb,
+                                 gpointer user_data);
 
 /**
  * SignonIdentityInfoCb:
