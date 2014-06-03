@@ -14,7 +14,7 @@ enum SessionState {
 	"ui-refreshing",
 	"process-pending",
 	"started",
-	"process-cenceling",
+	"process-cancelling",
 	"process-done",
 	"custom"
 };
