@@ -39,10 +39,9 @@ dictionary IdentityFilterItem {
 
 interface AuthService {
 	Promise queryMethods(); // returns DOMString[]
-	Promise queryMechanisms(); // returns MechanismQueryResult
-	Promise queryIdentities(IdentityFilterItem[] filter); // returns Identity[]
-	Promise getIdentity(long id);  // returns Identity object
-	Promise startSession(Identity identity, DOMString method);  // returns AuthSession object
+	Promise queryMechanisms(DOMString method); // returns MechanismQueryResult
+	Promise queryIdentities(IdentityFilterItem[] filter, DOMString appContext); // returns IdentityInfo[]
+	Promise getIdentity(long id);  // returns existing Identity object
 	Promise clear();
 };
 
@@ -75,7 +74,6 @@ interface AuthSession : EventTarget {
 	attribute EventHandler onstatechanged;
 };
 
-
 dictionary SecurityContext {
 	DOMString sysContext;
 	DOMString appContext;
@@ -88,6 +86,7 @@ dictionary ACLEntry {
 };
 
 dictionary IdentityInfo {
+	readonly attribute long id;
 	IdentityType type;
 	DOMString username;
 	DOMString secret;
@@ -112,9 +111,8 @@ Identity implements IdentityInfo;
 
 [Constructor(IdentityInfo info)]
 interface Identity {
-	readonly attribute long id;
-	readonly attribute boolean isStoringSecret;
 
+	Promise startSession(DOMString method);  // returns AuthSession object
 	Promise requestCredentialsUpdate(DOMString message);
 	Promise store();
 	Promise addReference(DOMString reference);
