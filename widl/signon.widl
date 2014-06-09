@@ -52,7 +52,7 @@ dictionary SessionData {
 	DOMString Secret;
 	DOMString Realm;
 	DOMString NetworkProxy;
-	DOMString NetworkTimeout;
+	long NetworkTimeout;
 	boolean RenewToken;
 
 	// UI properties
