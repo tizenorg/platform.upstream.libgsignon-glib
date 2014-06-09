@@ -1631,7 +1631,7 @@ void signon_identity_remove(SignonIdentity *self,
  */
 void signon_identity_request_credentials_update(SignonIdentity *self,
                                                 const gchar *message,
-                                                SignonIdentityRemovedCb cb,
+                                                SignonIdentityCredentialsUpdatedCb cb,
                                                 gpointer user_data)
 {
     g_return_if_fail (SIGNON_IS_IDENTITY (self));

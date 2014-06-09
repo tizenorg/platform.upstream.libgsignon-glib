@@ -197,6 +197,11 @@ void signon_identity_remove(SignonIdentity *self,
                             SignonIdentityRemovedCb cb,
                             gpointer user_data);
 
+void signon_identity_request_credentials_update(SignonIdentity *self,
+                                                const gchar *message,
+                                                SignonIdentityCredentialsUpdatedCb cb,
+                                                gpointer user_data);
+
 void signon_identity_signout(SignonIdentity *self,
                              SignonIdentitySignedOutCb cb,
                              gpointer user_data);
