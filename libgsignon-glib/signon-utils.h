@@ -33,14 +33,11 @@
         error->domain != G_IO_ERROR || \
         error->code != G_IO_ERROR_CANCELLED)
 
-G_GNUC_INTERNAL
+const GVariantType *signon_gtype_to_variant_type (GType type);
 GValue *signon_gvalue_new (GType type);
-G_GNUC_INTERNAL
 void signon_gvalue_free (gpointer val);
 
-G_GNUC_INTERNAL
 GHashTable *signon_hash_table_from_variant (GVariant *variant);
-G_GNUC_INTERNAL
 GVariant *signon_hash_table_to_variant (GHashTable *hash_table);
 
 #endif //_SIGNON_UTILS_H_
