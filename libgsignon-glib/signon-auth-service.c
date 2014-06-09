@@ -5,8 +5,10 @@
  *
  * Copyright (C) 2009-2010 Nokia Corporation.
  * Copyright (C) 2012 Canonical Ltd.
+ * Copyright (C) 2014 Intel Corporation.
  *
  * Contact: Alberto Mardegan <alberto.mardegan@canonical.com>
+ * Contact: Jussi Laako <jussi.laako@linux.intel.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License
@@ -68,6 +70,13 @@ typedef struct _IdentityCbData
     SignonQueryIdentitiesCb cb;
     gpointer userdata;
 } IdentityCbData;
+
+typedef struct _ClearCbData
+{
+    SignonAuthService *service;
+    SignonClearCb cb;
+    gpointer userdata;
+} ClearCbData;
 
 #define SIGNON_AUTH_SERVICE_PRIV(obj) (SIGNON_AUTH_SERVICE(obj)->priv)
 
@@ -392,5 +401,65 @@ signon_auth_service_query_identities (SignonAuthService *auth_service,
                                             priv->cancellable,
                                             auth_query_identities_cb,
                                             cb_data);
+}
+
+
+static void
+auth_clear_cb (GObject *object, GAsyncResult *res, gpointer user_data)
+{
+    SsoAuthService *proxy = SSO_AUTH_SERVICE (object);
+    ClearCbData *data = (ClearCbData*)user_data;
+    gboolean value = FALSE;
+    GError *error = NULL;
+
+    g_return_if_fail (data != NULL);
+
+    sso_auth_service_call_clear_finish (proxy, &value, res, &error);
+    (data->cb)
+        (data->service, value, error, data->userdata);
+
+    g_clear_error (&error);
+    g_slice_free (ClearCbData, data);
+}
+
+/**
+ * SignonClearCb:
+ * @auth_service: the #SignonAuthService.
+ * @success: TRUE if clear succeeded.
+ * @error: a #GError if an error occurred, %NULL otherwise.
+ * @user_data: the user data that was passed when installing this callback.
+ *
+ * Callback to be passed to signon_auth_service_clear().
+ */
+
+/**
+ * signon_auth_service_clear:
+ * @auth_service: the #SignonAuthService.
+ * @cb: (scope async): callback to be invoked.
+ * @user_data: user data.
+ *
+ * Clears / wipes out all stored data.
+ */
+void
+signon_auth_service_clear (SignonAuthService *auth_service,
+                           SignonClearCb cb,
+                           gpointer user_data)
+{
+    SignonAuthServicePrivate *priv;
+
+    g_return_if_fail (SIGNON_IS_AUTH_SERVICE (auth_service));
+    g_return_if_fail (cb != NULL);
+    priv = SIGNON_AUTH_SERVICE_PRIV (auth_service);
+
+    ClearCbData *cb_data;
+    cb_data = g_slice_new (ClearCbData);
+    cb_data->service = auth_service;
+    cb_data->cb = cb;
+    cb_data->userdata = user_data;
+
+    sso_auth_service_call_clear (priv->proxy,
+                                 priv->cancellable,
+                                 auth_clear_cb,
+                                 cb_data);
 }
 
