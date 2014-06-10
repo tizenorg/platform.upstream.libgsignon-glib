@@ -163,7 +163,7 @@ void signon_identity_store_credentials_with_args(SignonIdentity *self,
  * @error: a #GError if an error occurred, or %NULL otherwise.
  * @user_data: the user data that was passed when installing this callback.
  *
- * Callback to be passed to signon_identity_verify_secret().
+ * Callback to be passed to signon_identity_verify_user().
  */
 typedef void (*SignonIdentityVerifyCb) (SignonIdentity *self,
                                         gboolean valid,
