@@ -178,6 +178,7 @@ struct _SignonIdentityPrivate
 
 enum {
     SIGNEDOUT_SIGNAL,
+    REMOVED_SIGNAL,
     LAST_SIGNAL
 };
 
@@ -457,6 +458,20 @@ signon_identity_class_init (SignonIdentityClass *klass)
                                     g_cclosure_marshal_VOID__VOID,
                                     G_TYPE_NONE /* return_type */,
                                     0);
+    /**
+     * SignonIdentity:removed:
+     *
+     * Emitted when the identity was removed (deleted).
+     */
+    signals[REMOVED_SIGNAL] = g_signal_new("removed",
+                                           G_TYPE_FROM_CLASS (klass),
+                                           G_SIGNAL_RUN_LAST | G_SIGNAL_NO_RECURSE | G_SIGNAL_NO_HOOKS,
+                                           0,
+                                           NULL,
+                                           NULL,
+                                           g_cclosure_marshal_VOID__VOID,
+                                           G_TYPE_NONE,
+                                           0);
 
     object_class->dispose = signon_identity_dispose;
     object_class->finalize = signon_identity_finalize;
@@ -1216,6 +1231,7 @@ identity_process_removed (SignonIdentity *self)
 
     g_object_set (self, "id", 0, NULL);
     priv->id = 0;
+    g_signal_emit(G_OBJECT(self), signals[REMOVED_SIGNAL], 0);
 }
 
 static void
