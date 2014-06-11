@@ -28,6 +28,8 @@
 
 #include <glib-object.h>
 
+G_BEGIN_DECLS
+
 #define SIGNON_IS_NOT_CANCELLED(error) \
         (error == NULL || \
         error->domain != G_IO_ERROR || \
@@ -39,5 +41,7 @@ void signon_gvalue_free (gpointer val);
 
 GHashTable *signon_hash_table_from_variant (GVariant *variant);
 GVariant *signon_hash_table_to_variant (GHashTable *hash_table);
+
+G_END_DECLS
 
 #endif //_SIGNON_UTILS_H_
