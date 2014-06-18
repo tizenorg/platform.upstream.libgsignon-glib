@@ -459,7 +459,7 @@ signon_identity_class_init (SignonIdentityClass *klass)
                                     G_TYPE_NONE /* return_type */,
                                     0);
     /**
-     * SignonIdentity:removed:
+     * SignonIdentity::removed:
      *
      * Emitted when the identity was removed (deleted).
      */
