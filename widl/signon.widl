@@ -40,7 +40,7 @@ dictionary IdentityFilterItem {
 interface AuthService {
 	Promise queryMethods(); // returns DOMString[]
 	Promise queryMechanisms(DOMString method); // returns MechanismQueryResult
-	Promise queryIdentities(IdentityFilterItem[] filter, DOMString appContext); // returns IdentityInfo[]
+	Promise queryIdentities(IdentityFilterItem[] filter); // returns IdentityInfo[]
 	Promise getIdentity(long id);  // returns existing Identity object
 	Promise clear();
 };
