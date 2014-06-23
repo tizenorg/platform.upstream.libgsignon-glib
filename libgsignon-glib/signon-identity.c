@@ -1402,7 +1402,6 @@ identity_info_ready_cb(gpointer object, const GError *error, gpointer user_data)
             (cb_data->cb) (self, NULL, new_error, cb_data->user_data);
 
         g_error_free (new_error);
-        /* FIXME: possible leak here? */
     }
     else if (error || priv->id == 0)
     {
