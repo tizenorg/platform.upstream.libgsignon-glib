@@ -120,21 +120,26 @@ Identity removed<br>
 <p>
     </p>
 <p>
-        To add security context to identity's Access Control List, use <strong class="userinput"><code>--add-context</code></strong> option
-        with identity id:
+        To add a security context to identity's Access Control List, use <strong class="userinput"><code>--add-context</code></strong> option
+        with an identity id:
         </p>
 <div class="literallayout"><p><code class="computeroutput"><br>
-<strong class="userinput"><code>&gt; gsso-example --add-context=28 --system-context=* --application-context=*</code></strong><br>
+<strong class="userinput"><code>&gt; gsso-example --add-context=28 --system-context=/path/to/executable --application-context=</code></strong><br>
 Identity stored with id 28<br>
         </code></p></div>
 <p>
     </p>
 <p>
-        To remove security context from identity's Access Control List, use <strong class="userinput"><code>--remove-context=</code></strong> option
+        /path/to/executable should be used if gsso is configured to use the
+        default ACL extension, otherwise the system context value is defined by the extension
+        that is in use.
+    </p>
+<p>
+        To remove a security context from identity's Access Control List, use <strong class="userinput"><code>--remove-context=</code></strong> option
         with identity id:
         </p>
 <div class="literallayout"><p><code class="computeroutput"><br>
-<strong class="userinput"><code>&gt; gsso-example --remove-context=28 --system-context=* --application-context=*</code></strong><br>
+<strong class="userinput"><code>&gt; gsso-example --remove-context=28 --system-context=/path/to/executable --application-context=</code></strong><br>
 Identity stored with id 28<br>
         </code></p></div>
 <p>

@@ -1,14 +1,13 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ([2.64])
 AC_INIT([libgsignon-glib],
-        [2.1.0],
+        [2.2.0],
         [http://code.google.com/p/accounts-sso/issues/entry],
         [libgsignon-glib],
         [http://code.google.com/p/accounts-sso/])
 
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_HEADERS([config.h])
-AC_CONFIG_SRCDIR([libgsignon-glib.pc.in])
 AC_CONFIG_MACRO_DIR([m4])
 
 AM_INIT_AUTOMAKE([1.11 nostdinc silent-rules subdir-objects tar-pax -Wno-portability])

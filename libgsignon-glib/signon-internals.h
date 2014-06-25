@@ -5,7 +5,7 @@
  *
  * Copyright (C) 2009-2010 Nokia Corporation.
  * Copyright (C) 2012 Canonical Ltd.
- * Copyright (C) 2012 Intel Corporation.
+ * Copyright (C) 2012-2014 Intel Corporation.
  *
  * Contact: Alberto Mardegan <alberto.mardegan@canonical.com>
  * Contact: Jussi Laako <jussi.laako@linux.intel.com>
@@ -126,31 +126,6 @@
 #include "signon-identity-info.h"
 
 G_BEGIN_DECLS
-
-enum SignonAuthSessionState {
-    SIGNON_AUTH_SESSION_STATE_NOT_STARTED = 0,   /**< No message. */
-    SIGNON_AUTH_SESSION_STATE_RESOLVING_HOST,    /**< Resolving remote server
-                                                      host name. */
-    SIGNON_AUTH_SESSION_STATE_CONNECTING,        /**< Connecting to remote
-                                                      server. */
-    SIGNON_AUTH_SESSION_STATE_SENDING_DATA,      /**< Sending data to remote
-                                                      server. */
-    SIGNON_AUTH_SESSION_STATE_WAITING_REPLY,     /**< Waiting reply from remote
-                                                      server. */
-    SIGNON_AUTH_SESSION_STATE_USER_PENDING,      /**< Waiting response from
-                                                      user. */
-    SIGNON_AUTH_SESSION_STATE_UI_REFRESHING,     /**< Refreshing ui request. */
-    SIGNON_AUTH_SESSION_STATE_PROCESS_PENDING,   /**< Waiting another process
-                                                      to start. */
-    SIGNON_AUTH_SESSION_STATE_STARTED,           /**< Authentication session is
-                                                      started. */
-    SIGNON_AUTH_SESSION_STATE_PROCESS_CANCELING, /**< Canceling.current
-                                                      process. */
-    SIGNON_AUTH_SESSION_STATE_PROCESS_DONE,      /**< Authentication
-                                                      completed. */
-    SIGNON_AUTH_SESSION_STATE_CUSTOM,            /**< Custom message. */
-    SIGNON_AUTH_SESSION_STATE_LAST
-};
 
 struct _SignonIdentityInfo
 {

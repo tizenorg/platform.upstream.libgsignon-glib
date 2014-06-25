@@ -70,6 +70,7 @@ libgsignon_glib_include_HEADERS = \
 	signon-enum-types.h \
 	signon-glib.h \
 	signon-types.h \
+	signon-utils.h \
 	$(signon_headers)
 
 # Headers with enums to be parsed with glib-mkenums;

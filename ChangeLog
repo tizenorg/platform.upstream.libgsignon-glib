@@ -1,3 +1,107 @@
+2014-06-24  Jussi Laako  <jussi.laako@linux.intel.com>
+
+Update version to 2.2.0
+
+2014-06-23  Jussi Laako  <jussi.laako@linux.intel.com>
+
+identity: remove unnecessary FIXME
+
+2014-06-19  Imran Zaman  <imran.zaman@intel.com>
+
+removed appcontext from query identities call
+
+2014-06-18  Jussi Laako  <jussi.laako@linux.intel.com>
+
+identity: fix signal documentation
+
+2014-06-17  Jussi Laako  <jussi.laako@linux.intel.com>
+
+auth-session: make state changed signal enumeration public
+
+2014-06-11  Jussi Laako  <jussi.laako@linux.intel.com>
+
+utils: add necessary header and footer to have right calling convention with c++ code
+
+2014-06-10  Jussi Laako  <jussi.laako@linux.intel.com>
+
+identity: emit signal when identity is removed
+
+2014-06-10  Imran Zaman  <imran.zaman@intel.com>
+
+corrected documentation
+
+2014-06-09  Imran Zaman  <imran.zaman@intel.com>
+
+fixed networktimeout as long
+
+2014-06-09  Jussi Laako  <jussi.laako@linux.intel.com>
+
+auth-service: implement database clear method
+
+2014-06-09  Jussi Laako  <jussi.laako@linux.intel.com>
+
+utils: publish utility functions, especially useful for writing bindings to other languages
+
+2014-06-09  Jussi Laako  <jussi.laako@linux.intel.com>
+
+identity: fix/add _request_credentials_update() prototype
+
+2014-06-06  Imran Zaman  <imran.zaman@intel.com>
+
+moved startSession method to Identity object
+
+2014-06-03  Imran Zaman  <imran.zaman@intel.com>
+
+Fixed spelling mistake
+
+2014-06-02  Jussi Laako  <jussi@sonarnerd.net>
+
+identity: implement VerifyUser and RequestCredentialsUpdate
+
+2014-06-02  Jussi Laako  <jussi@sonarnerd.net>
+
+widl: create a separate SecurityContext dictionary for owner/ACL
+
+2014-05-27  Alexander Kanavin  <alex.kanavin@gmail.com>
+
+doc: don't show how to add *:* ACL, as this is not a good idea
+
+2014-04-03  Jussi Laako  <jussi.laako@linux.intel.com>
+
+debian: include gsso-example in dev package
+
+2014-04-03  Jussi Laako  <jussi.laako@linux.intel.com>
+
+widl: fix some spec bugs
+
+2014-04-02  Jussi Laako  <jussi.laako@linux.intel.com>
+
+widl: update with proposed changes
+
+2014-03-28  Jussi Laako  <jussi.laako@linux.intel.com>
+
+widl: initial draft
+
+2014-03-21  Jussi Laako  <jussi.laako@linux.intel.com>
+
+tizen: split docs to separate package and add manifest
+
+2014-03-18  Jussi Laako  <jussi.laako@linux.intel.com>
+
+configure: fix broken libgsignon-glib.pc
+
+2014-03-18  Jussi Laako  <jussi@sonarnerd.net>
+
+suse: update spec
+
+2014-03-18  Imran Zaman  <imran.zaman@intel.com>
+
+tizen: fix build/release script and package group
+
+2014-03-13  Jussi Laako  <jussi.laako@linux.intel.com>
+
+tizen: force remove old versions
+
 2014-03-12  Jussi Laako  <jussi.laako@linux.intel.com>
 
 tizen: update package group
@@ -5,6 +109,14 @@ tizen: update package group
 2014-03-11  Jussi Laako  <jussi.laako@linux.intel.com>
 
 tizen: fix build and release script
+
+2014-03-07  Jussi Laako  <jussi.laako@linux.intel.com>
+
+Release 2.1.0
+
+2014-03-07  Imran Zaman  <imran.zaman@intel.com>
+
+fixed tizen prepare script for packaging folder
 
 2014-03-07  Imran Zaman  <imran.zaman@intel.com>
 

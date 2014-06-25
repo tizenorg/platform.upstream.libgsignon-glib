@@ -5,6 +5,7 @@ SignonAuthServiceClass
 SignonAuthService
 SignonQueryMethodsCb
 SignonQueryMechanismCb
+SignonClearCb
 SignonIdentityList
 SignonIdentityFilter
 SignonQueryIdentitiesCb
@@ -12,6 +13,7 @@ signon_auth_service_new
 signon_auth_service_query_methods
 signon_auth_service_query_mechanisms
 signon_auth_service_query_identities
+signon_auth_service_clear
 <SUBSECTION Standard>
 SIGNON_AUTH_SERVICE
 SIGNON_AUTH_SERVICE_CLASS
@@ -73,6 +75,7 @@ SignonIdentityClass
 SignonIdentity
 SignonIdentityVoidCb
 SignonIdentityRemovedCb
+SignonIdentityCredentialsUpdatedCb
 SignonIdentitySignedOutCb
 SignonIdentityReferenceAddedCb
 SignonIdentityReferenceRemovedCb
@@ -86,10 +89,11 @@ SignonIdentityStoreCredentialsCb
 signon_identity_store_credentials_with_info
 signon_identity_store_credentials_with_args
 SignonIdentityVerifyCb
-signon_identity_verify_secret
+signon_identity_verify_user
 SignonIdentityInfoCb
 signon_identity_query_info
 signon_identity_remove
+signon_identity_request_credentials_update
 signon_identity_signout
 signon_identity_add_reference
 signon_identity_remove_reference

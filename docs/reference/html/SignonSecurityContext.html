@@ -81,7 +81,7 @@
 </td>
 </tr>
 <tr>
-<td class="function_type">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+<td class="function_type">const <span class="returnvalue">gchar</span> *
 </td>
 <td class="function_name">
 <a class="link" href="SignonSecurityContext.html#signon-security-context-get-system-context" title="signon_security_context_get_system_context ()">signon_security_context_get_system_context</a> <span class="c_punctuation">()</span>
@@ -96,7 +96,7 @@
 </td>
 </tr>
 <tr>
-<td class="function_type">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+<td class="function_type">const <span class="returnvalue">gchar</span> *
 </td>
 <td class="function_name">
 <a class="link" href="SignonSecurityContext.html#signon-security-context-get-application-context" title="signon_security_context_get_application_context ()">signon_security_context_get_application_context</a> <span class="c_punctuation">()</span>
@@ -104,7 +104,7 @@
 </tr>
 <tr>
 <td class="function_type">
-<a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="returnvalue">GVariant</span></a> *
+<span class="returnvalue">GVariant</span> *
 </td>
 <td class="function_name">
 <a class="link" href="SignonSecurityContext.html#signon-security-context-build-variant" title="signon_security_context_build_variant ()">signon_security_context_build_variant</a> <span class="c_punctuation">()</span>
@@ -120,7 +120,7 @@
 </tr>
 <tr>
 <td class="function_type">
-<a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="returnvalue">GVariant</span></a> *
+<span class="returnvalue">GVariant</span> *
 </td>
 <td class="function_name">
 <a class="link" href="SignonSecurityContext.html#signon-security-context-list-build-variant" title="signon_security_context_list_build_variant ()">signon_security_context_list_build_variant</a> <span class="c_punctuation">()</span>
@@ -223,8 +223,8 @@ signon_security_context_new ();</pre>
 <a name="signon-security-context-new-from-values"></a><h3>signon_security_context_new_from_values ()</h3>
 <pre class="programlisting"><a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="returnvalue">SignonSecurityContext</span></a> *
 signon_security_context_new_from_values
-                               (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *system_context</code></em>,
-                                <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *application_context</code></em>);</pre>
+                               (<em class="parameter"><code>const <span class="type">gchar</span> *system_context</code></em>,
+                                <em class="parameter"><code>const <span class="type">gchar</span> *application_context</code></em>);</pre>
 <p>Allocates and initializes a new security context item.</p>
 <div class="refsect3">
 <a name="id-1.3.3.5.7.3.5"></a><h4>Parameters</h4>
@@ -309,7 +309,7 @@ signon_security_context_copy (<em class="parameter"><code>const <a class="link" 
 <pre class="programlisting"><span class="returnvalue">void</span>
 signon_security_context_set_system_context
                                (<em class="parameter"><code><a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="type">SignonSecurityContext</span></a> *ctx</code></em>,
-                                <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *system_context</code></em>);</pre>
+                                <em class="parameter"><code>const <span class="type">gchar</span> *system_context</code></em>);</pre>
 <p>Sets the system context part (such as SMACK label or MSSF token) of the
 <a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="type">SignonSecurityContext</span></a>.</p>
 <div class="refsect3">
@@ -338,7 +338,7 @@ signon_security_context_set_system_context
 <hr>
 <div class="refsect2">
 <a name="signon-security-context-get-system-context"></a><h3>signon_security_context_get_system_context ()</h3>
-<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+<pre class="programlisting">const <span class="returnvalue">gchar</span> *
 signon_security_context_get_system_context
                                (<em class="parameter"><code>const <a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="type">SignonSecurityContext</span></a> *ctx</code></em>);</pre>
 <p>Get the system context part (such as SMACK label or MSSF token) of the
@@ -370,7 +370,7 @@ signon_security_context_get_system_context
 <pre class="programlisting"><span class="returnvalue">void</span>
 signon_security_context_set_application_context
                                (<em class="parameter"><code><a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="type">SignonSecurityContext</span></a> *ctx</code></em>,
-                                <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *application_context</code></em>);</pre>
+                                <em class="parameter"><code>const <span class="type">gchar</span> *application_context</code></em>);</pre>
 <p>Sets the application context part (such as a script name or a web page) of
 the <a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="type">SignonSecurityContext</span></a>.</p>
 <div class="refsect3">
@@ -399,7 +399,7 @@ the <a class="link" href="SignonSecurityContext.html" title="SignonSecurityConte
 <hr>
 <div class="refsect2">
 <a name="signon-security-context-get-application-context"></a><h3>signon_security_context_get_application_context ()</h3>
-<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+<pre class="programlisting">const <span class="returnvalue">gchar</span> *
 signon_security_context_get_application_context
                                (<em class="parameter"><code>const <a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="type">SignonSecurityContext</span></a> *ctx</code></em>);</pre>
 <p>Get the application context part (such as script name or a web page) of
@@ -428,7 +428,7 @@ the <a class="link" href="SignonSecurityContext.html" title="SignonSecurityConte
 <hr>
 <div class="refsect2">
 <a name="signon-security-context-build-variant"></a><h3>signon_security_context_build_variant ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="returnvalue">GVariant</span></a> *
+<pre class="programlisting"><span class="returnvalue">GVariant</span> *
 signon_security_context_build_variant (<em class="parameter"><code>const <a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="type">SignonSecurityContext</span></a> *ctx</code></em>);</pre>
 <p>Build a GVariant of type "(ss)" from a <a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="type">SignonSecurityContext</span></a> item.</p>
 <div class="refsect3">
@@ -457,7 +457,7 @@ signon_security_context_build_variant (<em class="parameter"><code>const <a clas
 <a name="signon-security-context-deconstruct-variant"></a><h3>signon_security_context_deconstruct_variant ()</h3>
 <pre class="programlisting"><a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="returnvalue">SignonSecurityContext</span></a> *
 signon_security_context_deconstruct_variant
-                               (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> *variant</code></em>);</pre>
+                               (<em class="parameter"><code><span class="type">GVariant</span> *variant</code></em>);</pre>
 <p>Builds a <a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="type">SignonSecurityContext</span></a> item from a GVariant of type "(ss)".</p>
 <div class="refsect3">
 <a name="id-1.3.3.5.7.11.5"></a><h4>Parameters</h4>
@@ -483,7 +483,7 @@ signon_security_context_deconstruct_variant
 <hr>
 <div class="refsect2">
 <a name="signon-security-context-list-build-variant"></a><h3>signon_security_context_list_build_variant ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="returnvalue">GVariant</span></a> *
+<pre class="programlisting"><span class="returnvalue">GVariant</span> *
 signon_security_context_list_build_variant
                                (<em class="parameter"><code>const <a class="link" href="SignonSecurityContext.html#SignonSecurityContextList" title="SignonSecurityContextList"><span class="type">SignonSecurityContextList</span></a> *list</code></em>);</pre>
 <p>Builds a GVariant of type "a(ss)" from a GList of <a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="type">SignonSecurityContext</span></a>
@@ -514,7 +514,7 @@ items.</p>
 <a name="signon-security-context-list-deconstruct-variant"></a><h3>signon_security_context_list_deconstruct_variant ()</h3>
 <pre class="programlisting"><a class="link" href="SignonSecurityContext.html#SignonSecurityContextList" title="SignonSecurityContextList"><span class="returnvalue">SignonSecurityContextList</span></a> *
 signon_security_context_list_deconstruct_variant
-                               (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> *variant</code></em>);</pre>
+                               (<em class="parameter"><code><span class="type">GVariant</span> *variant</code></em>);</pre>
 <p>Builds a GList of <a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="type">SignonSecurityContext</span></a> items from a GVariant of type
 "a(ss)".</p>
 <div class="refsect3">
@@ -608,13 +608,13 @@ signon_security_context_list_free (<em class="parameter"><code><a class="link" h
 </colgroup>
 <tbody>
 <tr>
-<td class="struct_member_name"><p><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="SignonSecurityContext-struct.sys-ctx"></a>sys_ctx</code></em>;</p></td>
+<td class="struct_member_name"><p><span class="type">gchar</span> *<em class="structfield"><code><a name="SignonSecurityContext-struct.sys-ctx"></a>sys_ctx</code></em>;</p></td>
 <td class="struct_member_description"><p>system context, such as SMACK-label, MSSF token or just a
 binary path.</p></td>
 <td class="struct_member_annotations"> </td>
 </tr>
 <tr>
-<td class="struct_member_name"><p><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="SignonSecurityContext-struct.app-ctx"></a>app_ctx</code></em>;</p></td>
+<td class="struct_member_name"><p><span class="type">gchar</span> *<em class="structfield"><code><a name="SignonSecurityContext-struct.app-ctx"></a>app_ctx</code></em>;</p></td>
 <td class="struct_member_description"><p>application context, such as a script or a web page.</p></td>
 <td class="struct_member_annotations"> </td>
 </tr>

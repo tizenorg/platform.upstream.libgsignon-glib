@@ -61,6 +61,14 @@
 <span class="returnvalue">void</span>
 </td>
 <td class="function_name">
+<span class="c_punctuation">(</span><a class="link" href="SignonAuthService.html#SignonClearCb" title="SignonClearCb ()">*SignonClearCb</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
 <span class="c_punctuation">(</span><a class="link" href="SignonAuthService.html#SignonQueryIdentitiesCb" title="SignonQueryIdentitiesCb ()">*SignonQueryIdentitiesCb</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
 </td>
 </tr>
@@ -96,6 +104,14 @@
 <a class="link" href="SignonAuthService.html#signon-auth-service-query-identities" title="signon_auth_service_query_identities ()">signon_auth_service_query_identities</a> <span class="c_punctuation">()</span>
 </td>
 </tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="SignonAuthService.html#signon-auth-service-clear" title="signon_auth_service_clear ()">signon_auth_service_clear</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
 </tbody>
 </table></div>
 </div>
@@ -128,7 +144,7 @@
 </div>
 <div class="refsect1">
 <a name="SignonAuthService.object-hierarchy"></a><h2>Object Hierarchy</h2>
-<pre class="screen">    <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+<pre class="screen">    GObject
     <span class="lineart">╰──</span> SignonAuthService
 </pre>
 </div>
@@ -143,9 +159,9 @@ functions to query existing identities, available methods and their mechanisms.<
 <a name="SignonQueryMethodsCb"></a><h3>SignonQueryMethodsCb ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>
 <span class="c_punctuation">(</span>*SignonQueryMethodsCb<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="SignonAuthService.html" title="SignonAuthService"><span class="type">SignonAuthService</span></a> *auth_service</code></em>,
-                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> **methods</code></em>,
-                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> *error</code></em>,
-                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                         <em class="parameter"><code><span class="type">gchar</span> **methods</code></em>,
+                         <em class="parameter"><code>const <span class="type">GError</span> *error</code></em>,
+                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
 <p>Callback to be passed to <a class="link" href="SignonAuthService.html#signon-auth-service-query-methods" title="signon_auth_service_query_methods ()"><code class="function">signon_auth_service_query_methods()</code></a>.</p>
 <div class="refsect3">
 <a name="id-1.3.3.2.7.2.5"></a><h4>Parameters</h4>
@@ -168,7 +184,7 @@ functions to query existing identities, available methods and their mechanisms.<
 </tr>
 <tr>
 <td class="parameter_name"><p>error</p></td>
-<td class="parameter_description"><p>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> if an error occurred, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> otherwise.</p></td>
+<td class="parameter_description"><p>a <span class="type">GError</span> if an error occurred, <code class="literal">NULL</code> otherwise.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -185,10 +201,10 @@ functions to query existing identities, available methods and their mechanisms.<
 <a name="SignonQueryMechanismCb"></a><h3>SignonQueryMechanismCb ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>
 <span class="c_punctuation">(</span>*SignonQueryMechanismCb<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="SignonAuthService.html" title="SignonAuthService"><span class="type">SignonAuthService</span></a> *auth_service</code></em>,
-                           <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *method</code></em>,
-                           <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> **mechanisms</code></em>,
-                           <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> *error</code></em>,
-                           <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                           <em class="parameter"><code>const <span class="type">gchar</span> *method</code></em>,
+                           <em class="parameter"><code><span class="type">gchar</span> **mechanisms</code></em>,
+                           <em class="parameter"><code>const <span class="type">GError</span> *error</code></em>,
+                           <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
 <p>Callback to be passed to <a class="link" href="SignonAuthService.html#signon-auth-service-query-mechanisms" title="signon_auth_service_query_mechanisms ()"><code class="function">signon_auth_service_query_mechanisms()</code></a>.</p>
 <div class="refsect3">
 <a name="id-1.3.3.2.7.3.5"></a><h4>Parameters</h4>
@@ -216,7 +232,49 @@ functions to query existing identities, available methods and their mechanisms.<
 </tr>
 <tr>
 <td class="parameter_name"><p>error</p></td>
-<td class="parameter_description"><p>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> if an error occurred, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> otherwise.</p></td>
+<td class="parameter_description"><p>a <span class="type">GError</span> if an error occurred, <code class="literal">NULL</code> otherwise.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>the user data that was passed when installing this callback.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="SignonClearCb"></a><h3>SignonClearCb ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+<span class="c_punctuation">(</span>*SignonClearCb<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="SignonAuthService.html" title="SignonAuthService"><span class="type">SignonAuthService</span></a> *auth_service</code></em>,
+                  <em class="parameter"><code><span class="type">gboolean</span> success</code></em>,
+                  <em class="parameter"><code>const <span class="type">GError</span> *error</code></em>,
+                  <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>Callback to be passed to <a class="link" href="SignonAuthService.html#signon-auth-service-clear" title="signon_auth_service_clear ()"><code class="function">signon_auth_service_clear()</code></a>.</p>
+<div class="refsect3">
+<a name="id-1.3.3.2.7.4.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>auth_service</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonAuthService.html" title="SignonAuthService"><span class="type">SignonAuthService</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>success</p></td>
+<td class="parameter_description"><p>TRUE if clear succeeded.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>a <span class="type">GError</span> if an error occurred, <code class="literal">NULL</code> otherwise.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -234,11 +292,11 @@ functions to query existing identities, available methods and their mechanisms.<
 <pre class="programlisting"><span class="returnvalue">void</span>
 <span class="c_punctuation">(</span>*SignonQueryIdentitiesCb<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="SignonAuthService.html" title="SignonAuthService"><span class="type">SignonAuthService</span></a> *auth_service</code></em>,
                             <em class="parameter"><code><a class="link" href="SignonAuthService.html#SignonIdentityList" title="SignonIdentityList"><span class="type">SignonIdentityList</span></a> *identities</code></em>,
-                            <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> *error</code></em>,
-                            <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                            <em class="parameter"><code>const <span class="type">GError</span> *error</code></em>,
+                            <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
 <p>Callback to be passed to <a class="link" href="SignonAuthService.html#signon-auth-service-query-identities" title="signon_auth_service_query_identities ()"><code class="function">signon_auth_service_query_identities()</code></a>.</p>
 <div class="refsect3">
-<a name="id-1.3.3.2.7.4.5"></a><h4>Parameters</h4>
+<a name="id-1.3.3.2.7.5.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -253,12 +311,12 @@ functions to query existing identities, available methods and their mechanisms.<
 </tr>
 <tr>
 <td class="parameter_name"><p>identities</p></td>
-<td class="parameter_description"><p> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> based list of <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>. </p></td>
+<td class="parameter_description"><p> <span class="type">GList</span> based list of <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a>. </p></td>
 <td class="parameter_annotations"><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></td>
 </tr>
 <tr>
 <td class="parameter_name"><p>error</p></td>
-<td class="parameter_description"><p>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> if an error occurred, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> otherwise.</p></td>
+<td class="parameter_description"><p>a <span class="type">GError</span> if an error occurred, <code class="literal">NULL</code> otherwise.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -277,7 +335,7 @@ functions to query existing identities, available methods and their mechanisms.<
 signon_auth_service_new ();</pre>
 <p>Create a new <a class="link" href="SignonAuthService.html" title="SignonAuthService"><span class="type">SignonAuthService</span></a>.</p>
 <div class="refsect3">
-<a name="id-1.3.3.2.7.5.5"></a><h4>Returns</h4>
+<a name="id-1.3.3.2.7.6.5"></a><h4>Returns</h4>
 <p> an instance of an <a class="link" href="SignonAuthService.html" title="SignonAuthService"><span class="type">SignonAuthService</span></a>.</p>
 <p></p>
 </div>
@@ -288,10 +346,10 @@ signon_auth_service_new ();</pre>
 <pre class="programlisting"><span class="returnvalue">void</span>
 signon_auth_service_query_methods (<em class="parameter"><code><a class="link" href="SignonAuthService.html" title="SignonAuthService"><span class="type">SignonAuthService</span></a> *auth_service</code></em>,
                                    <em class="parameter"><code><a class="link" href="SignonAuthService.html#SignonQueryMethodsCb" title="SignonQueryMethodsCb ()"><span class="type">SignonQueryMethodsCb</span></a> cb</code></em>,
-                                   <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                                   <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
 <p>Lists all the available authentication methods.</p>
 <div class="refsect3">
-<a name="id-1.3.3.2.7.6.5"></a><h4>Parameters</h4>
+<a name="id-1.3.3.2.7.7.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -323,12 +381,12 @@ signon_auth_service_query_methods (<em class="parameter"><code><a class="link" h
 <a name="signon-auth-service-query-mechanisms"></a><h3>signon_auth_service_query_mechanisms ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>
 signon_auth_service_query_mechanisms (<em class="parameter"><code><a class="link" href="SignonAuthService.html" title="SignonAuthService"><span class="type">SignonAuthService</span></a> *auth_service</code></em>,
-                                      <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *method</code></em>,
+                                      <em class="parameter"><code>const <span class="type">gchar</span> *method</code></em>,
                                       <em class="parameter"><code><a class="link" href="SignonAuthService.html#SignonQueryMechanismCb" title="SignonQueryMechanismCb ()"><span class="type">SignonQueryMechanismCb</span></a> cb</code></em>,
-                                      <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                                      <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
 <p>Lists all the available mechanisms for an authentication method.</p>
 <div class="refsect3">
-<a name="id-1.3.3.2.7.7.5"></a><h4>Parameters</h4>
+<a name="id-1.3.3.2.7.8.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -367,16 +425,16 @@ retrieved.</p></td>
 <pre class="programlisting"><span class="returnvalue">void</span>
 signon_auth_service_query_identities (<em class="parameter"><code><a class="link" href="SignonAuthService.html" title="SignonAuthService"><span class="type">SignonAuthService</span></a> *auth_service</code></em>,
                                       <em class="parameter"><code><a class="link" href="SignonAuthService.html#SignonIdentityFilter" title="SignonIdentityFilter"><span class="type">SignonIdentityFilter</span></a> *filter</code></em>,
-                                      <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *application_context</code></em>,
+                                      <em class="parameter"><code>const <span class="type">gchar</span> *application_context</code></em>,
                                       <em class="parameter"><code><a class="link" href="SignonAuthService.html#SignonQueryIdentitiesCb" title="SignonQueryIdentitiesCb ()"><span class="type">SignonQueryIdentitiesCb</span></a> cb</code></em>,
-                                      <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                                      <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
 <p>Query available identities, possibly applying a filter. </p>
 <p><em class="parameter"><code>filter</code></em>
- is a <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> that contains filter conditions in the form of 
-string keys and <a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a> values. Currently the following keys are supported:</p>
+ is a <span class="type">GHashTable</span> that contains filter conditions in the form of 
+string keys and <span class="type">GVariant</span> values. Currently the following keys are supported:</p>
 <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
 <li class="listitem"><p>"Owner". The value should be a <a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="type">SignonSecurityContext</span></a> (use 
-<a class="link" href="SignonSecurityContext.html#signon-security-context-build-variant" title="signon_security_context_build_variant ()"><code class="function">signon_security_context_build_variant()</code></a> to create a <a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a>). 
+<a class="link" href="SignonSecurityContext.html#signon-security-context-build-variant" title="signon_security_context_build_variant ()"><code class="function">signon_security_context_build_variant()</code></a> to create a <span class="type">GVariant</span>). 
 Identites whose owner doesn't match will be filtered out. This key has
 effect only if the requesting application is a keychain application as determined
 by <a href="http://gsignon-docs.accounts-sso.googlecode.com/git/gsignond/GSignondAccessControlManager.html"><span class="type">GSignondAccessControlManager</span></a>.</p></li>
@@ -394,7 +452,7 @@ identites which the application owns will be returned (but "Type" and "Caption"
 can still be set in the <em class="parameter"><code>filter</code></em>
 ).</p>
 <div class="refsect3">
-<a name="id-1.3.3.2.7.8.8"></a><h4>Parameters</h4>
+<a name="id-1.3.3.2.7.9.8"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -409,12 +467,48 @@ can still be set in the <em class="parameter"><code>filter</code></em>
 </tr>
 <tr>
 <td class="parameter_name"><p>filter</p></td>
-<td class="parameter_description"><p>filter variant dictionary based on <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a>.</p></td>
+<td class="parameter_description"><p>filter variant dictionary based on <span class="type">GHashTable</span>.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
 <td class="parameter_name"><p>application_context</p></td>
-<td class="parameter_description"><p>application security context, can be <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p></td>
+<td class="parameter_description"><p>application security context, can be <code class="literal">NULL</code>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>cb</p></td>
+<td class="parameter_description"><p> callback to be invoked. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="The callback is valid until first called."><span class="acronym">scope async</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="signon-auth-service-clear"></a><h3>signon_auth_service_clear ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+signon_auth_service_clear (<em class="parameter"><code><a class="link" href="SignonAuthService.html" title="SignonAuthService"><span class="type">SignonAuthService</span></a> *auth_service</code></em>,
+                           <em class="parameter"><code><a class="link" href="SignonAuthService.html#SignonClearCb" title="SignonClearCb ()"><span class="type">SignonClearCb</span></a> cb</code></em>,
+                           <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>Clears / wipes out all stored data.</p>
+<div class="refsect3">
+<a name="id-1.3.3.2.7.10.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>auth_service</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonAuthService.html" title="SignonAuthService"><span class="type">SignonAuthService</span></a>.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -450,7 +544,7 @@ can still be set in the <em class="parameter"><code>filter</code></em>
 <col width="200px" class="struct_members_annotations">
 </colgroup>
 <tbody><tr>
-<td class="struct_member_name"><p><a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObjectClass"><span class="type">GObjectClass</span></a> <em class="structfield"><code><a name="SignonAuthServiceClass.parent-class"></a>parent_class</code></em>;</p></td>
+<td class="struct_member_name"><p><span class="type">GObjectClass</span> <em class="structfield"><code><a name="SignonAuthServiceClass.parent-class"></a>parent_class</code></em>;</p></td>
 <td class="struct_member_description"><p>a reference to the parent class</p></td>
 <td class="struct_member_annotations"> </td>
 </tr></tbody>
@@ -475,7 +569,7 @@ can still be set in the <em class="parameter"><code>filter</code></em>
 <a name="SignonIdentityFilter"></a><h3>SignonIdentityFilter</h3>
 <pre class="programlisting">typedef GHashTable SignonIdentityFilter;
 </pre>
-<p><a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> based filter variant dictionary.</p>
+<p><span class="type">GHashTable</span> based filter variant dictionary.</p>
 </div>
 </div>
 </div>

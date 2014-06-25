@@ -10,11 +10,13 @@
 <ANCHOR id="SignonAuthService.functions_details" href="libgsignon-glib/SignonAuthService.html#SignonAuthService.functions_details">
 <ANCHOR id="SignonQueryMethodsCb" href="libgsignon-glib/SignonAuthService.html#SignonQueryMethodsCb">
 <ANCHOR id="SignonQueryMechanismCb" href="libgsignon-glib/SignonAuthService.html#SignonQueryMechanismCb">
+<ANCHOR id="SignonClearCb" href="libgsignon-glib/SignonAuthService.html#SignonClearCb">
 <ANCHOR id="SignonQueryIdentitiesCb" href="libgsignon-glib/SignonAuthService.html#SignonQueryIdentitiesCb">
 <ANCHOR id="signon-auth-service-new" href="libgsignon-glib/SignonAuthService.html#signon-auth-service-new">
 <ANCHOR id="signon-auth-service-query-methods" href="libgsignon-glib/SignonAuthService.html#signon-auth-service-query-methods">
 <ANCHOR id="signon-auth-service-query-mechanisms" href="libgsignon-glib/SignonAuthService.html#signon-auth-service-query-mechanisms">
 <ANCHOR id="signon-auth-service-query-identities" href="libgsignon-glib/SignonAuthService.html#signon-auth-service-query-identities">
+<ANCHOR id="signon-auth-service-clear" href="libgsignon-glib/SignonAuthService.html#signon-auth-service-clear">
 <ANCHOR id="SignonAuthService.other_details" href="libgsignon-glib/SignonAuthService.html#SignonAuthService.other_details">
 <ANCHOR id="SignonAuthServiceClass" href="libgsignon-glib/SignonAuthService.html#SignonAuthServiceClass">
 <ANCHOR id="SignonAuthService-struct" href="libgsignon-glib/SignonAuthService.html#SignonAuthService-struct">
@@ -39,10 +41,11 @@
 <ANCHOR id="signon-identity-store-credentials-with-info" href="libgsignon-glib/SignonIdentity.html#signon-identity-store-credentials-with-info">
 <ANCHOR id="signon-identity-store-credentials-with-args" href="libgsignon-glib/SignonIdentity.html#signon-identity-store-credentials-with-args">
 <ANCHOR id="SignonIdentityVerifyCb" href="libgsignon-glib/SignonIdentity.html#SignonIdentityVerifyCb">
-<ANCHOR id="signon-identity-verify-secret" href="libgsignon-glib/SignonIdentity.html#signon-identity-verify-secret">
+<ANCHOR id="signon-identity-verify-user" href="libgsignon-glib/SignonIdentity.html#signon-identity-verify-user">
 <ANCHOR id="SignonIdentityInfoCb" href="libgsignon-glib/SignonIdentity.html#SignonIdentityInfoCb">
 <ANCHOR id="signon-identity-query-info" href="libgsignon-glib/SignonIdentity.html#signon-identity-query-info">
 <ANCHOR id="signon-identity-remove" href="libgsignon-glib/SignonIdentity.html#signon-identity-remove">
+<ANCHOR id="signon-identity-request-credentials-update" href="libgsignon-glib/SignonIdentity.html#signon-identity-request-credentials-update">
 <ANCHOR id="signon-identity-signout" href="libgsignon-glib/SignonIdentity.html#signon-identity-signout">
 <ANCHOR id="signon-identity-add-reference" href="libgsignon-glib/SignonIdentity.html#signon-identity-add-reference">
 <ANCHOR id="signon-identity-remove-reference" href="libgsignon-glib/SignonIdentity.html#signon-identity-remove-reference">
@@ -52,6 +55,7 @@
 <ANCHOR id="SignonIdentityClass" href="libgsignon-glib/SignonIdentity.html#SignonIdentityClass">
 <ANCHOR id="SignonIdentity-struct" href="libgsignon-glib/SignonIdentity.html#SignonIdentity-struct">
 <ANCHOR id="SignonIdentityRemovedCb" href="libgsignon-glib/SignonIdentity.html#SignonIdentityRemovedCb">
+<ANCHOR id="SignonIdentityCredentialsUpdatedCb" href="libgsignon-glib/SignonIdentity.html#SignonIdentityCredentialsUpdatedCb">
 <ANCHOR id="SignonIdentitySignedOutCb" href="libgsignon-glib/SignonIdentity.html#SignonIdentitySignedOutCb">
 <ANCHOR id="SignonIdentityReferenceAddedCb" href="libgsignon-glib/SignonIdentity.html#SignonIdentityReferenceAddedCb">
 <ANCHOR id="SignonIdentityReferenceRemovedCb" href="libgsignon-glib/SignonIdentity.html#SignonIdentityReferenceRemovedCb">
@@ -59,6 +63,7 @@
 <ANCHOR id="SignonIdentity--app-ctx" href="libgsignon-glib/SignonIdentity.html#SignonIdentity--app-ctx">
 <ANCHOR id="SignonIdentity--id" href="libgsignon-glib/SignonIdentity.html#SignonIdentity--id">
 <ANCHOR id="SignonIdentity.signal-details" href="libgsignon-glib/SignonIdentity.html#SignonIdentity.signal-details">
+<ANCHOR id="SignonIdentity-removed" href="libgsignon-glib/SignonIdentity.html#SignonIdentity-removed">
 <ANCHOR id="SignonIdentity-signout" href="libgsignon-glib/SignonIdentity.html#SignonIdentity-signout">
 <ANCHOR id="SignonIdentityInfo" href="libgsignon-glib/SignonIdentityInfo.html">
 <ANCHOR id="SignonIdentityInfo.functions" href="libgsignon-glib/SignonIdentityInfo.html#SignonIdentityInfo.functions">

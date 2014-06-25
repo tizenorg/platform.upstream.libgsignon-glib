@@ -26,7 +26,7 @@
 #include "signon-utils.h"
 #include <gio/gio.h>
 
-static const GVariantType *
+const GVariantType *
 signon_gtype_to_variant_type (GType type)
 {
     switch (type)

@@ -83,7 +83,7 @@
 </td>
 </tr>
 <tr>
-<td class="function_type">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="returnvalue">GError</span></a> *
+<td class="function_type">const <span class="returnvalue">GError</span> *
 </td>
 <td class="function_name">
 <a class="link" href="SignonIdentity.html#signon-identity-get-last-error" title="signon_identity_get_last_error ()">signon_identity_get_last_error</a> <span class="c_punctuation">()</span>
@@ -134,7 +134,7 @@
 <span class="returnvalue">void</span>
 </td>
 <td class="function_name">
-<a class="link" href="SignonIdentity.html#signon-identity-verify-secret" title="signon_identity_verify_secret ()">signon_identity_verify_secret</a> <span class="c_punctuation">()</span>
+<a class="link" href="SignonIdentity.html#signon-identity-verify-user" title="signon_identity_verify_user ()">signon_identity_verify_user</a> <span class="c_punctuation">()</span>
 </td>
 </tr>
 <tr>
@@ -159,6 +159,14 @@
 </td>
 <td class="function_name">
 <a class="link" href="SignonIdentity.html#signon-identity-remove" title="signon_identity_remove ()">signon_identity_remove</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="SignonIdentity.html#signon-identity-request-credentials-update" title="signon_identity_request_credentials_update ()">signon_identity_request_credentials_update</a> <span class="c_punctuation">()</span>
 </td>
 </tr>
 <tr>
@@ -215,12 +223,12 @@
 <tbody>
 <tr>
 <td class="property_type">
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
+<span class="type">gchar</span> *</td>
 <td class="property_name"><a class="link" href="SignonIdentity.html#SignonIdentity--app-ctx" title="The “app-ctx” property">app-ctx</a></td>
 <td class="property_flags">Read / Write</td>
 </tr>
 <tr>
-<td class="property_type"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a></td>
+<td class="property_type"><span class="type">guint</span></td>
 <td class="property_name"><a class="link" href="SignonIdentity.html#SignonIdentity--id" title="The “id” property">id</a></td>
 <td class="property_flags">Read / Write</td>
 </tr>
@@ -235,11 +243,18 @@
 <col width="300px" class="signals_name">
 <col width="200px" class="signals_flags">
 </colgroup>
-<tbody><tr>
+<tbody>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="SignonIdentity.html#SignonIdentity-removed" title="The “removed” signal">removed</a></td>
+<td class="signal_flags">No Hooks</td>
+</tr>
+<tr>
 <td class="signal_type"><span class="returnvalue">void</span></td>
 <td class="signal_name"><a class="link" href="SignonIdentity.html#SignonIdentity-signout" title="The “signout” signal">signout</a></td>
-<td class="signal_flags"><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-NO-HOOKS:CAPS">No Hooks</a></td>
-</tr></tbody>
+<td class="signal_flags">No Hooks</td>
+</tr>
+</tbody>
 </table></div>
 </div>
 <div class="refsect1">
@@ -264,6 +279,10 @@
 </tr>
 <tr>
 <td class="typedef_keyword">typedef</td>
+<td class="function_name"><a class="link" href="SignonIdentity.html#SignonIdentityCredentialsUpdatedCb" title="SignonIdentityCredentialsUpdatedCb">SignonIdentityCredentialsUpdatedCb</a></td>
+</tr>
+<tr>
+<td class="typedef_keyword">typedef</td>
 <td class="function_name"><a class="link" href="SignonIdentity.html#SignonIdentitySignedOutCb" title="SignonIdentitySignedOutCb">SignonIdentitySignedOutCb</a></td>
 </tr>
 <tr>
@@ -279,7 +298,7 @@
 </div>
 <div class="refsect1">
 <a name="SignonIdentity.object-hierarchy"></a><h2>Object Hierarchy</h2>
-<pre class="screen">    <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+<pre class="screen">    GObject
     <span class="lineart">╰──</span> SignonIdentity
 </pre>
 </div>
@@ -351,7 +370,7 @@ allowed to make any changes to the identity. Default value is an empty list,
 and depending on how gSSO is configured it's also possible to provide a list 
 with a wildcard item to relax the access control restriction 
 (see <a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="type">SignonSecurityContext</span></a>).</p></li>
-<li class="listitem"><p>Methods is a <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> containing method names as keys, and lists of 
+<li class="listitem"><p>Methods is a <span class="type">GHashTable</span> containing method names as keys, and lists of 
 allowed mechanisms as values (also, a special value "*" means that any 
 mechanism is allowed). Only those methods and mechanisms that are in the table
 are allowed to be used in authentication sessions. Default is an empty list.</p></li>
@@ -373,8 +392,8 @@ secret from being stored in the database.</p></li>
 <a name="SignonIdentityVoidCb"></a><h3>SignonIdentityVoidCb ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>
 <span class="c_punctuation">(</span>*SignonIdentityVoidCb<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *self</code></em>,
-                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> *error</code></em>,
-                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                         <em class="parameter"><code>const <span class="type">GError</span> *error</code></em>,
+                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
 <p>Generic callback to be passed to several <a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> methods.</p>
 <div class="refsect3">
 <a name="id-1.3.3.3.9.2.5"></a><h4>Parameters</h4>
@@ -392,7 +411,7 @@ secret from being stored in the database.</p></li>
 </tr>
 <tr>
 <td class="parameter_name"><p>error</p></td>
-<td class="parameter_description"><p>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> if an error occurred, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> otherwise.</p></td>
+<td class="parameter_description"><p>a <span class="type">GError</span> if an error occurred, or <code class="literal">NULL</code> otherwise.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -412,7 +431,7 @@ signon_identity_new_from_db (<em class="parameter"><code><span class="type">guin
 <p>Construct an identity object associated with an existing identity
 record.
 This is essentially equivalent to calling
-<a class="link" href="SignonIdentity.html#signon-identity-new-with-context-from-db" title="signon_identity_new_with_context_from_db ()"><code class="function">signon_identity_new_with_context_from_db()</code></a> and passing <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> as the
+<a class="link" href="SignonIdentity.html#signon-identity-new-with-context-from-db" title="signon_identity_new_with_context_from_db ()"><code class="function">signon_identity_new_with_context_from_db()</code></a> and passing <code class="literal">NULL</code> as the
 application context.</p>
 <p>Applications can determine the <em class="parameter"><code>id</code></em>
  either by enumerating the identities with 
@@ -447,7 +466,7 @@ configuration).</p>
 signon_identity_new ();</pre>
 <p>Construct a new, empty, identity object.
 This is essentially equivalent to calling <a class="link" href="SignonIdentity.html#signon-identity-new-with-context" title="signon_identity_new_with_context ()"><code class="function">signon_identity_new_with_context()</code></a>
-and passing <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> as the application context.</p>
+and passing <code class="literal">NULL</code> as the application context.</p>
 <div class="refsect3">
 <a name="id-1.3.3.3.9.4.5"></a><h4>Returns</h4>
 <p> an instance of an <a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a>.</p>
@@ -460,7 +479,7 @@ and passing <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-
 <pre class="programlisting"><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="returnvalue">SignonIdentity</span></a> *
 signon_identity_new_with_context_from_db
                                (<em class="parameter"><code><span class="type">guint32</span> id</code></em>,
-                                <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *application_context</code></em>);</pre>
+                                <em class="parameter"><code>const <span class="type">gchar</span> *application_context</code></em>);</pre>
 <p>Construct an identity object associated with an existing identity
 record. See <a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="type">SignonSecurityContext</span></a> for a discussion of <em class="parameter"><code>application_context</code></em>
  contents.
@@ -488,7 +507,7 @@ configuration).</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>application_context</p></td>
-<td class="parameter_description"><p>application security context, can be <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p></td>
+<td class="parameter_description"><p>application security context, can be <code class="literal">NULL</code>.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 </tbody>
@@ -504,7 +523,7 @@ configuration).</p>
 <div class="refsect2">
 <a name="signon-identity-new-with-context"></a><h3>signon_identity_new_with_context ()</h3>
 <pre class="programlisting"><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="returnvalue">SignonIdentity</span></a> *
-signon_identity_new_with_context (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *application_context</code></em>);</pre>
+signon_identity_new_with_context (<em class="parameter"><code>const <span class="type">gchar</span> *application_context</code></em>);</pre>
 <p>Construct a new, empty, identity object. See <a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="type">SignonSecurityContext</span></a> for a 
 discussion of <em class="parameter"><code>application_context</code></em>
  contents. <em class="parameter"><code>application_context</code></em>
@@ -521,7 +540,7 @@ or <a class="link" href="SignonIdentity.html#signon-identity-store-credentials-w
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>application_context</p></td>
-<td class="parameter_description"><p>application security context, can be <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p></td>
+<td class="parameter_description"><p>application security context, can be <code class="literal">NULL</code>.</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -535,7 +554,7 @@ or <a class="link" href="SignonIdentity.html#signon-identity-store-credentials-w
 <hr>
 <div class="refsect2">
 <a name="signon-identity-get-last-error"></a><h3>signon_identity_get_last_error ()</h3>
-<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="returnvalue">GError</span></a> *
+<pre class="programlisting">const <span class="returnvalue">GError</span> *
 signon_identity_get_last_error (<em class="parameter"><code><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *identity</code></em>);</pre>
 <p>Get the most recent error that occurred on <em class="parameter"><code>identity</code></em>
 .</p>
@@ -556,7 +575,7 @@ signon_identity_get_last_error (<em class="parameter"><code><a class="link" href
 </div>
 <div class="refsect3">
 <a name="id-1.3.3.3.9.7.6"></a><h4>Returns</h4>
-<p> a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> containing the most recent error, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> on failure.</p>
+<p> a <span class="type">GError</span> containing the most recent error, or <code class="literal">NULL</code> on failure.</p>
 <p></p>
 </div>
 </div>
@@ -565,8 +584,8 @@ signon_identity_get_last_error (<em class="parameter"><code><a class="link" href
 <a name="signon-identity-create-session"></a><h3>signon_identity_create_session ()</h3>
 <pre class="programlisting"><a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="returnvalue">SignonAuthSession</span></a> *
 signon_identity_create_session (<em class="parameter"><code><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *self</code></em>,
-                                <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *method</code></em>,
-                                <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+                                <em class="parameter"><code>const <span class="type">gchar</span> *method</code></em>,
+                                <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
 <p>Creates an authentication session for this identity. If the identity has been
 retrieved from the database, the authentication method must be one of those 
 listed in <a class="link" href="SignonIdentityInfo.html#signon-identity-info-get-methods" title="signon_identity_info_get_methods ()"><code class="function">signon_identity_info_get_methods()</code></a>, otherwise it can be any method
@@ -610,8 +629,8 @@ supported by gSSO.</p>
 <pre class="programlisting"><span class="returnvalue">void</span>
 <span class="c_punctuation">(</span>*SignonIdentityStoreCredentialsCb<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *self</code></em>,
                                      <em class="parameter"><code><span class="type">guint32</span> id</code></em>,
-                                     <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> *error</code></em>,
-                                     <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                                     <em class="parameter"><code>const <span class="type">GError</span> *error</code></em>,
+                                     <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
 <p>Callback to be passed to <a class="link" href="SignonIdentity.html#signon-identity-store-credentials-with-args" title="signon_identity_store_credentials_with_args ()"><code class="function">signon_identity_store_credentials_with_args()</code></a> or
 <a class="link" href="SignonIdentity.html#signon-identity-store-credentials-with-info" title="signon_identity_store_credentials_with_info ()"><code class="function">signon_identity_store_credentials_with_info()</code></a>.</p>
 <div class="refsect3">
@@ -635,7 +654,7 @@ supported by gSSO.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>error</p></td>
-<td class="parameter_description"><p>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> if an error occurred, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> otherwise.</p></td>
+<td class="parameter_description"><p>a <span class="type">GError</span> if an error occurred, or <code class="literal">NULL</code> otherwise.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -655,7 +674,7 @@ signon_identity_store_credentials_with_info
                                (<em class="parameter"><code><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *self</code></em>,
                                 <em class="parameter"><code>const <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>,
                                 <em class="parameter"><code><a class="link" href="SignonIdentity.html#SignonIdentityStoreCredentialsCb" title="SignonIdentityStoreCredentialsCb ()"><span class="type">SignonIdentityStoreCredentialsCb</span></a> cb</code></em>,
-                                <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                                <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
 <p>Stores the data contained in <em class="parameter"><code>info</code></em>
  into the identity record in the database.
 See above for the detailed discussion of the meaning of various fields and
@@ -699,17 +718,17 @@ their defaults.</p>
 <pre class="programlisting"><span class="returnvalue">void</span>
 signon_identity_store_credentials_with_args
                                (<em class="parameter"><code><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *self</code></em>,
-                                <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *username</code></em>,
-                                <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *secret</code></em>,
-                                <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> store_secret</code></em>,
-                                <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *methods</code></em>,
-                                <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *caption</code></em>,
-                                <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> * const *realms</code></em>,
+                                <em class="parameter"><code>const <span class="type">gchar</span> *username</code></em>,
+                                <em class="parameter"><code>const <span class="type">gchar</span> *secret</code></em>,
+                                <em class="parameter"><code>const <span class="type">gboolean</span> store_secret</code></em>,
+                                <em class="parameter"><code><span class="type">GHashTable</span> *methods</code></em>,
+                                <em class="parameter"><code>const <span class="type">gchar</span> *caption</code></em>,
+                                <em class="parameter"><code>const <span class="type">gchar</span> * const *realms</code></em>,
                                 <em class="parameter"><code>const <a class="link" href="SignonSecurityContext.html" title="SignonSecurityContext"><span class="type">SignonSecurityContext</span></a> *owner</code></em>,
                                 <em class="parameter"><code><a class="link" href="SignonSecurityContext.html#SignonSecurityContextList" title="SignonSecurityContextList"><span class="type">SignonSecurityContextList</span></a> *access_control_list</code></em>,
                                 <em class="parameter"><code><a class="link" href="SignonIdentityInfo.html#SignonIdentityType" title="enum SignonIdentityType"><span class="type">SignonIdentityType</span></a> type</code></em>,
                                 <em class="parameter"><code><a class="link" href="SignonIdentity.html#SignonIdentityStoreCredentialsCb" title="SignonIdentityStoreCredentialsCb ()"><span class="type">SignonIdentityStoreCredentialsCb</span></a> cb</code></em>,
-                                <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                                <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
 <p>Stores the given data into the identity. See above for the meaning
 of the specific fields.</p>
 <div class="refsect3">
@@ -790,10 +809,10 @@ of the specific fields.</p>
 <a name="SignonIdentityVerifyCb"></a><h3>SignonIdentityVerifyCb ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>
 <span class="c_punctuation">(</span>*SignonIdentityVerifyCb<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *self</code></em>,
-                           <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> valid</code></em>,
-                           <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> *error</code></em>,
-                           <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
-<p>Callback to be passed to <a class="link" href="SignonIdentity.html#signon-identity-verify-secret" title="signon_identity_verify_secret ()"><code class="function">signon_identity_verify_secret()</code></a>.</p>
+                           <em class="parameter"><code><span class="type">gboolean</span> valid</code></em>,
+                           <em class="parameter"><code>const <span class="type">GError</span> *error</code></em>,
+                           <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>Callback to be passed to <a class="link" href="SignonIdentity.html#signon-identity-verify-user" title="signon_identity_verify_user ()"><code class="function">signon_identity_verify_user()</code></a>.</p>
 <div class="refsect3">
 <a name="id-1.3.3.3.9.12.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -810,12 +829,12 @@ of the specific fields.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>valid</p></td>
-<td class="parameter_description"><p>whether the secret is valid.</p></td>
+<td class="parameter_description"><p>whether the verification succeeded.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
 <td class="parameter_name"><p>error</p></td>
-<td class="parameter_description"><p>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> if an error occurred, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> otherwise.</p></td>
+<td class="parameter_description"><p>a <span class="type">GError</span> if an error occurred, or <code class="literal">NULL</code> otherwise.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -829,13 +848,13 @@ of the specific fields.</p>
 </div>
 <hr>
 <div class="refsect2">
-<a name="signon-identity-verify-secret"></a><h3>signon_identity_verify_secret ()</h3>
+<a name="signon-identity-verify-user"></a><h3>signon_identity_verify_user ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>
-signon_identity_verify_secret (<em class="parameter"><code><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *self</code></em>,
-                               <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *secret</code></em>,
-                               <em class="parameter"><code><a class="link" href="SignonIdentity.html#SignonIdentityVerifyCb" title="SignonIdentityVerifyCb ()"><span class="type">SignonIdentityVerifyCb</span></a> cb</code></em>,
-                               <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
-<p>Verifies the given secret. Not currently supported by gSSO.</p>
+signon_identity_verify_user (<em class="parameter"><code><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *self</code></em>,
+                             <em class="parameter"><code><span class="type">GVariant</span> *args</code></em>,
+                             <em class="parameter"><code><a class="link" href="SignonIdentity.html#SignonIdentityVerifyCb" title="SignonIdentityVerifyCb ()"><span class="type">SignonIdentityVerifyCb</span></a> cb</code></em>,
+                             <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>Asks user to enter his credentials to verify the current user.</p>
 <div class="refsect3">
 <a name="id-1.3.3.3.9.13.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -851,8 +870,8 @@ signon_identity_verify_secret (<em class="parameter"><code><a class="link" href=
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
-<td class="parameter_name"><p>secret</p></td>
-<td class="parameter_description"><p>the secret (password) to be verified.</p></td>
+<td class="parameter_name"><p>args</p></td>
+<td class="parameter_description"><p>optional extra arguments (vardict) controlling SignOn UI.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -875,8 +894,8 @@ signon_identity_verify_secret (<em class="parameter"><code><a class="link" href=
 <pre class="programlisting"><span class="returnvalue">void</span>
 <span class="c_punctuation">(</span>*SignonIdentityInfoCb<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *self</code></em>,
                          <em class="parameter"><code><a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> *info</code></em>,
-                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> *error</code></em>,
-                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                         <em class="parameter"><code>const <span class="type">GError</span> *error</code></em>,
+                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
 <p>Callback to be passed to <a class="link" href="SignonIdentity.html#signon-identity-query-info" title="signon_identity_query_info ()"><code class="function">signon_identity_query_info()</code></a>.</p>
 <div class="refsect3">
 <a name="id-1.3.3.3.9.14.5"></a><h4>Parameters</h4>
@@ -900,7 +919,7 @@ signon_identity_verify_secret (<em class="parameter"><code><a class="link" href=
 </tr>
 <tr>
 <td class="parameter_name"><p>error</p></td>
-<td class="parameter_description"><p>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> if an error occurred, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> otherwise.</p></td>
+<td class="parameter_description"><p>a <span class="type">GError</span> if an error occurred, or <code class="literal">NULL</code> otherwise.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -918,7 +937,7 @@ signon_identity_verify_secret (<em class="parameter"><code><a class="link" href=
 <pre class="programlisting"><span class="returnvalue">void</span>
 signon_identity_query_info (<em class="parameter"><code><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *self</code></em>,
                             <em class="parameter"><code><a class="link" href="SignonIdentity.html#SignonIdentityInfoCb" title="SignonIdentityInfoCb ()"><span class="type">SignonIdentityInfoCb</span></a> cb</code></em>,
-                            <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                            <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
 <p>Fetches the <a class="link" href="SignonIdentityInfo.html" title="SignonIdentityInfo"><span class="type">SignonIdentityInfo</span></a> data associated with this
 identity.</p>
 <div class="refsect3">
@@ -955,7 +974,7 @@ identity.</p>
 <pre class="programlisting"><span class="returnvalue">void</span>
 signon_identity_remove (<em class="parameter"><code><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *self</code></em>,
                         <em class="parameter"><code><a class="link" href="SignonIdentity.html#SignonIdentityRemovedCb" title="SignonIdentityRemovedCb"><span class="type">SignonIdentityRemovedCb</span></a> cb</code></em>,
-                        <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                        <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
 <p>Removes the corresponding credentials record from the database.</p>
 <div class="refsect3">
 <a name="id-1.3.3.3.9.16.5"></a><h4>Parameters</h4>
@@ -987,16 +1006,59 @@ signon_identity_remove (<em class="parameter"><code><a class="link" href="Signon
 </div>
 <hr>
 <div class="refsect2">
+<a name="signon-identity-request-credentials-update"></a><h3>signon_identity_request_credentials_update ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+signon_identity_request_credentials_update
+                               (<em class="parameter"><code><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *self</code></em>,
+                                <em class="parameter"><code>const <span class="type">gchar</span> *message</code></em>,
+                                <em class="parameter"><code><a class="link" href="SignonIdentity.html#SignonIdentityCredentialsUpdatedCb" title="SignonIdentityCredentialsUpdatedCb"><span class="type">SignonIdentityCredentialsUpdatedCb</span></a> cb</code></em>,
+                                <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>Requests user to re-enter his credentials.</p>
+<div class="refsect3">
+<a name="id-1.3.3.3.9.17.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>the <a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>message</p></td>
+<td class="parameter_description"><p>message to be displayed to the user.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>cb</p></td>
+<td class="parameter_description"><p> callback to be called when the operation has completed. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="The callback is valid until first called."><span class="acronym">scope async</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user_data to pass to the callback.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
 <a name="signon-identity-signout"></a><h3>signon_identity_signout ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>
 signon_identity_signout (<em class="parameter"><code><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *self</code></em>,
                          <em class="parameter"><code><a class="link" href="SignonIdentity.html#SignonIdentitySignedOutCb" title="SignonIdentitySignedOutCb"><span class="type">SignonIdentitySignedOutCb</span></a> cb</code></em>,
-                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
 <p>Asks signond to close all authentication sessions for this
 identity, and to remove any stored secrets associated with it (password and
 authentication tokens).</p>
 <div class="refsect3">
-<a name="id-1.3.3.3.9.17.5"></a><h4>Parameters</h4>
+<a name="id-1.3.3.3.9.18.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1028,12 +1090,12 @@ authentication tokens).</p>
 <a name="signon-identity-add-reference"></a><h3>signon_identity_add_reference ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>
 signon_identity_add_reference (<em class="parameter"><code><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *self</code></em>,
-                               <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *reference</code></em>,
+                               <em class="parameter"><code>const <span class="type">gchar</span> *reference</code></em>,
                                <em class="parameter"><code><a class="link" href="SignonIdentity.html#SignonIdentityReferenceAddedCb" title="SignonIdentityReferenceAddedCb"><span class="type">SignonIdentityReferenceAddedCb</span></a> cb</code></em>,
-                               <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                               <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
 <p>Adds named reference to identity. Not currently supported by gSSO.</p>
 <div class="refsect3">
-<a name="id-1.3.3.3.9.18.5"></a><h4>Parameters</h4>
+<a name="id-1.3.3.3.9.19.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1070,12 +1132,12 @@ signon_identity_add_reference (<em class="parameter"><code><a class="link" href=
 <a name="signon-identity-remove-reference"></a><h3>signon_identity_remove_reference ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>
 signon_identity_remove_reference (<em class="parameter"><code><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *self</code></em>,
-                                  <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *reference</code></em>,
+                                  <em class="parameter"><code>const <span class="type">gchar</span> *reference</code></em>,
                                   <em class="parameter"><code><a class="link" href="SignonIdentity.html#SignonIdentityReferenceRemovedCb" title="SignonIdentityReferenceRemovedCb"><span class="type">SignonIdentityReferenceRemovedCb</span></a> cb</code></em>,
-                                  <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                                  <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
 <p>Removes named reference from identity. Not currently supported by gSSO.</p>
 <div class="refsect3">
-<a name="id-1.3.3.3.9.19.5"></a><h4>Parameters</h4>
+<a name="id-1.3.3.3.9.20.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1112,13 +1174,13 @@ signon_identity_remove_reference (<em class="parameter"><code><a class="link" hr
 <a name="SignonIdentitySessionReadyCb"></a><h3>SignonIdentitySessionReadyCb ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>
 <span class="c_punctuation">(</span>*SignonIdentitySessionReadyCb<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a> *self</code></em>,
-                                 <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> *error</code></em>,
-                                 <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> *connection</code></em>,
-                                 <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *bus_name</code></em>,
-                                 <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *object_path</code></em>);</pre>
+                                 <em class="parameter"><code><span class="type">GError</span> *error</code></em>,
+                                 <em class="parameter"><code><span class="type">GDBusConnection</span> *connection</code></em>,
+                                 <em class="parameter"><code>const <span class="type">gchar</span> *bus_name</code></em>,
+                                 <em class="parameter"><code>const <span class="type">gchar</span> *object_path</code></em>);</pre>
 <p>Callback to be passed to <a class="link" href="SignonIdentity.html#signon-identity-get-auth-session" title="signon_identity_get_auth_session ()"><code class="function">signon_identity_get_auth_session()</code></a>.</p>
 <div class="refsect3">
-<a name="id-1.3.3.3.9.20.5"></a><h4>Parameters</h4>
+<a name="id-1.3.3.3.9.21.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1133,12 +1195,12 @@ signon_identity_remove_reference (<em class="parameter"><code><a class="link" hr
 </tr>
 <tr>
 <td class="parameter_name"><p>error</p></td>
-<td class="parameter_description"><p>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> if an error occurred, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> otherwise.</p></td>
+<td class="parameter_description"><p>a <span class="type">GError</span> if an error occurred, or <code class="literal">NULL</code> otherwise.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
 <td class="parameter_name"><p>connection</p></td>
-<td class="parameter_description"><p>a <a href="http://library.gnome.org/devel/gio/unstable/GDBusConnection.html"><span class="type">GDBusConnection</span></a> for the session.</p></td>
+<td class="parameter_description"><p>a <span class="type">GDBusConnection</span> for the session.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1161,12 +1223,12 @@ signon_identity_remove_reference (<em class="parameter"><code><a class="link" hr
 <pre class="programlisting"><span class="returnvalue">void</span>
 signon_identity_get_auth_session (<em class="parameter"><code><a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *self</code></em>,
                                   <em class="parameter"><code><a class="link" href="SignonAuthSession.html" title="SignonAuthSession"><span class="type">SignonAuthSession</span></a> *session</code></em>,
-                                  <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *method</code></em>,
+                                  <em class="parameter"><code>const <span class="type">gchar</span> *method</code></em>,
                                   <em class="parameter"><code><a class="link" href="SignonIdentity.html#SignonIdentitySessionReadyCb" title="SignonIdentitySessionReadyCb ()"><span class="type">SignonIdentitySessionReadyCb</span></a> cb</code></em>);</pre>
 <p>Obtain a remote object for a local session object. Should not be used by
 applications.</p>
 <div class="refsect3">
-<a name="id-1.3.3.3.9.21.5"></a><h4>Parameters</h4>
+<a name="id-1.3.3.3.9.22.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1217,7 +1279,7 @@ applications.</p>
 <col width="200px" class="struct_members_annotations">
 </colgroup>
 <tbody><tr>
-<td class="struct_member_name"><p><a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObjectClass"><span class="type">GObjectClass</span></a> <em class="structfield"><code><a name="SignonIdentityClass.parent-class"></a>parent_class</code></em>;</p></td>
+<td class="struct_member_name"><p><span class="type">GObjectClass</span> <em class="structfield"><code><a name="SignonIdentityClass.parent-class"></a>parent_class</code></em>;</p></td>
 <td class="struct_member_description"><p>reference to a parent class</p></td>
 <td class="struct_member_annotations"> </td>
 </tr></tbody>
@@ -1236,6 +1298,13 @@ applications.</p>
 <pre class="programlisting">typedef SignonIdentityVoidCb SignonIdentityRemovedCb;
 </pre>
 <p>Callback to be passed to <a class="link" href="SignonIdentity.html#signon-identity-remove" title="signon_identity_remove ()"><code class="function">signon_identity_remove()</code></a>.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="SignonIdentityCredentialsUpdatedCb"></a><h3>SignonIdentityCredentialsUpdatedCb</h3>
+<pre class="programlisting">typedef SignonIdentityVoidCb SignonIdentityCredentialsUpdatedCb;
+</pre>
+<p>Callback to be passed to <a class="link" href="SignonIdentity.html#signon-identity-request-credentials-update" title="signon_identity_request_credentials_update ()"><code class="function">signon_identity_request_credentials_update()</code></a>.</p>
 </div>
 <hr>
 <div class="refsect2">
@@ -1263,7 +1332,7 @@ applications.</p>
 <a name="SignonIdentity.property-details"></a><h2>Property Details</h2>
 <div class="refsect2">
 <a name="SignonIdentity--app-ctx"></a><h3>The <code class="literal">“app-ctx”</code> property</h3>
-<pre class="programlisting">  “app-ctx”                  <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<pre class="programlisting">  “app-ctx”                  <span class="type">gchar</span> *</pre>
 <p>Set/Get Application Security Context.</p>
 <p>Flags: Read / Write</p>
 <p>Default value: ""</p>
@@ -1271,7 +1340,7 @@ applications.</p>
 <hr>
 <div class="refsect2">
 <a name="SignonIdentity--id"></a><h3>The <code class="literal">“id”</code> property</h3>
-<pre class="programlisting">  “id”                       <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a></pre>
+<pre class="programlisting">  “id”                       <span class="type">guint</span></pre>
 <p>Set/Get Identity ID.</p>
 <p>Flags: Read / Write</p>
 <p>Default value: 0</p>
@@ -1280,11 +1349,11 @@ applications.</p>
 <div class="refsect1">
 <a name="SignonIdentity.signal-details"></a><h2>Signal Details</h2>
 <div class="refsect2">
-<a name="SignonIdentity-signout"></a><h3>The <code class="literal">“signout”</code> signal</h3>
+<a name="SignonIdentity-removed"></a><h3>The <code class="literal">“removed”</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>
 user_function (<a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *arg0,
-               <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>        user_data)</pre>
-<p>Emitted when the identity was signed out.</p>
+               <span class="type">gpointer</span>        user_data)</pre>
+<p>Emitted when the identity was removed (deleted).</p>
 <div class="refsect3">
 <a name="id-1.3.3.3.12.2.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -1300,7 +1369,31 @@ user_function (<a class="link" href="SignonIdentity.html" title="SignonIdentity"
 </tr></tbody>
 </table></div>
 </div>
-<p>Flags: <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-NO-HOOKS:CAPS">No Hooks</a></p>
+<p>Flags: No Hooks</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="SignonIdentity-signout"></a><h3>The <code class="literal">“signout”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="SignonIdentity.html" title="SignonIdentity"><span class="type">SignonIdentity</span></a> *arg0,
+               <span class="type">gpointer</span>        user_data)</pre>
+<p>Emitted when the identity was signed out.</p>
+<div class="refsect3">
+<a name="id-1.3.3.3.12.3.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<p>Flags: No Hooks</p>
 </div>
 </div>
 </div>

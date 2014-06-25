@@ -4,8 +4,10 @@
  * This file is part of libgsignon-glib
  *
  * Copyright (C) 2009-2010 Nokia Corporation.
+ * Copyright (C) 2014 Intel Corporation.
  *
  * Contact: Alberto Mardegan <alberto.mardegan@nokia.com>
+ * Contact: Jussi Laako <jussi.laako@linux.intel.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License
@@ -75,6 +77,11 @@ typedef void (*SignonQueryMechanismCb) (SignonAuthService *auth_service,
                                         const GError *error,
                                         gpointer user_data);
 
+typedef void (*SignonClearCb) (SignonAuthService *auth_service,
+                               gboolean success,
+                               const GError *error,
+                               gpointer user_data);
+
 /**
  * SignonIdentityList:
  *
@@ -110,6 +117,10 @@ void signon_auth_service_query_identities (SignonAuthService *auth_service,
                                            const gchar *application_context,
                                            SignonQueryIdentitiesCb cb,
                                            gpointer user_data);
+
+void signon_auth_service_clear (SignonAuthService *auth_service,
+                                SignonClearCb cb,
+                                gpointer user_data);
 
 G_END_DECLS
 

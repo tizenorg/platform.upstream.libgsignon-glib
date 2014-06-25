@@ -178,6 +178,7 @@ struct _SignonIdentityPrivate
 
 enum {
     SIGNEDOUT_SIGNAL,
+    REMOVED_SIGNAL,
     LAST_SIGNAL
 };
 
@@ -222,6 +223,7 @@ typedef struct _IdentitySessionData
 typedef struct _IdentityVerifyCbData
 {
     SignonIdentity *self;
+    GVariant *args;
     SignonIdentityVerifyCb cb;
     gpointer user_data;
 } IdentityVerifyCbData;
@@ -241,6 +243,14 @@ typedef struct _IdentityInfoCbData
     gpointer user_data;
 } IdentityInfoCbData;
 
+typedef struct _IdentityCredentialsUpdateCbData
+{
+    SignonIdentity *self;
+    gchar *message;
+    SignonIdentityVoidCb cb;
+    gpointer user_data;
+} IdentityCredentialsUpdateCbData;
+
 typedef struct _IdentityVoidCbData
 {
     SignonIdentity *self;
@@ -259,11 +269,10 @@ static void identity_store_credentials_ready_cb (gpointer object, const GError *
 static void identity_store_credentials_reply (GObject *object,
                                               GAsyncResult *res,
                                               gpointer userdata);
-static void identity_verify_data (SignonIdentity *self, const gchar *data_to_send, gint operation,
-                                    SignonIdentityVerifyCb cb, gpointer user_data);
 static void identity_verify_ready_cb (gpointer object, const GError *error, gpointer user_data);
 
 static void identity_remove_ready_cb (gpointer object, const GError *error, gpointer user_data);
+static void identity_credentials_update_ready_cb (gpointer object, const GError *error, gpointer user_data);
 static void identity_signout_ready_cb (gpointer object, const GError *error, gpointer user_data);
 static void identity_info_ready_cb (gpointer object, const GError *error, gpointer user_data);
 
@@ -449,6 +458,20 @@ signon_identity_class_init (SignonIdentityClass *klass)
                                     g_cclosure_marshal_VOID__VOID,
                                     G_TYPE_NONE /* return_type */,
                                     0);
+    /**
+     * SignonIdentity::removed:
+     *
+     * Emitted when the identity was removed (deleted).
+     */
+    signals[REMOVED_SIGNAL] = g_signal_new("removed",
+                                           G_TYPE_FROM_CLASS (klass),
+                                           G_SIGNAL_RUN_LAST | G_SIGNAL_NO_RECURSE | G_SIGNAL_NO_HOOKS,
+                                           0,
+                                           NULL,
+                                           NULL,
+                                           g_cclosure_marshal_VOID__VOID,
+                                           G_TYPE_NONE,
+                                           0);
 
     object_class->dispose = signon_identity_dispose;
     object_class->finalize = signon_identity_finalize;
@@ -1072,7 +1095,7 @@ identity_verify_reply (GObject *object, GAsyncResult *res,
     g_return_if_fail (cb_data != NULL);
     g_return_if_fail (cb_data->self != NULL);
 
-    sso_identity_call_verify_secret_finish (proxy, &valid, res, &error);
+    sso_identity_call_verify_user_finish (proxy, &valid, res, &error);
 
     if (SIGNON_IS_NOT_CANCELLED (error) && cb_data->cb)
     {
@@ -1080,6 +1103,7 @@ identity_verify_reply (GObject *object, GAsyncResult *res,
     }
 
     g_clear_error(&error);
+    g_variant_unref (cb_data->args);
     g_slice_free (IdentityVerifyCbData, cb_data);
 }
 
@@ -1094,11 +1118,7 @@ identity_verify_ready_cb (gpointer object, const GError *error, gpointer user_da
 
     DEBUG ("%s %d", G_STRFUNC, __LINE__);
 
-    IdentityVerifyData *operation_data =
-        (IdentityVerifyData *)user_data;
-    g_return_if_fail (operation_data != NULL);
-
-    IdentityVerifyCbData *cb_data = operation_data->cb_data;
+    IdentityVerifyCbData *cb_data = (IdentityVerifyCbData *)user_data;
     g_return_if_fail (cb_data != NULL);
 
     if (priv->removed == TRUE)
@@ -1113,6 +1133,7 @@ identity_verify_ready_cb (gpointer object, const GError *error, gpointer user_da
         }
 
         g_error_free (new_error);
+        g_variant_unref (cb_data->args);
         g_slice_free (IdentityVerifyCbData, cb_data);
     }
     else if (error)
@@ -1124,35 +1145,34 @@ identity_verify_ready_cb (gpointer object, const GError *error, gpointer user_da
             (cb_data->cb) (self, FALSE, error, cb_data->user_data);
         }
 
+        g_variant_unref (cb_data->args);
         g_slice_free (IdentityVerifyCbData, cb_data);
     }
     else
     {
-        DEBUG ("%s %d", G_STRFUNC, __LINE__);
         g_return_if_fail (priv->proxy != NULL);
 
-        switch (operation_data->operation) {
-        case SIGNON_VERIFY_SECRET:
-            sso_identity_call_verify_secret (priv->proxy,
-                                             operation_data->data_to_send,
-                                             priv->cancellable,
-                                             identity_verify_reply,
-                                             cb_data);
-            break;
-        default: g_critical ("Wrong operation code");
-        };
+        sso_identity_call_verify_user (priv->proxy,
+                                       cb_data->args,
+                                       priv->cancellable,
+                                       identity_verify_reply,
+                                       cb_data);
     }
-    g_free (operation_data->params);
-    g_free (operation_data->data_to_send);
-    g_slice_free (IdentityVerifyData, operation_data);
 }
 
-static void
-identity_verify_data(SignonIdentity *self,
-                     const gchar *data_to_send,
-                     gint operation,
-                     SignonIdentityVerifyCb cb,
-                     gpointer user_data)
+/**
+ * signon_identity_verify_user:
+ * @self: the #SignonIdentity.
+ * @args: optional extra arguments (vardict) controlling SignOn UI.
+ * @cb: (scope async): callback.
+ * @user_data: user_data.
+ *
+ * Asks user to enter his credentials to verify the current user.
+ */
+void signon_identity_verify_user(SignonIdentity *self,
+                                 GVariant *args,
+                                 SignonIdentityVerifyCb cb,
+                                 gpointer user_data)
 {
     g_return_if_fail (SIGNON_IS_IDENTITY (self));
 
@@ -1163,42 +1183,15 @@ identity_verify_data(SignonIdentity *self,
 
     IdentityVerifyCbData *cb_data = g_slice_new0 (IdentityVerifyCbData);
     cb_data->self = self;
+    cb_data->args = g_variant_ref_sink (args);
     cb_data->cb = cb;
     cb_data->user_data = user_data;
-
-    IdentityVerifyData *operation_data = g_slice_new0 (IdentityVerifyData);
-
-    operation_data->params = NULL;
-    operation_data->data_to_send = g_strdup (data_to_send);
-    operation_data->operation = operation;
-    operation_data->cb_data = cb_data;
 
     identity_check_remote_registration (self);
     _signon_object_call_when_ready (self,
                                     identity_object_quark(),
                                     identity_verify_ready_cb,
-                                    operation_data);
-}
-
-/**
- * signon_identity_verify_secret:
- * @self: the #SignonIdentity.
- * @secret: the secret (password) to be verified.
- * @cb: (scope async): callback.
- * @user_data: user_data.
- *
- * Verifies the given secret. Not currently supported by gSSO.
- */
-void signon_identity_verify_secret(SignonIdentity *self,
-                                  const gchar *secret,
-                                  SignonIdentityVerifyCb cb,
-                                  gpointer user_data)
-{
-    identity_verify_data (self,
-                          secret,
-                          SIGNON_VERIFY_SECRET,
-                          cb,
-                          user_data);
+                                    cb_data);
 }
 
 static void
@@ -1238,6 +1231,7 @@ identity_process_removed (SignonIdentity *self)
 
     g_object_set (self, "id", 0, NULL);
     priv->id = 0;
+    g_signal_emit(G_OBJECT(self), signals[REMOVED_SIGNAL], 0);
 }
 
 static void
@@ -1291,6 +1285,32 @@ identity_signout_reply (GObject *object, GAsyncResult *res,
 
     g_clear_error(&error);
     g_slice_free (IdentityVoidCbData, cb_data);
+}
+
+static void
+identity_credentials_updated_reply (GObject *object, GAsyncResult *res,
+                                    gpointer userdata)
+{
+    SsoIdentity *proxy = SSO_IDENTITY (object);
+    guint result;
+    GError *error = NULL;
+    IdentityCredentialsUpdateCbData *cb_data =
+        (IdentityCredentialsUpdateCbData *)userdata;
+
+    g_return_if_fail (cb_data != NULL);
+    g_return_if_fail (cb_data->self != NULL);
+    g_return_if_fail (cb_data->self->priv != NULL);
+
+    sso_identity_call_request_credentials_update_finish (proxy, &result,
+                                                         res, &error);
+    if (SIGNON_IS_NOT_CANCELLED (error) && cb_data->cb)
+    {
+        (cb_data->cb) (cb_data->self, error, cb_data->user_data);
+    }
+
+    g_clear_error (&error);
+    g_free (cb_data->message);
+    g_slice_free (IdentityCredentialsUpdateCbData, cb_data);
 }
 
 static void
@@ -1514,6 +1534,57 @@ identity_remove_ready_cb(gpointer object, const GError *error, gpointer user_dat
 }
 
 void static
+identity_credentials_update_ready_cb(gpointer object, const GError *error, gpointer user_data)
+{
+    g_return_if_fail (SIGNON_IS_IDENTITY (object));
+
+    SignonIdentity *self = SIGNON_IDENTITY (object);
+    SignonIdentityPrivate *priv = self->priv;
+    g_return_if_fail (priv != NULL);
+
+    DEBUG ("%s %d", G_STRFUNC, __LINE__);
+    IdentityCredentialsUpdateCbData *cb_data =
+        (IdentityCredentialsUpdateCbData *)user_data;
+    g_return_if_fail (cb_data != NULL);
+
+    if (priv->removed == TRUE)
+    {
+        GError *new_error = g_error_new (signon_error_quark(),
+                                         SIGNON_ERROR_IDENTITY_NOT_FOUND,
+                                         "Already removed from database.");
+        if (cb_data->cb)
+        {
+            (cb_data->cb) (self, new_error, cb_data->user_data);
+        }
+
+        g_error_free (new_error);
+        g_free (cb_data->message);
+        g_slice_free (IdentityCredentialsUpdateCbData, cb_data);
+    }
+    if (error)
+    {
+        DEBUG ("IdentityError: %s", error->message);
+
+        if (cb_data->cb)
+        {
+            (cb_data->cb) (self, error, cb_data->user_data);
+        }
+
+        g_free (cb_data->message);
+        g_slice_free (IdentityCredentialsUpdateCbData, cb_data);
+    }
+    else
+    {
+        g_return_if_fail (priv->proxy != NULL);
+        sso_identity_call_request_credentials_update (priv->proxy,
+                                                      cb_data->message,
+                                                      priv->cancellable,
+                                                      identity_credentials_updated_reply,
+                                                      cb_data);
+    }
+}
+
+void static
 identity_void_operation(SignonIdentity *self,
                         gint operation,
                         gpointer cb_data)
@@ -1561,6 +1632,41 @@ void signon_identity_remove(SignonIdentity *self,
     _signon_object_call_when_ready (self,
                                     identity_object_quark(),
                                     identity_remove_ready_cb,
+                                    cb_data);
+}
+
+/**
+ * signon_identity_request_credentials_update:
+ * @self: the #SignonIdentity.
+ * @message: message to be displayed to the user.
+ * @cb: (scope async): callback to be called when the operation has completed.
+ * @user_data: user_data to pass to the callback.
+ *
+ * Requests user to re-enter his credentials.
+ */
+void signon_identity_request_credentials_update(SignonIdentity *self,
+                                                const gchar *message,
+                                                SignonIdentityCredentialsUpdatedCb cb,
+                                                gpointer user_data)
+{
+    g_return_if_fail (SIGNON_IS_IDENTITY (self));
+
+    SignonIdentityPrivate *priv = self->priv;
+    g_return_if_fail (priv != NULL);
+
+    IdentityCredentialsUpdateCbData *cb_data =
+        g_slice_new0 (IdentityCredentialsUpdateCbData);
+    cb_data->self = self;
+    cb_data->message = g_strdup (message);
+    cb_data->cb = (SignonIdentityVoidCb)cb;
+    cb_data->user_data = user_data;
+
+    DEBUG ("%s %d", G_STRFUNC, __LINE__);
+
+    identity_check_remote_registration (self);
+    _signon_object_call_when_ready (self,
+                                    identity_object_quark(),
+                                    identity_credentials_update_ready_cb,
                                     cb_data);
 }
 
