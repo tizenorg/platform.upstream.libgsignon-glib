@@ -1,3 +1,15 @@
+2014-07-02  Imran Zaman  <imran.zaman@intel.com>
+
+untar is made to upstream branch and tizen specific changes stay in tizen branch in Tizen repos, prepare-tizen is updated appropriately
+
+2014-07-01  Imran Zaman  <imran.zaman@intel.com>
+
+Release 2.3.0
+
+2014-06-27  Imran Zaman  <imran.zaman@intel.com>
+
+added implementation for reference APIs along with unit tests
+
 2014-06-24  Jussi Laako  <jussi.laako@linux.intel.com>
 
 Update version to 2.2.0
