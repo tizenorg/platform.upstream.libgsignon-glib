@@ -21,11 +21,11 @@ if command -v dbus-test-runner > /dev/null ; then
     dbus-test-runner -m 180 -t gsignond \
         -t "$TEST_APP" -f com.google.code.AccountsSSO.gSingleSignOn
 else
-    #echo "Using existing D-Bus session"
-    #pkill gsignond || true
-    #trap "pkill -9 gsignond" EXIT
-    #gsignond &
-    #sleep 2
+    echo "Using existing D-Bus session"
+    pkill gsignond || true
+    trap "pkill -9 gsignond" EXIT
+    gsignond &
+    sleep 2
 
     $TEST_APP
 fi
