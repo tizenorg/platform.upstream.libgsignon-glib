@@ -1,3 +1,6 @@
+* Fri Aug 15 2014 Imran Zaman <imran.zaman@intel.com>
+- Added plugin dependencies
+
 * Tue Jul 01 2014 Imran Zaman <imran.zaman@intel.com>
 - Release 2.3.0 added reference API implementation
 
