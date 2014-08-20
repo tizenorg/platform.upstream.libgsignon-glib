@@ -282,7 +282,7 @@ static void get_google_token(GMainLoop* main_loop, gint identity_id,
     g_variant_builder_add (&builder, "{sv}",
                            "AuthPath", g_variant_new_string ("/o/oauth2/auth"));
     g_variant_builder_add (&builder, "{sv}",
-                           "RedirectUri", g_variant_new_string("https://localhost"));
+                           "RedirectUri", g_variant_new_string("http://localhost:9999"));
     g_variant_builder_add (&builder, "{sv}",
                            "Scope", g_variant_new_string ("email"));
     g_variant_builder_add (&builder, "{sv}",
