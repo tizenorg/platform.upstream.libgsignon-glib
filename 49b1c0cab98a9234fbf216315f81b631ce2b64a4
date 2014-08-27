@@ -1,0 +1,8 @@
+Code-Review+1: Amarnath Valluri <amarnath.valluri@linux.intel.com>
+Verified+1: Amarnath Valluri <amarnath.valluri@linux.intel.com>
+Code-Review+2: Jussi Laako
+Submitted-by: Jussi Laako
+Submitted-at: Wed, 27 Aug 2014 05:51:25 -0700
+Reviewed-on: https://review.tizen.org/gerrit/26659
+Project: platform/upstream/libgsignon-glib
+Branch: refs/heads/tizen
